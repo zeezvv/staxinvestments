@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { Menu, X, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import staxLogo from "@/assets/stax-logo.jpg";
@@ -14,10 +15,10 @@ const Navbar = () => {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-card/90 backdrop-blur-md border-b border-border">
       <div className="container mx-auto px-4 flex items-center justify-between h-16">
-        <button onClick={() => scrollTo("hero")} className="flex items-center gap-2">
+        <Link to="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
           <img src={staxLogo} alt="Stax Investments LLC" className="w-8 h-8 rounded-lg object-cover" />
           <span className="font-display text-lg font-bold text-foreground">Stax Investments</span>
-        </button>
+        </Link>
 
         <div className="hidden md:flex items-center gap-8">
           <button onClick={() => scrollTo("how-it-works")} className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">How It Works</button>
