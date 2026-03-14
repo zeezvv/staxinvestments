@@ -1,23 +1,43 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { toast } from "sonner";
 import { z } from "zod";
 import { MapPin, Mail, Phone, Send } from "lucide-react";
 
+const validDomains = ["gmail.com", "yahoo.com", "outlook.com", "hotmail.com", "aol.com", "icloud.com", "mail.com", "protonmail.com", "zoho.com", "yandex.com", "live.com", "msn.com", "comcast.net", "att.net", "verizon.net", "me.com", "mac.com"];
+
+const hasValidDomain = (email: string) => {
+  const domain = email.split("@")[1]?.toLowerCase();
+  if (!domain) return false;
+  // Accept known domains or any domain with a dot (e.g. company.com)
+  if (validDomains.includes(domain)) return true;
+  const parts = domain.split(".");
+  return parts.length >= 2 && parts[parts.length - 1].length >= 2;
+};
+
 const formSchema = z.object({
   fullName: z.string().trim().min(1, "Full name is required").max(100),
-  email: z.string().trim().email("Please enter a valid email").max(255),
-  phone: z.string().trim().min(7, "Please enter a valid phone number").max(20),
+  email: z.string().trim().email("Please enter a valid email").max(255).refine(hasValidDomain, "Please enter a valid email domain"),
+  phone: z.string().trim().min(14, "Please enter a complete phone number").max(20),
   propertyAddress: z.string().trim().min(1, "Property address is required").max(500),
   message: z.string().trim().max(1000).optional(),
 });
 
 type FormData = z.infer<typeof formSchema>;
 
+const formatPhoneNumber = (value: string): string => {
+  const digits = value.replace(/\D/g, "").slice(0, 10);
+  if (digits.length === 0) return "";
+  if (digits.length <= 3) return `(${digits}`;
+  if (digits.length <= 6) return `(${digits.slice(0, 3)}) ${digits.slice(3)}`;
+  return `(${digits.slice(0, 3)}) ${digits.slice(3, 6)}-${digits.slice(6)}`;
+};
+
 const ContactForm = () => {
+  const navigate = useNavigate();
   const [form, setForm] = useState<FormData>({
     fullName: "",
     email: "",
@@ -29,6 +49,9 @@ const ContactForm = () => {
   const [submitting, setSubmitting] = useState(false);
 
   const handleChange = (field: keyof FormData, value: string) => {
+    if (field === "phone") {
+      value = formatPhoneNumber(value);
+    }
     setForm((prev) => ({ ...prev, [field]: value }));
     if (errors[field]) setErrors((prev) => ({ ...prev, [field]: undefined }));
   };
@@ -46,11 +69,10 @@ const ContactForm = () => {
       return;
     }
     setSubmitting(true);
-    // Simulate submission
     setTimeout(() => {
       setSubmitting(false);
-      toast.success("Thank you! We'll reach out within 24 hours with your cash offer.");
       setForm({ fullName: "", email: "", phone: "", propertyAddress: "", message: "" });
+      navigate("/thank-you");
     }, 1200);
   };
 
@@ -70,7 +92,7 @@ const ContactForm = () => {
                 Get Your Fair Cash Offer Today
               </h2>
               <p className="text-muted-foreground mt-4 leading-relaxed">
-                Fill out the form and a member of our team will get back to you within 24 hours with a no-obligation cash offer.
+                Fill out the form and a member of our team will get back to you within 24 hours with a no obligation cash offer.
               </p>
             </div>
 
@@ -91,7 +113,7 @@ const ContactForm = () => {
                 <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
                   <Phone className="w-5 h-5 text-primary" />
                 </div>
-                <a href="tel:+18005551234" className="text-muted-foreground hover:text-foreground transition-colors">(800) 555-1234</a>
+                <a href="tel:+12344371980" className="text-muted-foreground hover:text-foreground transition-colors">(234) 437-1980</a>
               </div>
             </div>
           </motion.div>

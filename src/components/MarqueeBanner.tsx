@@ -1,8 +1,8 @@
 const items = [
-  "Sell Your House Fast — Close in 7 Days!",
-  "No Repairs Needed — We Buy As-Is!",
-  "Behind on Payments? — Call Now for Solutions!",
-  "Skip the Realtor Fees — Keep More Money!",
+  "Sell Your House Fast, Close in 7 Days!",
+  "No Repairs Needed, We Buy As Is!",
+  "Behind on Payments? Call Now for Solutions!",
+  "Skip the Realtor Fees, Keep More Money!",
 ];
 
 const MarqueeBanner = () => (

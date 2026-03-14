@@ -6,13 +6,13 @@ const steps = [
     icon: FileText,
     step: "Step 1",
     title: "Get a Fair Offer in 24 Hours",
-    description: "Tell us about your property and we'll provide a no-obligation cash offer within 24 hours. No inspections, no appraisals needed.",
+    description: "Tell us about your property and we'll provide a no obligation cash offer within 24 hours. It's quick, easy, and completely free.",
   },
   {
     icon: CalendarDays,
     step: "Step 2",
     title: "Pick Your Closing Date",
-    description: "You choose when to close — as fast as 7 days or on a timeline that works best for you. We're flexible and work around your schedule.",
+    description: "You choose when to close. Whether that's as fast as 7 days or on a timeline that works best for you. We're flexible and work around your schedule.",
   },
   {
     icon: Banknote,
@@ -36,7 +36,7 @@ const HowItWorks = () => (
           How We Buy Your Home
         </h2>
         <p className="text-muted-foreground mt-4 max-w-xl mx-auto text-lg">
-          Selling your home shouldn't be stressful. Our 3-step process makes it easy.
+          Selling your home shouldn't be stressful. Our 3 step process makes it easy.
         </p>
       </motion.div>
 

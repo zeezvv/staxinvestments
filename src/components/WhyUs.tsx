@@ -2,11 +2,11 @@ import { motion } from "framer-motion";
 import { ShieldCheck, Clock, DollarSign, Home, Heart, Handshake } from "lucide-react";
 
 const reasons = [
-  { icon: DollarSign, title: "No Costly Repairs", desc: "We buy your house as-is. No need to spend money fixing anything up before selling." },
-  { icon: Clock, title: "Close in 7 Days", desc: "Need to sell fast? We can close in as little as 7 days — or whenever works for you." },
+  { icon: DollarSign, title: "No Costly Repairs", desc: "We buy your house as is. No need to spend money fixing anything up before selling." },
+  { icon: Clock, title: "Close on Your Timeline", desc: "Whether you need to close in as little as 7 days or prefer up to 60 days, we work on your schedule." },
   { icon: ShieldCheck, title: "Zero Fees or Commissions", desc: "No realtor fees, no hidden charges. We pay all closing costs so you keep more money." },
-  { icon: Heart, title: "Stress-Free Experience", desc: "We handle all the paperwork and logistics. You just sit back and let us take care of everything." },
-  { icon: Home, title: "Any Condition, Any Situation", desc: "Foreclosure, inherited property, divorce — whatever your situation, we're here to help." },
+  { icon: Heart, title: "Stress Free Experience", desc: "We handle all the paperwork and logistics. You just sit back and let us take care of everything." },
+  { icon: Home, title: "Any Condition, Any Situation", desc: "Foreclosure, inherited property, divorce, whatever your situation, we're here to help." },
   { icon: Handshake, title: "Fair & Honest Offers", desc: "We provide transparent, competitive cash offers based on current market conditions." },
 ];
 
