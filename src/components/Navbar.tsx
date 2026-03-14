@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Menu, X, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import staxLogo from "@/assets/stax-logo.jpg";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -14,9 +15,7 @@ const Navbar = () => {
     <nav className="fixed top-0 left-0 right-0 z-50 bg-card/90 backdrop-blur-md border-b border-border">
       <div className="container mx-auto px-4 flex items-center justify-between h-16">
         <button onClick={() => scrollTo("hero")} className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center">
-            <span className="text-primary-foreground font-bold text-sm">S</span>
-          </div>
+          <img src={staxLogo} alt="Stax Investments LLC" className="w-8 h-8 rounded-lg object-cover" />
           <span className="font-display text-lg font-bold text-foreground">Stax Investments</span>
         </button>
 
@@ -28,9 +27,9 @@ const Navbar = () => {
         </div>
 
         <div className="hidden md:flex items-center gap-3">
-          <a href="tel:+18005551234" className="flex items-center gap-2 text-sm font-medium text-primary">
+          <a href="tel:+12344371980" className="flex items-center gap-2 text-sm font-medium text-primary">
             <Phone className="w-4 h-4" />
-            (800) 555-1234
+            (234) 437-1980
           </a>
           <Button onClick={() => scrollTo("contact")} size="sm">Get Cash Offer</Button>
         </div>
@@ -45,6 +44,9 @@ const Navbar = () => {
           <button onClick={() => scrollTo("how-it-works")} className="block w-full text-left text-sm font-medium text-muted-foreground py-2">How It Works</button>
           <button onClick={() => scrollTo("why-us")} className="block w-full text-left text-sm font-medium text-muted-foreground py-2">Why Us</button>
           <button onClick={() => scrollTo("testimonials")} className="block w-full text-left text-sm font-medium text-muted-foreground py-2">Testimonials</button>
+          <a href="tel:+12344371980" className="block w-full text-left text-sm font-medium text-primary py-2">
+            (234) 437-1980
+          </a>
           <Button onClick={() => scrollTo("contact")} className="w-full" size="sm">Get Cash Offer</Button>
         </div>
       )}
