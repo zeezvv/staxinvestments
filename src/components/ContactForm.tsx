@@ -40,6 +40,7 @@ const formatPhoneNumber = (value: string): string => {
 
 const ContactForm = () => {
   const navigate = useNavigate();
+  const { toast } = useToast();
   const [form, setForm] = useState<FormData>({
     fullName: "",
     email: "",
