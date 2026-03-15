@@ -71,11 +71,22 @@ const ContactForm = () => {
       return;
     }
     setSubmitting(true);
-    setTimeout(() => {
-      setSubmitting(false);
+    try {
+      const { error } = await supabase.from("leads").insert({
+        full_name: result.data.fullName,
+        email: result.data.email,
+        phone: result.data.phone,
+        property_address: result.data.propertyAddress,
+        message: result.data.message || null,
+      });
+      if (error) throw error;
       setForm({ fullName: "", email: "", phone: "", propertyAddress: "", message: "" });
       navigate("/thank-you");
-    }, 1200);
+    } catch (err) {
+      toast({ title: "Something went wrong", description: "Please try again or contact us directly.", variant: "destructive" });
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
