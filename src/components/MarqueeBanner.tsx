@@ -6,10 +6,10 @@ const items = [
 ];
 
 const MarqueeBanner = () => (
-  <div className="bg-primary overflow-hidden py-2.5">
-    <div className="animate-marquee whitespace-nowrap flex">
-      {[...items, ...items].map((text, i) => (
-        <span key={i} className="mx-8 text-sm font-medium text-primary-foreground">
+  <div className="bg-primary overflow-hidden py-2.5 relative">
+    <div className="animate-marquee whitespace-nowrap flex w-max">
+      {[...items, ...items, ...items].map((text, i) => (
+        <span key={i} className="mx-6 sm:mx-8 text-xs sm:text-sm font-medium text-primary-foreground">
           ✦ {text}
         </span>
       ))}
