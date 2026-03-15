@@ -113,7 +113,7 @@ const PrivacyPolicy = () => {
             <p className="text-muted-foreground">
               <strong className="text-foreground">Stax Investments LLC</strong><br />
               Phone: (234) 437-1980<br />
-              Email: info@staxinvestments.com
+              Email: staxxentine@gmail.com
             </p>
           </div>
         </div>
