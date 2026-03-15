@@ -6,6 +6,8 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { z } from "zod";
 import { MapPin, Mail, Phone, Send } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
+import { useToast } from "@/hooks/use-toast";
 
 const validDomains = ["gmail.com", "yahoo.com", "outlook.com", "hotmail.com", "aol.com", "icloud.com", "mail.com", "protonmail.com", "zoho.com", "yandex.com", "live.com", "msn.com", "comcast.net", "att.net", "verizon.net", "me.com", "mac.com"];
 
@@ -38,6 +40,7 @@ const formatPhoneNumber = (value: string): string => {
 
 const ContactForm = () => {
   const navigate = useNavigate();
+  const { toast } = useToast();
   const [form, setForm] = useState<FormData>({
     fullName: "",
     email: "",
@@ -56,7 +59,7 @@ const ContactForm = () => {
     if (errors[field]) setErrors((prev) => ({ ...prev, [field]: undefined }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const result = formSchema.safeParse(form);
     if (!result.success) {
@@ -69,11 +72,22 @@ const ContactForm = () => {
       return;
     }
     setSubmitting(true);
-    setTimeout(() => {
-      setSubmitting(false);
+    try {
+      const { error } = await supabase.from("leads").insert({
+        full_name: result.data.fullName,
+        email: result.data.email,
+        phone: result.data.phone,
+        property_address: result.data.propertyAddress,
+        message: result.data.message || null,
+      });
+      if (error) throw error;
       setForm({ fullName: "", email: "", phone: "", propertyAddress: "", message: "" });
       navigate("/thank-you");
-    }, 1200);
+    } catch (err) {
+      toast({ title: "Something went wrong", description: "Please try again or contact us directly.", variant: "destructive" });
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
