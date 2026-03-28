@@ -85,8 +85,8 @@ const ContactForm = () => {
 
       // Track lead events
       track("lead_submitted", { email: result.data.email });
-      if (typeof window.gtag === "function") {
-        window.gtag("event", "generate_lead", {
+      if (typeof (window as any).gtag === "function") {
+        (window as any).gtag("event", "generate_lead", {
           event_category: "form",
           event_label: "contact_form",
         });
