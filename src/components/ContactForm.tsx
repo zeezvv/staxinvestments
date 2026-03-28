@@ -8,6 +8,7 @@ import { z } from "zod";
 import { MapPin, Mail, Phone, Send } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
+import { track } from "@vercel/analytics";
 
 const validDomains = ["gmail.com", "yahoo.com", "outlook.com", "hotmail.com", "aol.com", "icloud.com", "mail.com", "protonmail.com", "zoho.com", "yandex.com", "live.com", "msn.com", "comcast.net", "att.net", "verizon.net", "me.com", "mac.com"];
 
@@ -81,6 +82,16 @@ const ContactForm = () => {
         message: result.data.message || null,
       });
       if (error) throw error;
+
+      // Track lead events
+      track("lead_submitted", { email: result.data.email });
+      if (typeof (window as any).gtag === "function") {
+        (window as any).gtag("event", "generate_lead", {
+          event_category: "form",
+          event_label: "contact_form",
+        });
+      }
+
       setForm({ fullName: "", email: "", phone: "", propertyAddress: "", message: "" });
       navigate("/thank-you");
     } catch (err) {
