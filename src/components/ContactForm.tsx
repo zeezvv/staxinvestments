@@ -82,6 +82,16 @@ const ContactForm = () => {
         message: result.data.message || null,
       });
       if (error) throw error;
+
+      // Track lead events
+      track("lead_submitted", { email: result.data.email });
+      if (typeof window.gtag === "function") {
+        window.gtag("event", "generate_lead", {
+          event_category: "form",
+          event_label: "contact_form",
+        });
+      }
+
       setForm({ fullName: "", email: "", phone: "", propertyAddress: "", message: "" });
       navigate("/thank-you");
     } catch (err) {
