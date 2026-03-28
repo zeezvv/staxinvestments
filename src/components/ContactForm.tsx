@@ -73,8 +73,10 @@ const ContactForm = () => {
       return;
     }
     setSubmitting(true);
+    const leadId = crypto.randomUUID();
     try {
       const { error } = await supabase.from("leads").insert({
+        id: leadId,
         full_name: result.data.fullName,
         email: result.data.email,
         phone: result.data.phone,
@@ -82,6 +84,22 @@ const ContactForm = () => {
         message: result.data.message || null,
       });
       if (error) throw error;
+
+      // Send email notification to owner
+      await supabase.functions.invoke("send-transactional-email", {
+        body: {
+          templateName: "lead-notification",
+          recipientEmail: "lutsiv42@gmail.com",
+          idempotencyKey: `lead-notify-${leadId}`,
+          templateData: {
+            fullName: result.data.fullName,
+            email: result.data.email,
+            phone: result.data.phone,
+            propertyAddress: result.data.propertyAddress,
+            message: result.data.message || undefined,
+          },
+        },
+      });
 
       // Track lead events
       track("lead_submitted", { email: result.data.email });
