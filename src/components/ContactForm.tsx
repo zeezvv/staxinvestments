@@ -85,19 +85,14 @@ const ContactForm = () => {
       });
       if (error) throw error;
 
-      // Send email notification to owner
-      await supabase.functions.invoke("send-transactional-email", {
+      // Send email notification to owner via Resend
+      await supabase.functions.invoke("send-lead-email", {
         body: {
-          templateName: "lead-notification",
-          recipientEmail: "lutsiv42@gmail.com",
-          idempotencyKey: `lead-notify-${leadId}`,
-          templateData: {
-            fullName: result.data.fullName,
-            email: result.data.email,
-            phone: result.data.phone,
-            propertyAddress: result.data.propertyAddress,
-            message: result.data.message || undefined,
-          },
+          fullName: result.data.fullName,
+          email: result.data.email,
+          phone: result.data.phone,
+          propertyAddress: result.data.propertyAddress,
+          message: result.data.message || undefined,
         },
       });
 
