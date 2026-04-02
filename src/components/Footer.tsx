@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import staxLogo from "@/assets/stax-logo.jpg";
+import staxLogo from "@/assets/stax-logo.png";
 
 const Footer = () => (
   <footer className="bg-foreground py-10">
