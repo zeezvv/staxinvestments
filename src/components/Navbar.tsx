@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Menu, X, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import staxLogo from "@/assets/stax-logo.jpg";
+import staxLogo from "@/assets/stax-logo.png";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
