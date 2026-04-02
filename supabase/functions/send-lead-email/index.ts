@@ -71,7 +71,7 @@ Deno.serve(async (req) => {
       },
       body: JSON.stringify({
         from: 'Stax Investments <leads@staxhomebuyers.com>',
-        to: ['lutsiv42@gmail.com'],
+        to: ['lutsiv42@gmail.com', 'staxxentine@gmail.com'],
         subject: `New Lead: ${fullName} — ${propertyAddress}`,
         html: htmlContent,
       }),
