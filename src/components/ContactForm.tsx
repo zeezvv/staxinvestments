@@ -145,7 +145,7 @@ const ContactForm = () => {
                 <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
                   <Mail className="w-5 h-5 text-primary" />
                 </div>
-                <a href="mailto:staxxentine@gmail.com" className="text-muted-foreground hover:text-foreground transition-colors">staxxentine@gmail.com</a>
+                <a href="mailto:leads@staxhomebuyers.com" className="text-muted-foreground hover:text-foreground transition-colors">leads@staxhomebuyers.com</a>
               </div>
               <div className="flex items-center gap-3 text-sm">
                 <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
