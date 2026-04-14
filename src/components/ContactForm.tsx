@@ -53,6 +53,7 @@ const ContactForm = () => {
   });
   const [errors, setErrors] = useState<Partial<Record<keyof FormData, string>>>({});
   const [submitting, setSubmitting] = useState(false);
+  const [smsConsent, setSmsConsent] = useState(false);
 
   const handleChange = (field: keyof FormData, value: string) => {
     if (field === "phone") {
@@ -194,6 +195,21 @@ const ContactForm = () => {
               <div>
                 <label className="text-sm font-medium text-foreground mb-1.5 block">Additional Details (optional)</label>
                 <Textarea placeholder="Tell us about your property or situation..." rows={4} value={form.message} onChange={(e) => handleChange("message", e.target.value)} />
+              </div>
+
+              <div className="flex items-start gap-3">
+                <Checkbox
+                  id="sms-consent"
+                  checked={smsConsent}
+                  onCheckedChange={(checked) => setSmsConsent(checked === true)}
+                  className="mt-1"
+                />
+                <label htmlFor="sms-consent" className="text-xs text-muted-foreground leading-relaxed cursor-pointer">
+                  By checking this box, you agree to receive text messages (e.g., payment reminders) from <strong>Stax Investments LLC</strong> at the cell number used when signing up. Consent is not a condition of any purchase. Reply STOP to unsubscribe, HELP for help. Message &amp; data rates may apply. Message frequency varies. I have read and agree with the{" "}
+                  <Link to="/terms-and-conditions" className="text-primary underline hover:text-primary/80">Terms &amp; Conditions</Link>
+                  {" "}&amp;{" "}
+                  <Link to="/privacy-policy" className="text-primary underline hover:text-primary/80">Privacy Policy</Link>.
+                </label>
               </div>
 
               <Button type="submit" size="lg" className="w-full py-6 text-base" disabled={submitting}>
