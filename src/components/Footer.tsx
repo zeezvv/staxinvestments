@@ -9,9 +9,14 @@ const Footer = () => (
           <img src={staxLogo} alt="Stax Investments LLC" className="w-7 h-7 rounded-md object-cover" />
           <span className="font-display text-sm font-bold text-background">Stax Investments LLC</span>
         </Link>
-        <Link to="/privacy-policy" className="text-sm text-background/60 hover:text-background transition-colors">
-          Privacy Policy
-        </Link>
+        <div className="flex items-center gap-6">
+          <Link to="/privacy-policy" className="text-sm text-background/60 hover:text-background transition-colors">
+            Privacy Policy
+          </Link>
+          <Link to="/terms-and-conditions" className="text-sm text-background/60 hover:text-background transition-colors">
+            Terms & Conditions
+          </Link>
+        </div>
         <p className="text-sm text-background/60">
           © {new Date().getFullYear()} Stax Investments LLC. All rights reserved.
         </p>
