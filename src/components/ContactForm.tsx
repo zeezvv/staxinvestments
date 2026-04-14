@@ -85,6 +85,7 @@ const ContactForm = () => {
         phone: result.data.phone,
         property_address: result.data.propertyAddress,
         message: result.data.message || null,
+        sms_consent: smsConsent,
       });
       if (error) throw error;
 

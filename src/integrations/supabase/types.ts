@@ -110,6 +110,7 @@ export type Database = {
           message: string | null
           phone: string
           property_address: string
+          sms_consent: boolean
         }
         Insert: {
           created_at?: string
@@ -119,6 +120,7 @@ export type Database = {
           message?: string | null
           phone: string
           property_address: string
+          sms_consent?: boolean
         }
         Update: {
           created_at?: string
@@ -128,6 +130,7 @@ export type Database = {
           message?: string | null
           phone?: string
           property_address?: string
+          sms_consent?: boolean
         }
         Relationships: []
       }
