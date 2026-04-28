@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Menu, X, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import staxLogo from "@/assets/stax-logo.png";
+import staxLogo from "@/assets/stax-logo-full.png";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -15,9 +15,8 @@ const Navbar = () => {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-card/90 backdrop-blur-md border-b border-border">
       <div className="container mx-auto px-4 flex items-center justify-between h-16">
-        <Link to="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
-          <img src={staxLogo} alt="Stax Investments LLC" className="w-8 h-8 rounded-lg object-cover" />
-          <span className="font-display text-lg font-bold text-foreground">Stax Investments</span>
+        <Link to="/" className="flex items-center hover:opacity-80 transition-opacity" aria-label="Stax Investments LLC - Home">
+          <img src={staxLogo} alt="Stax Investments LLC" className="h-10 md:h-12 w-auto object-contain" />
         </Link>
 
         <div className="hidden md:flex items-center gap-8">
