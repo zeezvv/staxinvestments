@@ -9,7 +9,10 @@ const Footer = () => (
           <img src={staxLogo} alt="Stax Investments LLC" className="w-7 h-7 rounded-md object-cover" />
           <span className="font-display text-sm font-bold text-background">Stax Investments LLC</span>
         </Link>
-        <div className="flex items-center gap-6">
+        <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
+          <Link to="/we-buy-houses-middletown-ohio" className="text-sm text-background/60 hover:text-background transition-colors">
+            We Buy Houses in Middletown, Ohio
+          </Link>
           <Link to="/privacy-policy" className="text-sm text-background/60 hover:text-background transition-colors">
             Privacy Policy
           </Link>

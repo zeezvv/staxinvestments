@@ -5,6 +5,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { Analytics } from "@vercel/analytics/react";
 import Index from "./pages/Index.tsx";
+import MiddletownOhio from "./pages/MiddletownOhio.tsx";
 import ThankYou from "./pages/ThankYou.tsx";
 import PrivacyPolicy from "./pages/PrivacyPolicy.tsx";
 import Unsubscribe from "./pages/Unsubscribe.tsx";
@@ -22,6 +23,7 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
+          <Route path="/we-buy-houses-middletown-ohio" element={<MiddletownOhio />} />
           <Route path="/thank-you" element={<ThankYou />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
