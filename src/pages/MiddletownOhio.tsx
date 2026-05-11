@@ -12,7 +12,7 @@ import { Button } from "@/components/ui/button";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ContactForm from "@/components/ContactForm";
-import heroImage from "@/assets/hero-house.jpg";
+import heroImage from "@/assets/middletown-house.jpg";
 
 const PAGE_URL = "https://staxhomebuyers.com/we-buy-houses-middletown-ohio";
 const PAGE_TITLE = "We Buy Houses in Middletown, Ohio | Stax Home Buyers";
