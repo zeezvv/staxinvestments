@@ -6,7 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Checkbox } from "@/components/ui/checkbox";
 import { z } from "zod";
-import { ArrowLeft, ArrowRight, Check, Send } from "lucide-react";
+import { ArrowLeft, ArrowRight, Check, Send, ShieldCheck, Clock, DollarSign, Phone, Home, Star, MapPin } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import { track } from "@vercel/analytics";
@@ -150,14 +150,30 @@ const CashOffer = () => {
       <main className="flex-1 pt-24 pb-16 px-4">
         <div className="max-w-2xl mx-auto">
           <div className="mb-6 text-center">
-            <span className="text-sm font-semibold text-primary uppercase tracking-wider">Cash Offer</span>
-            <h1 className="text-3xl md:text-4xl font-bold mt-2 text-foreground">
-              Get Your Fair Cash Offer
+            <span className="inline-flex items-center gap-2 text-sm font-semibold text-primary uppercase tracking-wider bg-primary/10 px-4 py-1.5 rounded-full">
+              <Home className="w-3.5 h-3.5" /> Cash Offer
+            </span>
+            <h1 className="text-3xl md:text-5xl font-bold mt-4 text-foreground leading-tight">
+              Get Your Fair <span className="text-primary">Cash Offer</span>
             </h1>
-            <p className="text-muted-foreground mt-3">
-              Answer a few quick questions and we'll be in touch within 24 hours.
+            <p className="text-muted-foreground mt-3 max-w-lg mx-auto">
+              Answer a few quick questions and we'll be in touch within 24 hours with a no obligation offer on your home.
             </p>
           </div>
+
+          <div className="grid grid-cols-3 gap-3 mb-8">
+            {[
+              { icon: Clock, label: "24 hr response" },
+              { icon: DollarSign, label: "No fees or commissions" },
+              { icon: ShieldCheck, label: "No obligation" },
+            ].map(({ icon: Icon, label }) => (
+              <div key={label} className="flex flex-col items-center gap-2 p-3 rounded-xl bg-card border border-border text-center">
+                <Icon className="w-5 h-5 text-primary" />
+                <span className="text-[11px] md:text-xs font-medium text-foreground leading-tight">{label}</span>
+              </div>
+            ))}
+          </div>
+
 
           <div className="mb-6">
             <div className="flex justify-between items-center mb-2 text-xs text-muted-foreground font-medium">
@@ -353,6 +369,85 @@ const CashOffer = () => {
           <p className="text-xs text-muted-foreground text-center leading-relaxed mt-6 max-w-md mx-auto">
             By submitting this form, you consent to receive calls, emails, and text messages from <strong>Stax Investments LLC</strong> regarding your property inquiry. Consent is not a condition of any purchase or sale.
           </p>
+        </div>
+          <p className="text-xs text-muted-foreground text-center leading-relaxed mt-6 max-w-md mx-auto">
+            By submitting this form, you consent to receive calls, emails, and text messages from <strong>Stax Investments LLC</strong> regarding your property inquiry. Consent is not a condition of any purchase or sale.
+          </p>
+        </div>
+
+        {/* What happens next */}
+        <div className="max-w-4xl mx-auto mt-20">
+          <div className="text-center mb-10">
+            <span className="text-sm font-semibold text-primary uppercase tracking-wider">The Process</span>
+            <h2 className="text-2xl md:text-3xl font-bold mt-2 text-foreground">What happens after you submit</h2>
+          </div>
+          <div className="grid md:grid-cols-3 gap-6">
+            {[
+              { step: "01", title: "We review your property", desc: "Our local team looks over the details you shared and pulls together comparable homes in your area." },
+              { step: "02", title: "You get a fair cash offer", desc: "Within 24 hours we'll reach out with a no obligation offer based on the current condition of your home." },
+              { step: "03", title: "Close on your timeline", desc: "Pick a closing date that works for you. We handle the paperwork and cover typical closing costs." },
+            ].map((s) => (
+              <div key={s.step} className="bg-card rounded-2xl p-6 border border-border relative">
+                <div className="text-4xl font-bold text-primary/20 mb-2">{s.step}</div>
+                <h3 className="font-semibold text-foreground mb-2">{s.title}</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">{s.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Testimonial + Contact */}
+        <div className="max-w-4xl mx-auto mt-16 grid md:grid-cols-5 gap-6">
+          <div className="md:col-span-3 bg-card rounded-2xl p-8 border border-border">
+            <div className="flex gap-1 mb-4">
+              {[...Array(5)].map((_, i) => (
+                <Star key={i} className="w-4 h-4 fill-primary text-primary" />
+              ))}
+            </div>
+            <p className="text-foreground leading-relaxed italic mb-4">
+              "Stax made the whole process simple. They were straightforward, answered every question, and closed on the date we picked. I couldn't have asked for a better experience."
+            </p>
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
+                <span className="text-primary font-semibold text-sm">JM</span>
+              </div>
+              <div>
+                <div className="text-sm font-semibold text-foreground">Jessica M.</div>
+                <div className="text-xs text-muted-foreground flex items-center gap-1"><MapPin className="w-3 h-3" /> Middletown, Ohio</div>
+              </div>
+            </div>
+          </div>
+
+          <div className="md:col-span-2 bg-primary text-primary-foreground rounded-2xl p-8 flex flex-col justify-center">
+            <h3 className="text-xl font-bold mb-2">Prefer to talk?</h3>
+            <p className="text-sm opacity-90 mb-5 leading-relaxed">
+              Give us a call and speak with a local team member today.
+            </p>
+            <a href="tel:+12344371980" className="inline-flex items-center justify-center gap-2 bg-primary-foreground text-primary font-semibold px-5 py-3 rounded-xl hover:opacity-90 transition-opacity">
+              <Phone className="w-4 h-4" /> (234) 437-1980
+            </a>
+          </div>
+        </div>
+
+        {/* FAQ */}
+        <div className="max-w-3xl mx-auto mt-16">
+          <div className="text-center mb-8">
+            <span className="text-sm font-semibold text-primary uppercase tracking-wider">Common Questions</span>
+            <h2 className="text-2xl md:text-3xl font-bold mt-2 text-foreground">Good to know before you submit</h2>
+          </div>
+          <div className="space-y-3">
+            {[
+              { q: "Is there any cost or obligation?", a: "No. The offer is completely free and there is no obligation to accept. Take the time you need to review it." },
+              { q: "Do I need to make repairs first?", a: "Not at all. We buy homes in their current condition. You don't have to clean, repair, or stage anything." },
+              { q: "How quickly can we close?", a: "We can often close in as little as seven days, or we can wait until a date that works better for you." },
+              { q: "Are there fees or commissions?", a: "No agent fees, no commissions, and we typically cover standard closing costs." },
+            ].map((f) => (
+              <div key={f.q} className="bg-card border border-border rounded-xl p-5">
+                <h3 className="font-semibold text-foreground mb-1.5">{f.q}</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">{f.a}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </main>
       <Footer />
