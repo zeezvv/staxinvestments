@@ -190,6 +190,26 @@ const CashOffer = () => {
         });
       }
 
+      try {
+        await fetch("https://services.leadconnectorhq.com/hooks/XOh4Z6pVhNdzqzXMFAfd/webhook-trigger/48fce442-7dd2-4f22-a5ae-ba6f316f971e", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            propertyAddress: d.propertyAddress,
+            isListed: d.isListed,
+            propertyType: d.propertyType,
+            timeline: d.timeline,
+            reason: d.reason,
+            fullName: d.fullName,
+            email: d.email,
+            phone: d.phone,
+            gclid,
+          }),
+        });
+      } catch (webhookErr) {
+        // Webhook failure should not block the user-facing submission flow.
+      }
+
       navigate("/thank-you", { state: { fromSubmit: true } });
     } catch (err) {
       toast({ title: "Something went wrong", description: "Please try again or contact us directly.", variant: "destructive" });
