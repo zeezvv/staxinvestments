@@ -62,7 +62,7 @@ const Testimonials = () => (
       >
         <span className="text-sm font-semibold text-primary uppercase tracking-wider">Testimonials</span>
         <h2 className="text-3xl md:text-5xl font-bold mt-3 text-foreground">
-          Hear From Happy Homeowners
+          Hear From Happy Home Sellers
         </h2>
       </motion.div>
 
