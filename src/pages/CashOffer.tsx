@@ -99,6 +99,12 @@ const CashOffer = () => {
   const [smsConsent, setSmsConsent] = useState(false);
   const [form, setForm] = useState<Partial<FormData>>({});
   const [errors, setErrors] = useState<Partial<Record<keyof FormData, string>>>({});
+  const [testimonialIdx, setTestimonialIdx] = useState(0);
+  const activeTestimonial = carouselTestimonials[testimonialIdx];
+  const prevTestimonial = () =>
+    setTestimonialIdx((i) => (i - 1 + carouselTestimonials.length) % carouselTestimonials.length);
+  const nextTestimonial = () =>
+    setTestimonialIdx((i) => (i + 1) % carouselTestimonials.length);
 
   const update = <K extends keyof FormData>(field: K, value: FormData[K]) => {
     setForm((p) => ({ ...p, [field]: value }));
