@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Home, Ban, EyeOff, Zap, CalendarCheck } from "lucide-react";
+import soldHighFive from "@/assets/sold-highfive.png.asset.json";
 
 const reasons = [
   { icon: Home, title: "Sell As-Is", desc: "No cleaning, no staging, no repairs. We buy your house in its current condition." },
@@ -16,7 +17,7 @@ const WhyUs = () => (
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="text-center mb-16 max-w-2xl mx-auto"
+        className="text-center mb-12 max-w-2xl mx-auto"
       >
         <span className="text-sm font-semibold text-primary uppercase tracking-wider">Why Choose Us</span>
         <h2 className="text-3xl md:text-5xl font-bold mt-3 text-foreground">
@@ -25,6 +26,22 @@ const WhyUs = () => (
         <p className="text-muted-foreground mt-4 text-lg">
           We've helped hundreds of homeowners sell quickly and move forward with confidence.
         </p>
+      </motion.div>
+
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+        className="max-w-4xl mx-auto mb-14 rounded-3xl overflow-hidden shadow-2xl border border-border relative"
+      >
+        <img
+          src={soldHighFive.url}
+          alt="Happy couple high-fiving in front of their sold home"
+          className="w-full h-auto object-cover"
+          loading="lazy"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-background/40 via-transparent to-transparent pointer-events-none" />
       </motion.div>
 
       <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-5 max-w-6xl mx-auto">
