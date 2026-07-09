@@ -53,16 +53,6 @@ const HeroSection = () => {
                 Get My Cash Offer <ArrowRight className="ml-2 w-5 h-5" />
               </Button>
             </Link>
-            <a href="tel:+12344371980">
-              <Button
-                size="lg"
-                variant="outline"
-                className="text-base px-8 py-6 font-semibold bg-card/10 backdrop-blur-sm border-primary-foreground/40 hover:bg-card/20"
-                style={{ color: "hsl(0 0% 100%)" }}
-              >
-                Call Us Now
-              </Button>
-            </a>
           </div>
 
           <div className="mt-8 flex flex-wrap gap-x-6 gap-y-3">
