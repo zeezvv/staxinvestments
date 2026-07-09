@@ -162,7 +162,7 @@ const CashOffer = () => {
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mt-4 text-foreground leading-tight max-w-2xl">
               Get Your Fair <span className="text-primary">Cash Offer</span> Today
             </h1>
-            <p className="text-muted-foreground mt-4 max-w-xl text-base md:text-lg leading-relaxed">
+            <p className="text-foreground mt-4 max-w-xl text-base md:text-lg leading-relaxed">
               Answer a few quick questions and we'll be in touch within 24 hours with a no obligation offer on your home.
             </p>
           </div>
