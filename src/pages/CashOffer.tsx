@@ -370,10 +370,6 @@ const CashOffer = () => {
             By submitting this form, you consent to receive calls, emails, and text messages from <strong>Stax Investments LLC</strong> regarding your property inquiry. Consent is not a condition of any purchase or sale.
           </p>
         </div>
-          <p className="text-xs text-muted-foreground text-center leading-relaxed mt-6 max-w-md mx-auto">
-            By submitting this form, you consent to receive calls, emails, and text messages from <strong>Stax Investments LLC</strong> regarding your property inquiry. Consent is not a condition of any purchase or sale.
-          </p>
-        </div>
 
         {/* What happens next */}
         <div className="max-w-4xl mx-auto mt-20">
