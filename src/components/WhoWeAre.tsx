@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import houseImg from "@/assets/hero-house.jpg";
+import houseImg from "@/assets/sold-house.png.asset.json";
 
 const points = [
   "Local cash buyers you can actually reach",
@@ -21,7 +21,7 @@ const WhoWeAre = () => (
           className="relative"
         >
           <div className="rounded-3xl overflow-hidden shadow-2xl">
-            <img src={houseImg} alt="Fair cash offers for houses in any condition" className="w-full h-full object-cover aspect-[4/3]" />
+            <img src={houseImg.url} alt="Sold house with Stax Home Buyers sign in front yard" className="w-full h-full object-cover aspect-[4/3]" />
           </div>
           <div className="hidden md:block absolute -bottom-6 -right-6 bg-card rounded-2xl p-5 shadow-xl border border-border max-w-[220px]">
             <div className="text-3xl font-bold text-primary">500+</div>
