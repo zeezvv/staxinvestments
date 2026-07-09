@@ -6,7 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Checkbox } from "@/components/ui/checkbox";
 import { z } from "zod";
-import { ArrowLeft, ArrowRight, Check, Send, ShieldCheck, Clock, DollarSign, Phone, Home, Star, MapPin } from "lucide-react";
+import { ArrowLeft, ArrowRight, Check, Send, ShieldCheck, Clock, DollarSign, Home, Star, MapPin } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import { track } from "@vercel/analytics";
