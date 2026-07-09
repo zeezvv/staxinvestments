@@ -13,9 +13,9 @@ const testimonials = [
     text: "I was behind on medical payments and felt stuck. They gave me a fair offer and took care of everything. I finally have peace of mind.",
   },
   {
-    name: "James R.",
-    location: "Atlanta, GA",
-    text: "No repairs, no realtor fees, and a fast close. The whole process was smooth from start to finish. These guys are the real deal.",
+    name: "James",
+    location: "Middletown, OH",
+    text: "I'm getting old and needed my rental properties sold quickly, and these guys really helped me out. No repairs, no realtor fees, and a fast close. The whole process was smooth from start to finish. These guys are the real deal!",
   },
 ];
 
