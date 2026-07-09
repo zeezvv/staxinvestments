@@ -146,20 +146,20 @@ const CashOffer = () => {
 
   return (
     <div className="min-h-screen bg-background flex flex-col">
-      <section className="relative w-full overflow-hidden">
-        <div className="relative h-[340px] md:h-[440px] w-full">
+      <section className="relative w-full">
+        <div className="relative h-[360px] md:h-[480px] lg:h-[520px] w-full overflow-hidden">
           <img
             src={heroImage.url}
             alt="Beautiful home ready for a fair cash offer"
             className="absolute inset-0 w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/70 to-background/10" />
-          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-background/80 via-background/40 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
           <div className="relative z-10 max-w-6xl mx-auto h-full px-4 flex flex-col justify-center">
             <span className="inline-flex items-center gap-2 text-xs font-semibold text-primary uppercase tracking-wider bg-primary/10 backdrop-blur px-4 py-1.5 rounded-full w-fit">
               <Home className="w-3.5 h-3.5" /> Cash Offer
             </span>
-            <h1 className="text-4xl md:text-6xl font-bold mt-4 text-foreground leading-tight max-w-2xl">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mt-4 text-foreground leading-tight max-w-2xl">
               Get Your Fair <span className="text-primary">Cash Offer</span> Today
             </h1>
             <p className="text-muted-foreground mt-4 max-w-xl text-base md:text-lg leading-relaxed">
@@ -167,26 +167,8 @@ const CashOffer = () => {
             </p>
           </div>
         </div>
-      </section>
-      <main className="flex-1 pb-16 px-4">
-        <div className="max-w-2xl mx-auto">
-          <div className="pt-10" />
 
-
-          <div className="grid grid-cols-3 gap-3 mb-8">
-            {[
-              { icon: Clock, label: "24 hr response" },
-              { icon: DollarSign, label: "No fees or commissions" },
-              { icon: ShieldCheck, label: "No obligation" },
-            ].map(({ icon: Icon, label }) => (
-              <div key={label} className="flex flex-col items-center gap-2 p-3 rounded-xl bg-card border border-border text-center">
-                <Icon className="w-5 h-5 text-primary" />
-                <span className="text-[11px] md:text-xs font-medium text-foreground leading-tight">{label}</span>
-              </div>
-            ))}
-          </div>
-
-
+        <div className="relative z-20 -mt-28 md:-mt-36 max-w-2xl mx-auto px-4 pb-16">
           <div className="mb-6">
             <div className="flex justify-between items-center mb-2 text-xs text-muted-foreground font-medium">
               <span>Step {step} of {totalSteps}</span>
