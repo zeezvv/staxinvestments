@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Home, DollarSign, KeyRound } from "lucide-react";
+import movingImg from "@/assets/family-moving.png.asset.json";
 
 const steps = [
   {
