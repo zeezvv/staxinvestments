@@ -85,7 +85,7 @@ const Footer = () => {
 
         {/* Copyright */}
         <div className="py-6 text-center">
-          <p className="text-xs text-primary-foreground/60">
+          <p className="text-sm text-primary-foreground/60">
             © {currentYear} Stax Investments LLC. All rights reserved.
           </p>
         </div>
