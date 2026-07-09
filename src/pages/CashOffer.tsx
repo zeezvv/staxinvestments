@@ -100,6 +100,13 @@ const CashOffer = () => {
   const [form, setForm] = useState<Partial<FormData>>({});
   const [errors, setErrors] = useState<Partial<Record<keyof FormData, string>>>({});
   const [testimonialIdx, setTestimonialIdx] = useState(0);
+  const [gclid, setGclid] = useState("");
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    setGclid(params.get("gclid") || "");
+  }, []);
+
   const activeTestimonial = carouselTestimonials[testimonialIdx];
   const prevTestimonial = () =>
     setTestimonialIdx((i) => (i - 1 + carouselTestimonials.length) % carouselTestimonials.length);
