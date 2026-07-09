@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Phone, Globe, FileText, Shield, Home } from "lucide-react";
-import footerLogo from "@/assets/nobg-2.png.asset.json";
+
+const footerLogo = "/nobg-2.png";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
