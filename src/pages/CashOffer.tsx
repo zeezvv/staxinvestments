@@ -366,18 +366,18 @@ const CashOffer = () => {
         </div>
 
         {/* What happens next */}
-        <div className="max-w-4xl mx-auto mt-20">
-          <div className="text-center mb-10">
+        <div className="max-w-4xl mx-auto mt-12">
+          <div className="text-center mb-6">
             <span className="text-sm font-semibold text-primary uppercase tracking-wider">The Process</span>
             <h2 className="text-2xl md:text-3xl font-bold mt-2 text-foreground">What happens after you submit</h2>
           </div>
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-3 gap-4">
             {[
               { step: "01", title: "We review your property", desc: "Our local team looks over the details you shared and pulls together comparable homes in your area." },
               { step: "02", title: "You get a fair cash offer", desc: "Within 24 hours we'll reach out with a no obligation offer based on the current condition of your home." },
               { step: "03", title: "Close on your timeline", desc: "Pick a closing date that works for you. We handle the paperwork and cover typical closing costs." },
             ].map((s) => (
-              <div key={s.step} className="bg-card rounded-2xl p-6 border border-border relative">
+              <div key={s.step} className="bg-card rounded-2xl p-5 border border-border relative">
                 <div className="text-4xl font-bold text-primary/20 mb-2">{s.step}</div>
                 <h3 className="font-semibold text-foreground mb-2">{s.title}</h3>
                 <p className="text-sm text-muted-foreground leading-relaxed">{s.desc}</p>
@@ -387,9 +387,9 @@ const CashOffer = () => {
         </div>
 
         {/* Testimonial + Contact */}
-        <div className="max-w-4xl mx-auto mt-16 grid md:grid-cols-5 gap-6">
-          <div className="md:col-span-3 bg-card rounded-2xl p-8 border border-border">
-            <div className="flex gap-1 mb-4">
+        <div className="max-w-4xl mx-auto mt-10 grid md:grid-cols-5 gap-4">
+          <div className="md:col-span-3 bg-card rounded-2xl p-6 border border-border">
+            <div className="flex gap-1 mb-3">
               {[...Array(5)].map((_, i) => (
                 <Star key={i} className="w-4 h-4 fill-primary text-primary" />
               ))}
@@ -408,7 +408,7 @@ const CashOffer = () => {
             </div>
           </div>
 
-          <div className="md:col-span-2 bg-primary text-primary-foreground rounded-2xl p-8 flex flex-col justify-center">
+          <div className="md:col-span-2 bg-primary text-primary-foreground rounded-2xl p-6 flex flex-col justify-center">
             <h3 className="text-xl font-bold mb-2">Prefer to talk?</h3>
             <p className="text-sm opacity-90 mb-5 leading-relaxed">
               Give us a call and speak with a local team member today.
@@ -420,8 +420,8 @@ const CashOffer = () => {
         </div>
 
         {/* FAQ */}
-        <div className="max-w-3xl mx-auto mt-16">
-          <div className="text-center mb-8">
+        <div className="max-w-3xl mx-auto mt-10">
+          <div className="text-center mb-6">
             <span className="text-sm font-semibold text-primary uppercase tracking-wider">Common Questions</span>
             <h2 className="text-2xl md:text-3xl font-bold mt-2 text-foreground">Good to know before you submit</h2>
           </div>
