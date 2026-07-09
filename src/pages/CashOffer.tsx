@@ -6,7 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Checkbox } from "@/components/ui/checkbox";
 import { z } from "zod";
-import { ArrowLeft, ArrowRight, Check, Send, ShieldCheck, Clock, DollarSign, Phone, Home, Star, MapPin } from "lucide-react";
+import { ArrowLeft, ArrowRight, Check, Send, ShieldCheck, Clock, DollarSign, Home, Star, MapPin } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import { track } from "@vercel/analytics";
@@ -390,9 +390,9 @@ const CashOffer = () => {
           </div>
         </div>
 
-        {/* Testimonial + Contact */}
-        <div className="max-w-4xl mx-auto mt-4 grid md:grid-cols-5 gap-4">
-          <div className="md:col-span-3 bg-card rounded-2xl p-6 border border-border">
+        {/* Testimonial */}
+        <div className="max-w-4xl mx-auto mt-4">
+          <div className="bg-card rounded-2xl p-6 border border-border">
             <div className="flex gap-1 mb-3">
               {[...Array(5)].map((_, i) => (
                 <Star key={i} className="w-4 h-4 fill-primary text-primary" />
@@ -410,16 +410,6 @@ const CashOffer = () => {
                 <div className="text-xs text-muted-foreground flex items-center gap-1"><MapPin className="w-3 h-3" /> Middletown, Ohio</div>
               </div>
             </div>
-          </div>
-
-          <div className="md:col-span-2 bg-primary text-primary-foreground rounded-2xl p-6 flex flex-col justify-center">
-            <h3 className="text-xl font-bold mb-2">Prefer to talk?</h3>
-            <p className="text-sm opacity-90 mb-5 leading-relaxed">
-              Give us a call and speak with a local team member today.
-            </p>
-            <a href="tel:+12344371980" className="inline-flex items-center justify-center gap-2 bg-primary-foreground text-primary font-semibold px-5 py-3 rounded-xl hover:opacity-90 transition-opacity">
-              <Phone className="w-4 h-4" /> (234) 437-1980
-            </a>
           </div>
         </div>
 
