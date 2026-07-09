@@ -41,6 +41,11 @@ const trustItems = [
 
 const ThankYou = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+
+  if (!location.state?.fromSubmit) {
+    return <Navigate to="/" replace />;
+  }
 
   return (
     <div className="min-h-screen bg-background flex flex-col">
