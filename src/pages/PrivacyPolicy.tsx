@@ -19,7 +19,7 @@ const PrivacyPolicy = () => {
 
           <div className="prose prose-sm max-w-none text-foreground space-y-6">
             <p>
-              Stax Investments LLC ("Stax Investments", "we", "our", or "us") respects your privacy and is committed to protecting your personal information. This Privacy Policy explains how we collect, use, and share information when you visit our website, interact with our Facebook ads, or otherwise engage with our services.
+              Stax Investments LLC ("Stax Investments", "we", "our", or "us") respects your privacy and is committed to protecting your personal information. This Privacy Policy explains how we collect, use, and share information when you visit our website, interact with our advertisements, or otherwise engage with our services.
             </p>
             <p>
               By accessing or using our website or submitting your information through our forms, you agree to the terms of this Privacy Policy.
@@ -31,7 +31,7 @@ const PrivacyPolicy = () => {
               <li>Submit a property information request</li>
               <li>Request a cash offer</li>
               <li>Fill out a contact form on our website</li>
-              <li>Respond to or interact with our Facebook ads</li>
+              <li>Respond to or interact with our advertisements</li>
               <li>Communicate with us by phone, email, or SMS</li>
             </ul>
             <p>This information may include:</p>
@@ -59,7 +59,7 @@ const PrivacyPolicy = () => {
               <li>Maintain internal business records</li>
               <li>Comply with legal obligations</li>
             </ul>
-            <p>Information submitted through our website or our Facebook ads is used solely for the purpose of evaluating a potential real estate purchase and communicating with you regarding your request.</p>
+            <p>Information submitted through our website or our advertisements is used solely for the purpose of evaluating a potential real estate purchase and communicating with you regarding your request.</p>
 
             <h2 className="text-xl font-bold text-foreground mt-8">Sharing of Information</h2>
             <p>
@@ -78,7 +78,7 @@ const PrivacyPolicy = () => {
 
             <h2 className="text-xl font-bold text-foreground mt-8">Consent to Communications</h2>
             <p>
-              By submitting your contact information through our website, responding to our Facebook ads, requesting an offer, or otherwise communicating with Stax Investments LLC, you provide your <strong>express written consent</strong> to receive communications from us via phone call, email, and SMS text message regarding your property inquiry, appointment scheduling, offer updates, and related real estate services.
+              By submitting your contact information through our website, responding to our advertisements, requesting an offer, or otherwise communicating with Stax Investments LLC, you provide your <strong>express written consent</strong> to receive communications from us via phone call, email, and SMS text message regarding your property inquiry, appointment scheduling, offer updates, and related real estate services.
             </p>
             <p>Consent to receive SMS messages is not a condition of any purchase or sale of property.</p>
             <p>Message frequency may vary depending on your interaction with our team. Message and data rates may apply.</p>
