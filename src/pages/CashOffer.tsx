@@ -168,7 +168,7 @@ const CashOffer = () => {
           </div>
         </div>
 
-        <div className="relative z-20 mt-4 md:mt-6 max-w-2xl mx-auto px-4 pb-16">
+        <div className="relative z-20 mt-4 md:mt-6 max-w-2xl mx-auto px-4 pb-8">
           <div className="mb-4">
             <div className="flex justify-between items-center mb-2 text-xs text-muted-foreground font-medium">
               <span>Step {step} of {totalSteps}</span>
@@ -360,14 +360,14 @@ const CashOffer = () => {
             </div>
           </form>
 
-          <p className="text-xs text-muted-foreground text-center leading-relaxed mt-6 max-w-md mx-auto">
+          <p className="text-xs text-muted-foreground text-center leading-relaxed mt-2 max-w-md mx-auto">
             By submitting this form, you consent to receive calls, emails, and text messages from <strong>Stax Investments LLC</strong> regarding your property inquiry. Consent is not a condition of any purchase or sale.
           </p>
         </div>
 
         {/* What happens next */}
-        <div className="max-w-4xl mx-auto mt-12">
-          <div className="text-center mb-6">
+        <div className="max-w-4xl mx-auto mt-6">
+          <div className="text-center mb-2">
             <span className="text-sm font-semibold text-primary uppercase tracking-wider">The Process</span>
             <h2 className="text-2xl md:text-3xl font-bold mt-2 text-foreground">What happens after you submit</h2>
           </div>
@@ -387,7 +387,7 @@ const CashOffer = () => {
         </div>
 
         {/* Testimonial + Contact */}
-        <div className="max-w-4xl mx-auto mt-10 grid md:grid-cols-5 gap-4">
+        <div className="max-w-4xl mx-auto mt-4 grid md:grid-cols-5 gap-4">
           <div className="md:col-span-3 bg-card rounded-2xl p-6 border border-border">
             <div className="flex gap-1 mb-3">
               {[...Array(5)].map((_, i) => (
@@ -420,8 +420,8 @@ const CashOffer = () => {
         </div>
 
         {/* FAQ */}
-        <div className="max-w-3xl mx-auto mt-10">
-          <div className="text-center mb-6">
+        <div className="max-w-3xl mx-auto mt-4">
+          <div className="text-center mb-2">
             <span className="text-sm font-semibold text-primary uppercase tracking-wider">Common Questions</span>
             <h2 className="text-2xl md:text-3xl font-bold mt-2 text-foreground">Good to know before you submit</h2>
           </div>
