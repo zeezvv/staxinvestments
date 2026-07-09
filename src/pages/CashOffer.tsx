@@ -146,8 +146,31 @@ const CashOffer = () => {
 
   return (
     <div className="min-h-screen bg-background flex flex-col">
-      <main className="flex-1 pt-12 pb-16 px-4">
+      <section className="relative w-full overflow-hidden">
+        <div className="relative h-[340px] md:h-[440px] w-full">
+          <img
+            src={heroImage.url}
+            alt="Beautiful home ready for a fair cash offer"
+            className="absolute inset-0 w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/70 to-background/10" />
+          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
+          <div className="relative z-10 max-w-6xl mx-auto h-full px-4 flex flex-col justify-center">
+            <span className="inline-flex items-center gap-2 text-xs font-semibold text-primary uppercase tracking-wider bg-primary/10 backdrop-blur px-4 py-1.5 rounded-full w-fit">
+              <Home className="w-3.5 h-3.5" /> Cash Offer
+            </span>
+            <h1 className="text-4xl md:text-6xl font-bold mt-4 text-foreground leading-tight max-w-2xl">
+              Get Your Fair <span className="text-primary">Cash Offer</span> Today
+            </h1>
+            <p className="text-muted-foreground mt-4 max-w-xl text-base md:text-lg leading-relaxed">
+              Answer a few quick questions and we'll be in touch within 24 hours with a no obligation offer on your home.
+            </p>
+          </div>
+        </div>
+      </section>
+      <main className="flex-1 pb-16 px-4">
         <div className="max-w-2xl mx-auto">
+
           <div className="mb-6 text-center">
             <span className="inline-flex items-center gap-2 text-sm font-semibold text-primary uppercase tracking-wider bg-primary/10 px-4 py-1.5 rounded-full">
               <Home className="w-3.5 h-3.5" /> Cash Offer
