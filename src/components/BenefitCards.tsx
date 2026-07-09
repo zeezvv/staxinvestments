@@ -22,7 +22,7 @@ const benefits = [
 const BenefitCards = () => (
   <section className="py-10 bg-background">
     <div className="container mx-auto px-4">
-      <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto -mt-24 md:-mt-32 relative z-10">
+      <div className="grid md:grid-cols-3 gap-5 max-w-6xl mx-auto -mt-16 md:-mt-24 relative z-10">
         {benefits.map((b, i) => (
           <motion.div
             key={b.title}
@@ -30,7 +30,7 @@ const BenefitCards = () => (
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: i * 0.1 }}
-            className="bg-card rounded-2xl p-8 border border-border shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all"
+            className="bg-card rounded-2xl p-6 border border-border shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all"
           >
             <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-5">
               <b.icon className="w-7 h-7 text-primary" />
