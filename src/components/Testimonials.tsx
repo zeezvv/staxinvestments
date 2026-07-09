@@ -15,7 +15,7 @@ const testimonials = [
     location: "Cavendish, VT.",
     text: "I was behind on medical payments and felt stuck. They gave me a fair offer and took care of everything. I finally have peace of mind.",
     avatar: null,
-    date: "1 month ago",
+    date: "7 months ago",
   },
   {
     name: "James",
