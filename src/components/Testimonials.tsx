@@ -3,14 +3,14 @@ import { Star } from "lucide-react";
 
 const testimonials = [
   {
-    name: "Michael G.",
-    location: "Phoenix, AZ",
-    text: "Stax Investments made selling our home so easy. They were professional, fair, and we closed in just two weeks. Couldn't recommend them enough!",
+    name: "Mitchell A.",
+    location: "Detroit, MI",
+    text: "Stax Home Buyers made selling our home so easy. They were professional, fair, and we closed when we needed to. Couldn't recommend them enough!",
   },
   {
-    name: "Sarah T.",
-    location: "Houston, TX",
-    text: "I was behind on payments and felt stuck. They gave me a fair offer and took care of everything. I finally have peace of mind.",
+    name: "Susan C.",
+    location: "Cavendish, VT.",
+    text: "I was behind on medical payments and felt stuck. They gave me a fair offer and took care of everything. I finally have peace of mind.",
   },
   {
     name: "James R.",
