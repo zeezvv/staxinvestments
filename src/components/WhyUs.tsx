@@ -1,5 +1,7 @@
 import { motion } from "framer-motion";
-import { Home, Ban, EyeOff, Zap, CalendarCheck } from "lucide-react";
+import { Home, Ban, EyeOff, Zap, CalendarCheck, ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
+import { Button } from "@/components/ui/button";
 import soldHighFive from "@/assets/sold-highfive.png.asset.json";
 
 const reasons = [
