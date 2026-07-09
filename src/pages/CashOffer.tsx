@@ -6,12 +6,51 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Checkbox } from "@/components/ui/checkbox";
 import { z } from "zod";
-import { ArrowLeft, ArrowRight, Check, Send, ShieldCheck, Clock, DollarSign, Home, Star, MapPin } from "lucide-react";
+import { ArrowLeft, ArrowRight, Check, Send, ShieldCheck, Clock, DollarSign, Home, Star, MapPin, ChevronLeft, ChevronRight } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import { track } from "@vercel/analytics";
 import Footer from "@/components/Footer";
 import heroImage from "@/assets/cash-offer-hero.png.asset.json";
+import mitchellAsset from "@/assets/mitchell.png.asset.json";
+
+const carouselTestimonials = [
+  {
+    name: "Mitchell A.",
+    location: "Detroit, MI",
+    text: "Stax Home Buyers made selling our home so easy. They were professional, fair, and we closed when we needed to. Couldn't recommend them enough!",
+    avatar: mitchellAsset.url,
+    date: "3 months ago",
+  },
+  {
+    name: "Susan C.",
+    location: "Cavendish, VT.",
+    text: "I was behind on medical payments and felt stuck. They gave me a fair offer and took care of everything. I finally have peace of mind.",
+    avatar: null,
+    date: "7 months ago",
+  },
+  {
+    name: "James",
+    location: "Middletown, OH",
+    text: "I'm getting old and needed my rental properties sold quickly, and these guys really helped me out. No repairs, no realtor fees, and a fast close. The whole process was smooth from start to finish. These guys are the real deal!",
+    avatar: null,
+    date: "1 week ago",
+  },
+];
+
+const carouselAvatarColors = ["bg-blue-500", "bg-emerald-500", "bg-amber-500"];
+
+const GoogleLogo = () => (
+  <svg viewBox="0 0 48 48" className="w-5 h-5" aria-hidden="true">
+    <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/>
+    <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/>
+    <path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/>
+    <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/>
+  </svg>
+);
+
+const initialsOf = (name: string) =>
+  name.split(" ").map((n) => n[0]).join("").slice(0, 2).toUpperCase();
 
 const validDomains = ["gmail.com", "yahoo.com", "outlook.com", "hotmail.com", "aol.com", "icloud.com", "mail.com", "protonmail.com", "zoho.com", "yandex.com", "live.com", "msn.com", "comcast.net", "att.net", "verizon.net", "me.com", "mac.com"];
 const hasValidDomain = (email: string) => {
@@ -60,6 +99,12 @@ const CashOffer = () => {
   const [smsConsent, setSmsConsent] = useState(false);
   const [form, setForm] = useState<Partial<FormData>>({});
   const [errors, setErrors] = useState<Partial<Record<keyof FormData, string>>>({});
+  const [testimonialIdx, setTestimonialIdx] = useState(0);
+  const activeTestimonial = carouselTestimonials[testimonialIdx];
+  const prevTestimonial = () =>
+    setTestimonialIdx((i) => (i - 1 + carouselTestimonials.length) % carouselTestimonials.length);
+  const nextTestimonial = () =>
+    setTestimonialIdx((i) => (i + 1) % carouselTestimonials.length);
 
   const update = <K extends keyof FormData>(field: K, value: FormData[K]) => {
     setForm((p) => ({ ...p, [field]: value }));
@@ -369,8 +414,83 @@ const CashOffer = () => {
           </p>
         </div>
 
+        {/* Testimonials carousel */}
+        <div className="max-w-2xl mx-auto mt-6">
+          <div className="relative">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={testimonialIdx}
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -20 }}
+                transition={{ duration: 0.25 }}
+                className="bg-card rounded-2xl p-6 border border-border shadow-sm mx-10"
+              >
+                <div className="flex items-center gap-3 mb-3">
+                  {activeTestimonial.avatar ? (
+                    <img
+                      src={activeTestimonial.avatar}
+                      alt={activeTestimonial.name}
+                      className="w-11 h-11 rounded-full object-cover"
+                    />
+                  ) : (
+                    <div
+                      className={`w-11 h-11 rounded-full flex items-center justify-center text-white font-semibold ${carouselAvatarColors[testimonialIdx % carouselAvatarColors.length]}`}
+                    >
+                      {initialsOf(activeTestimonial.name)}
+                    </div>
+                  )}
+                  <div className="flex-1 min-w-0">
+                    <div className="font-semibold text-foreground leading-tight">{activeTestimonial.name}</div>
+                    <div className="text-xs text-muted-foreground">{activeTestimonial.location}</div>
+                  </div>
+                  <GoogleLogo />
+                </div>
+                <div className="flex items-center gap-2 mb-3">
+                  <div className="flex gap-0.5">
+                    {[...Array(5)].map((_, j) => (
+                      <Star key={j} className="w-4 h-4 fill-[#fbbc04] text-[#fbbc04]" />
+                    ))}
+                  </div>
+                  <span className="text-xs text-muted-foreground">{activeTestimonial.date}</span>
+                </div>
+                <p className="text-foreground leading-relaxed text-sm">{activeTestimonial.text}</p>
+              </motion.div>
+            </AnimatePresence>
+
+            <button
+              type="button"
+              onClick={prevTestimonial}
+              aria-label="Previous testimonial"
+              className="absolute left-0 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-card border border-border shadow-sm flex items-center justify-center text-foreground hover:bg-primary/10 hover:border-primary/40 transition-colors"
+            >
+              <ChevronLeft className="w-5 h-5" />
+            </button>
+            <button
+              type="button"
+              onClick={nextTestimonial}
+              aria-label="Next testimonial"
+              className="absolute right-0 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-card border border-border shadow-sm flex items-center justify-center text-foreground hover:bg-primary/10 hover:border-primary/40 transition-colors"
+            >
+              <ChevronRight className="w-5 h-5" />
+            </button>
+          </div>
+
+          <div className="flex justify-center gap-1.5 mt-4">
+            {carouselTestimonials.map((_, i) => (
+              <button
+                key={i}
+                type="button"
+                onClick={() => setTestimonialIdx(i)}
+                aria-label={`Show testimonial ${i + 1}`}
+                className={`h-1.5 rounded-full transition-all ${i === testimonialIdx ? "w-6 bg-primary" : "w-1.5 bg-muted-foreground/30"}`}
+              />
+            ))}
+          </div>
+        </div>
+
         {/* What happens next */}
-        <div className="max-w-4xl mx-auto mt-6">
+        <div className="max-w-4xl mx-auto mt-8">
           <div className="text-center mb-2">
             <span className="text-sm font-semibold text-primary uppercase tracking-wider">The Process</span>
             <h2 className="text-2xl md:text-3xl font-bold mt-2 text-foreground">What happens after you submit</h2>
@@ -390,28 +510,6 @@ const CashOffer = () => {
           </div>
         </div>
 
-        {/* Testimonial */}
-        <div className="max-w-4xl mx-auto mt-4">
-          <div className="bg-card rounded-2xl p-6 border border-border">
-            <div className="flex gap-1 mb-3">
-              {[...Array(5)].map((_, i) => (
-                <Star key={i} className="w-4 h-4 fill-primary text-primary" />
-              ))}
-            </div>
-            <p className="text-foreground leading-relaxed italic mb-4">
-              "Carson made the whole process simple. he was straightforward, answered every question, and closed on the date we picked. I couldn't have asked for a better experience."
-            </p>
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
-                <span className="text-primary font-semibold text-sm">JM</span>
-              </div>
-              <div>
-                <div className="text-sm font-semibold text-foreground">Jessica M.</div>
-                <div className="text-xs text-muted-foreground flex items-center gap-1"><MapPin className="w-3 h-3" /> Middletown, Ohio</div>
-              </div>
-            </div>
-          </div>
-        </div>
 
         {/* FAQ */}
         <div className="max-w-3xl mx-auto mt-4 mb-12">
