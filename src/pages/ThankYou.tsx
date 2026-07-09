@@ -11,7 +11,7 @@ import {
   DollarSign,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation, Navigate } from "react-router-dom";
 import Footer from "@/components/Footer";
 import heroImage from "@/assets/thank-you-hero.png.asset.json";
 
@@ -41,6 +41,11 @@ const trustItems = [
 
 const ThankYou = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+
+  if (!location.state?.fromSubmit) {
+    return <Navigate to="/" replace />;
+  }
 
   return (
     <div className="min-h-screen bg-background flex flex-col">
