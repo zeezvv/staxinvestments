@@ -2,7 +2,6 @@ import { motion } from "framer-motion";
 import { CheckCircle, MessageSquare, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useNavigate, useLocation, Navigate } from "react-router-dom";
-import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
 const ThankYou = () => {
@@ -15,8 +14,7 @@ const ThankYou = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <Navbar />
-      <div className="pt-24 pb-16 flex items-center justify-center px-4">
+      <div className="pt-12 pb-16 flex items-center justify-center px-4">
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}

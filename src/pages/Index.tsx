@@ -1,4 +1,3 @@
-import Navbar from "@/components/Navbar";
 import MarqueeBanner from "@/components/MarqueeBanner";
 import HeroSection from "@/components/HeroSection";
 import BenefitCards from "@/components/BenefitCards";
@@ -13,7 +12,6 @@ import Footer from "@/components/Footer";
 
 const Index = () => (
   <div className="min-h-screen bg-background">
-    <Navbar />
     <MarqueeBanner />
     <HeroSection />
     <BenefitCards />

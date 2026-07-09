@@ -44,19 +44,25 @@ const WhyUs = () => (
             </div>
             <h3 className="font-display text-base font-bold text-foreground mb-2">{item.title}</h3>
             <p className="text-muted-foreground text-sm leading-relaxed">{item.desc}</p>
-            {i === 0 && (
-              <div className="mt-4 rounded-xl overflow-hidden border border-border shadow-md">
-                <img
-                  src={soldHighFive.url}
-                  alt="Happy couple high-fiving in front of their sold home"
-                  className="w-full h-28 sm:h-32 object-cover"
-                  loading="lazy"
-                />
-              </div>
-            )}
           </motion.div>
         ))}
       </div>
+
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+        className="max-w-4xl mx-auto mt-10 rounded-3xl overflow-hidden shadow-2xl border border-border relative"
+      >
+        <img
+          src={soldHighFive.url}
+          alt="Happy couple high-fiving in front of their sold home"
+          className="w-full h-auto object-cover"
+          loading="lazy"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-background/40 via-transparent to-transparent pointer-events-none" />
+      </motion.div>
     </div>
   </section>
 );
