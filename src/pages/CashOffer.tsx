@@ -12,6 +12,7 @@ import { useToast } from "@/hooks/use-toast";
 import { track } from "@vercel/analytics";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import familyImage from "@/assets/cash-offer-family.jpg";
 
 const validDomains = ["gmail.com", "yahoo.com", "outlook.com", "hotmail.com", "aol.com", "icloud.com", "mail.com", "protonmail.com", "zoho.com", "yandex.com", "live.com", "msn.com", "comcast.net", "att.net", "verizon.net", "me.com", "mac.com"];
 const hasValidDomain = (email: string) => {
@@ -145,21 +146,36 @@ const CashOffer = () => {
   const progress = (step / totalSteps) * 100;
 
   return (
-    <div className="min-h-screen bg-background flex flex-col">
+    <div className="min-h-screen bg-muted/30 flex flex-col">
       <Navbar />
-      <main className="flex-1 pt-24 pb-16 px-4">
-        <div className="max-w-2xl mx-auto">
-          <div className="mb-6 text-center">
-            <span className="inline-flex items-center gap-2 text-sm font-semibold text-primary uppercase tracking-wider bg-primary/10 px-4 py-1.5 rounded-full">
+      <main className="flex-1 pb-16">
+        {/* Hero band with family/house image */}
+        <section className="relative pt-24 pb-16 overflow-hidden">
+          <div className="absolute inset-0">
+            <img
+              src={familyImage}
+              alt="Happy family in front of their sold home"
+              className="w-full h-full object-cover"
+              width={1600}
+              height={1024}
+            />
+            <div className="absolute inset-0 bg-gradient-to-b from-foreground/80 via-foreground/70 to-background" />
+          </div>
+          <div className="relative max-w-2xl mx-auto px-4 text-center">
+            <span className="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-wider bg-primary/20 text-primary-foreground px-4 py-1.5 rounded-full backdrop-blur-sm border border-primary/30">
               <Home className="w-3.5 h-3.5" /> Cash Offer
             </span>
-            <h1 className="text-3xl md:text-5xl font-bold mt-4 text-foreground leading-tight">
+            <h1 className="text-3xl md:text-5xl font-bold mt-4 leading-tight" style={{ color: 'hsl(0 0% 100%)' }}>
               Get Your Fair <span className="text-primary">Cash Offer</span>
             </h1>
-            <p className="text-muted-foreground mt-3 max-w-lg mx-auto">
+            <p className="mt-3 max-w-lg mx-auto" style={{ color: 'hsl(0 0% 90%)' }}>
               Answer a few quick questions and we'll be in touch within 24 hours with a no obligation offer on your home.
             </p>
           </div>
+        </section>
+
+        <div className="max-w-2xl mx-auto px-4 -mt-8 relative">
+
 
           <div className="grid grid-cols-3 gap-3 mb-8">
             {[
