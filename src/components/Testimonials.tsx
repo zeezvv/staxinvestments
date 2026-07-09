@@ -8,7 +8,7 @@ const testimonials = [
     location: "Detroit, MI",
     text: "Stax Home Buyers made selling our home so easy. They were professional, fair, and we closed when we needed to. Couldn't recommend them enough!",
     avatar: mitchellAsset.url,
-    date: "2 weeks ago",
+    date: "3 months ago",
   },
   {
     name: "Susan C.",
@@ -22,7 +22,7 @@ const testimonials = [
     location: "Middletown, OH",
     text: "I'm getting old and needed my rental properties sold quickly, and these guys really helped me out. No repairs, no realtor fees, and a fast close. The whole process was smooth from start to finish. These guys are the real deal!",
     avatar: null,
-    date: "2 months ago",
+    date: "1 week ago",
   },
 ];
 
