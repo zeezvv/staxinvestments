@@ -4,6 +4,7 @@ import HeroSection from "@/components/HeroSection";
 import BenefitCards from "@/components/BenefitCards";
 import WhoWeAre from "@/components/WhoWeAre";
 import HowItWorks from "@/components/HowItWorks";
+import MovingBanner from "@/components/MovingBanner";
 import WhyUs from "@/components/WhyUs";
 import Situations from "@/components/Situations";
 import Testimonials from "@/components/Testimonials";
@@ -19,6 +20,7 @@ const Index = () => (
     <BenefitCards />
     <WhoWeAre />
     <HowItWorks />
+    <MovingBanner />
     <WhyUs />
     <Situations />
     <Testimonials />
