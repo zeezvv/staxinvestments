@@ -399,7 +399,7 @@ const CashOffer = () => {
               ))}
             </div>
             <p className="text-foreground leading-relaxed italic mb-4">
-              "Stax made the whole process simple. They were straightforward, answered every question, and closed on the date we picked. I couldn't have asked for a better experience."
+              "Carson made the whole process simple. he was straightforward, answered every question, and closed on the date we picked. I couldn't have asked for a better experience."
             </p>
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
