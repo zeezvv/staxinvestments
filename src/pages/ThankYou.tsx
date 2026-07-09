@@ -44,91 +44,70 @@ const ThankYou = () => {
 
   return (
     <div className="min-h-screen bg-background flex flex-col">
-      {/* Split hero */}
-      <section className="relative bg-gradient-to-br from-secondary via-background to-background">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 pt-10 md:pt-16 pb-12 md:pb-20">
-          <div className="grid lg:grid-cols-2 gap-10 lg:gap-14 items-center">
-            {/* Left: message */}
-            <motion.div
-              initial={{ opacity: 0, y: 24 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              className="order-2 lg:order-1"
-            >
-              <span className="inline-flex items-center gap-2 rounded-full bg-primary/10 text-primary px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.16em]">
-                <CheckCircle2 className="w-3.5 h-3.5" strokeWidth={2.5} />
-                Submission Received
-              </span>
+      {/* Full-bleed hero */}
+      <section className="relative min-h-[85vh] md:min-h-[90vh] flex items-center overflow-hidden">
+        <img
+          src={heroImage.url}
+          alt="Homeowner handing keys to a Stax Investments buyer in front of a sold home"
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+        {/* Overlays for readability */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/55 to-black/20" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-br from-[hsl(var(--primary)/0.35)] via-transparent to-transparent" />
 
-              <div className="mt-6 flex items-center gap-4">
-                <motion.div
-                  initial={{ scale: 0.5, opacity: 0 }}
-                  animate={{ scale: 1, opacity: 1 }}
-                  transition={{ delay: 0.2, type: "spring", stiffness: 200, damping: 14 }}
-                  className="w-16 h-16 rounded-2xl bg-primary/10 ring-4 ring-primary/5 flex items-center justify-center shrink-0"
-                >
-                  <CheckCircle2 className="w-9 h-9 text-primary" strokeWidth={2.25} />
-                </motion.div>
-                <h1 className="font-display text-5xl md:text-6xl lg:text-7xl font-extrabold text-foreground tracking-tight leading-none">
-                  Thank You!
-                </h1>
-              </div>
+        <div className="container relative mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="max-w-2xl text-white"
+          >
+            <span className="inline-flex items-center gap-2 rounded-full bg-white/15 backdrop-blur-sm text-white px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.16em] ring-1 ring-white/25">
+              <CheckCircle2 className="w-3.5 h-3.5" strokeWidth={2.5} />
+              Submission Received
+            </span>
 
-              <p className="mt-6 text-lg md:text-xl text-muted-foreground leading-relaxed max-w-xl">
-                We've received your information and a member of our team will reach out by text within the next{" "}
-                <strong className="text-foreground">10 minutes</strong>.
-              </p>
+            <div className="mt-6 flex items-center gap-4">
+              <motion.div
+                initial={{ scale: 0.5, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ delay: 0.2, type: "spring", stiffness: 200, damping: 14 }}
+                className="w-16 h-16 rounded-2xl bg-primary/90 flex items-center justify-center shrink-0 shadow-xl shadow-primary/40"
+              >
+                <CheckCircle2 className="w-9 h-9 text-white" strokeWidth={2.5} />
+              </motion.div>
+              <h1 className="font-display text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight leading-none drop-shadow-lg">
+                Thank You!
+              </h1>
+            </div>
 
-              <div className="mt-8 flex flex-col sm:flex-row gap-3">
-                <Button
-                  asChild
-                  size="lg"
-                  className="w-full sm:w-auto h-12 px-7 bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg shadow-primary/25 text-base font-semibold"
-                >
-                  <a href="tel:+12344371980">
-                    <Phone className="w-4 h-4 mr-2" />
-                    Call Us Now
-                  </a>
-                </Button>
-                <Button
-                  onClick={() => navigate("/")}
-                  variant="outline"
-                  size="lg"
-                  className="w-full sm:w-auto h-12 px-7 text-base font-semibold"
-                >
-                  <ArrowLeft className="w-4 h-4 mr-2" />
-                  Back to Home
-                </Button>
-              </div>
-            </motion.div>
+            <p className="mt-6 text-lg md:text-xl text-white/90 leading-relaxed max-w-xl drop-shadow">
+              We've received your information and a member of our team will reach out by text within the next{" "}
+              <strong className="text-white">10 minutes</strong>.
+            </p>
 
-            {/* Right: image */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.96 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              className="order-1 lg:order-2 relative"
-            >
-              <div className="relative aspect-[5/4] md:aspect-[4/3] w-full rounded-3xl overflow-hidden shadow-2xl ring-1 ring-border">
-                <img
-                  src={heroImage.url}
-                  alt="Homeowner handing keys to a Stax Investments buyer in front of a sold home"
-                  className="absolute inset-0 w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-tr from-[hsl(var(--primary)/0.18)] via-transparent to-transparent" />
-              </div>
-              {/* Decorative badge */}
-              <div className="hidden md:flex absolute -bottom-5 -left-5 bg-card border border-border rounded-2xl shadow-xl px-5 py-3 items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
-                  <CheckCircle2 className="w-5 h-5 text-primary" />
-                </div>
-                <div>
-                  <div className="text-xs text-muted-foreground">Response within</div>
-                  <div className="font-display font-bold text-foreground">10 minutes</div>
-                </div>
-              </div>
-            </motion.div>
-          </div>
+            <div className="mt-8 flex flex-col sm:flex-row gap-3">
+              <Button
+                asChild
+                size="lg"
+                className="w-full sm:w-auto h-12 px-7 bg-primary hover:bg-primary/90 text-primary-foreground shadow-xl shadow-primary/30 text-base font-semibold"
+              >
+                <a href="tel:+12344371980">
+                  <Phone className="w-4 h-4 mr-2" />
+                  Call Us Now
+                </a>
+              </Button>
+              <Button
+                onClick={() => navigate("/")}
+                size="lg"
+                className="w-full sm:w-auto h-12 px-7 text-base font-semibold bg-white/10 hover:bg-white/20 text-white ring-1 ring-white/40 backdrop-blur"
+              >
+                <ArrowLeft className="w-4 h-4 mr-2" />
+                Back to Home
+              </Button>
+            </div>
+          </motion.div>
         </div>
       </section>
 
