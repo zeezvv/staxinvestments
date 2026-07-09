@@ -20,13 +20,13 @@ const testimonials = [
 ];
 
 const Testimonials = () => (
-  <section id="testimonials" className="py-24 section-gradient">
+  <section id="testimonials" className="py-16 section-gradient">
     <div className="container mx-auto px-4">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="text-center mb-16"
+        className="text-center mb-10"
       >
         <span className="text-sm font-semibold text-primary uppercase tracking-wider">Testimonials</span>
         <h2 className="text-3xl md:text-5xl font-bold mt-3 text-foreground">
@@ -34,7 +34,7 @@ const Testimonials = () => (
         </h2>
       </motion.div>
 
-      <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+      <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
         {testimonials.map((t, i) => (
           <motion.div
             key={t.name}

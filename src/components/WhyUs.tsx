@@ -11,13 +11,13 @@ const reasons = [
 ];
 
 const WhyUs = () => (
-  <section id="why-us" className="py-24 bg-background">
+  <section id="why-us" className="py-16 bg-background">
     <div className="container mx-auto px-4">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="text-center mb-12 max-w-2xl mx-auto"
+        className="text-center mb-10 max-w-2xl mx-auto"
       >
         <span className="text-sm font-semibold text-primary uppercase tracking-wider">Why Choose Us</span>
         <h2 className="text-3xl md:text-5xl font-bold mt-3 text-foreground">
@@ -33,7 +33,7 @@ const WhyUs = () => (
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
-        className="max-w-4xl mx-auto mb-14 rounded-3xl overflow-hidden shadow-2xl border border-border relative"
+        className="max-w-4xl mx-auto mb-10 rounded-3xl overflow-hidden shadow-2xl border border-border relative"
       >
         <img
           src={soldHighFive.url}

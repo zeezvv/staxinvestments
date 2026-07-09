@@ -11,9 +11,9 @@ const points = [
 ];
 
 const WhoWeAre = () => (
-  <section id="who-we-are" className="py-24 bg-background">
+  <section id="who-we-are" className="py-16 bg-background">
     <div className="container mx-auto px-4">
-      <div className="grid lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
+      <div className="grid lg:grid-cols-2 gap-8 items-center max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, x: -30 }}
           whileInView={{ opacity: 1, x: 0 }}
