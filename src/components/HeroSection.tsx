@@ -1,13 +1,10 @@
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import heroImage from "@/assets/hero-house.jpg";
 
 const HeroSection = () => {
-  const scrollToContact = () => {
-    document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
-  };
-
   return (
     <section id="hero" className="relative min-h-screen flex items-center justify-center">
       <div className="absolute inset-0">
@@ -33,9 +30,11 @@ const HeroSection = () => {
               We buy houses in any condition. Get a fair cash offer within 24 hours and close on your timeline. It's that simple.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" onClick={scrollToContact} className="text-base px-8 py-6">
-                Get Your Cash Offer <ArrowRight className="ml-2 w-5 h-5" />
-              </Button>
+              <Link to="/cash-offer">
+                <Button size="lg" className="text-base px-8 py-6">
+                  Get Your Cash Offer <ArrowRight className="ml-2 w-5 h-5" />
+                </Button>
+              </Link>
               <a href="tel:+12344371980">
                 <Button size="lg" variant="outline" className="text-base px-8 py-6 bg-card/10 backdrop-blur-sm border-primary-foreground/30 hover:bg-card/20" style={{ color: 'hsl(0 0% 100%)' }}>
                   Call Us Now
