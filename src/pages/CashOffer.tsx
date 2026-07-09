@@ -342,7 +342,7 @@ const CashOffer = () => {
                 </Button>
               ) : (
                 <Link to="/">
-                  <Button type="button" variant="ghost">
+                  <Button type="button" variant="ghost" className="hover:text-destructive hover:bg-destructive/10">
                     <ArrowLeft className="mr-2 w-4 h-4" /> Cancel
                   </Button>
                 </Link>
