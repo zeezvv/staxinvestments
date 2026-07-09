@@ -13,7 +13,7 @@ const Footer = () => {
         <div className="py-14 lg:py-18 grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16">
           {/* Brand column */}
           <div className="flex flex-col items-center text-center">
-            <div className="flex flex-col items-start text-left space-y-3">
+            <div className="flex flex-col items-start text-left space-y-1">
               <Link to="/" className="inline-flex items-center gap-4 hover:opacity-90 transition-opacity">
                 <img src={footerLogo} alt="Stax Investments LLC" className="w-20 h-20 object-contain" />
                 <div className="flex flex-col items-start text-left">
