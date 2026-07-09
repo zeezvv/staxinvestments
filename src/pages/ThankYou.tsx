@@ -8,9 +8,8 @@ const ThankYou = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  if (!(location.state as { fromSubmit?: boolean } | null)?.fromSubmit) {
-    return <Navigate to="/" replace />;
-  }
+  // Guard temporarily disabled for editing
+  void location;
 
   return (
     <div className="min-h-screen bg-background">
