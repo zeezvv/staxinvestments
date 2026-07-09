@@ -41,42 +41,46 @@ const HowItWorks = () => (
         </p>
       </motion.div>
 
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ delay: 0.2 }}
-        className="max-w-4xl mx-auto mb-16 rounded-3xl overflow-hidden shadow-2xl border border-border"
-      >
-        <img
-          src={movingImg.url}
-          alt="Happy family moving into their next home after selling to Stax Home Buyers"
-          className="w-full h-auto object-cover"
-        />
-      </motion.div>
-
-      <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto relative">
-        {steps.map((item, i) => (
-          <motion.div
-            key={item.title}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: i * 0.15 }}
-            className="relative bg-card rounded-2xl p-8 border border-border shadow-sm hover:shadow-lg transition-all"
-          >
-            <div className="absolute top-4 right-5 text-5xl font-black text-primary/30 leading-none select-none">
-              {item.step}
-            </div>
-            <div className="relative">
-              <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-5">
-                <item.icon className="w-7 h-7 text-primary" />
+      <div className="grid lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
+        <div className="flex flex-col gap-6">
+          {steps.map((item, i) => (
+            <motion.div
+              key={item.title}
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.15 }}
+              className="relative bg-card rounded-2xl p-7 border border-border shadow-sm hover:shadow-lg transition-all"
+            >
+              <div className="absolute top-4 right-5 text-4xl md:text-5xl font-black text-primary/30 leading-none select-none">
+                {item.step}
               </div>
-              <h3 className="font-display text-xl font-bold mb-3 text-foreground">{item.title}</h3>
-              <p className="text-muted-foreground leading-relaxed">{item.description}</p>
-            </div>
-          </motion.div>
-        ))}
+              <div className="relative">
+                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
+                  <item.icon className="w-6 h-6 text-primary" />
+                </div>
+                <h3 className="font-display text-lg font-bold mb-2 text-foreground">{item.title}</h3>
+                <p className="text-muted-foreground leading-relaxed">{item.description}</p>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
+        <motion.div
+          initial={{ opacity: 0, x: 30 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.2 }}
+          className="lg:sticky lg:top-28"
+        >
+          <div className="rounded-3xl overflow-hidden shadow-2xl border border-border max-w-md mx-auto lg:max-w-none">
+            <img
+              src={movingImg.url}
+              alt="Happy family moving into their next home after selling to Stax Home Buyers"
+              className="w-full h-auto object-cover"
+            />
+          </div>
+        </motion.div>
       </div>
     </div>
   </section>
