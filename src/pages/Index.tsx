@@ -7,7 +7,7 @@ import HowItWorks from "@/components/HowItWorks";
 import WhyUs from "@/components/WhyUs";
 import Situations from "@/components/Situations";
 import Testimonials from "@/components/Testimonials";
-import FinalCTA from "@/components/FinalCTA";
+
 import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
 
@@ -22,7 +22,7 @@ const Index = () => (
     <WhyUs />
     <Situations />
     <Testimonials />
-    <FinalCTA />
+    
     <ContactForm />
     <Footer />
   </div>
