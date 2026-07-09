@@ -33,7 +33,7 @@ const HowItWorks = () => (
       >
         <span className="text-sm font-semibold text-primary uppercase tracking-wider">Simple Process</span>
         <h2 className="text-3xl md:text-5xl font-bold mt-3 text-foreground">
-          How It Works
+          Selling Your Home Doesn't Have To Be Overwhelming&nbsp;
         </h2>
         <p className="text-muted-foreground mt-4 text-lg">
           Selling your home shouldn't be stressful. Our 3 step process makes it easy.
