@@ -420,7 +420,7 @@ const CashOffer = () => {
         </div>
 
         {/* FAQ */}
-        <div className="max-w-3xl mx-auto mt-4">
+        <div className="max-w-3xl mx-auto mt-4 mb-12">
           <div className="text-center mb-2">
             <span className="text-sm font-semibold text-primary uppercase tracking-wider">Common Questions</span>
             <h2 className="text-2xl md:text-3xl font-bold mt-2 text-foreground">Good to know before you submit</h2>
