@@ -12,7 +12,7 @@ import { useToast } from "@/hooks/use-toast";
 import { track } from "@vercel/analytics";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import familyImage from "@/assets/cash-offer-family.jpg";
+
 
 const validDomains = ["gmail.com", "yahoo.com", "outlook.com", "hotmail.com", "aol.com", "icloud.com", "mail.com", "protonmail.com", "zoho.com", "yandex.com", "live.com", "msn.com", "comcast.net", "att.net", "verizon.net", "me.com", "mac.com"];
 const hasValidDomain = (email: string) => {
@@ -146,49 +146,82 @@ const CashOffer = () => {
   const progress = (step / totalSteps) * 100;
 
   return (
-    <div className="min-h-screen bg-muted/30 flex flex-col">
+    <div className="min-h-screen bg-muted/30 flex flex-col relative">
+      {/* Decorative background */}
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
+        <div className="absolute -top-40 -left-40 w-[500px] h-[500px] rounded-full bg-primary/10 blur-3xl" />
+        <div className="absolute top-1/3 -right-40 w-[500px] h-[500px] rounded-full bg-primary/5 blur-3xl" />
+      </div>
+
       <Navbar />
-      <main className="flex-1 pb-16">
-        {/* Hero band with family/house image */}
-        <section className="relative pt-24 pb-16 overflow-hidden">
-          <div className="absolute inset-0">
-            <img
-              src={familyImage}
-              alt="Happy family in front of their sold home"
-              className="w-full h-full object-cover"
-              width={1600}
-              height={1024}
-            />
-            <div className="absolute inset-0 bg-gradient-to-b from-foreground/80 via-foreground/70 to-background" />
-          </div>
-          <div className="relative max-w-2xl mx-auto px-4 text-center">
-            <span className="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-wider bg-primary/20 text-primary-foreground px-4 py-1.5 rounded-full backdrop-blur-sm border border-primary/30">
+      <main className="flex-1 pt-24 pb-16 px-4 relative">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-10">
+            <span className="inline-flex items-center gap-2 text-sm font-semibold text-primary uppercase tracking-wider bg-primary/10 px-4 py-1.5 rounded-full">
               <Home className="w-3.5 h-3.5" /> Cash Offer
             </span>
-            <h1 className="text-3xl md:text-5xl font-bold mt-4 leading-tight" style={{ color: 'hsl(0 0% 100%)' }}>
+            <h1 className="text-3xl md:text-5xl font-bold mt-4 text-foreground leading-tight">
               Get Your Fair <span className="text-primary">Cash Offer</span>
             </h1>
-            <p className="mt-3 max-w-lg mx-auto" style={{ color: 'hsl(0 0% 90%)' }}>
+            <p className="text-muted-foreground mt-3 max-w-lg mx-auto">
               Answer a few quick questions and we'll be in touch within 24 hours with a no obligation offer on your home.
             </p>
           </div>
-        </section>
 
-        <div className="max-w-2xl mx-auto px-4 -mt-8 relative">
-
-
-          <div className="grid grid-cols-3 gap-3 mb-8">
-            {[
-              { icon: Clock, label: "24 hr response" },
-              { icon: DollarSign, label: "No fees or commissions" },
-              { icon: ShieldCheck, label: "No obligation" },
-            ].map(({ icon: Icon, label }) => (
-              <div key={label} className="flex flex-col items-center gap-2 p-3 rounded-xl bg-card border border-border text-center">
-                <Icon className="w-5 h-5 text-primary" />
-                <span className="text-[11px] md:text-xs font-medium text-foreground leading-tight">{label}</span>
+          <div className="grid lg:grid-cols-5 gap-8 items-start">
+            {/* Sidebar */}
+            <aside className="lg:col-span-2 space-y-4 lg:sticky lg:top-24">
+              <div className="bg-card border border-border rounded-2xl p-6">
+                <h3 className="font-semibold text-foreground mb-4">Why homeowners choose Stax</h3>
+                <ul className="space-y-4">
+                  {[
+                    { icon: Clock, title: "24 hour response", desc: "We reach out within a day of your submission." },
+                    { icon: DollarSign, title: "No fees or commissions", desc: "The offer you accept is the amount you receive." },
+                    { icon: ShieldCheck, title: "No obligation", desc: "Take your time reviewing. There is no pressure to accept." },
+                    { icon: Home, title: "Any condition", desc: "You don't need to clean, repair, or stage the home." },
+                  ].map(({ icon: Icon, title, desc }) => (
+                    <li key={title} className="flex gap-3">
+                      <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
+                        <Icon className="w-4 h-4 text-primary" />
+                      </div>
+                      <div>
+                        <div className="text-sm font-semibold text-foreground">{title}</div>
+                        <p className="text-xs text-muted-foreground leading-relaxed">{desc}</p>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
               </div>
-            ))}
-          </div>
+
+              <div className="bg-primary text-primary-foreground rounded-2xl p-6">
+                <div className="flex items-center gap-2 mb-2">
+                  <Phone className="w-4 h-4" />
+                  <span className="text-sm font-semibold opacity-90">Prefer to talk?</span>
+                </div>
+                <a href="tel:+12344371980" className="block text-2xl font-bold hover:opacity-90 transition-opacity">
+                  (234) 437-1980
+                </a>
+                <p className="text-xs opacity-80 mt-2">Call or text our local team any time.</p>
+              </div>
+
+              <div className="bg-card border border-border rounded-2xl p-6">
+                <div className="flex gap-1 mb-3">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} className="w-4 h-4 fill-primary text-primary" />
+                  ))}
+                </div>
+                <p className="text-sm text-foreground italic leading-relaxed mb-3">
+                  "Straightforward, honest, and they closed on the exact date we asked for."
+                </p>
+                <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                  <MapPin className="w-3 h-3" /> Jessica M. &middot; Middletown, Ohio
+                </div>
+              </div>
+            </aside>
+
+            {/* Form column */}
+            <div className="lg:col-span-3">
+
 
 
           <div className="mb-6">
@@ -385,7 +418,10 @@ const CashOffer = () => {
           <p className="text-xs text-muted-foreground text-center leading-relaxed mt-6 max-w-md mx-auto">
             By submitting this form, you consent to receive calls, emails, and text messages from <strong>Stax Investments LLC</strong> regarding your property inquiry. Consent is not a condition of any purchase or sale.
           </p>
+            </div>
+          </div>
         </div>
+
 
         {/* What happens next */}
         <div className="max-w-4xl mx-auto mt-20">
@@ -408,38 +444,29 @@ const CashOffer = () => {
           </div>
         </div>
 
-        {/* Testimonial + Contact */}
-        <div className="max-w-4xl mx-auto mt-16 grid md:grid-cols-5 gap-6">
-          <div className="md:col-span-3 bg-card rounded-2xl p-8 border border-border">
+        {/* Testimonial */}
+        <div className="max-w-4xl mx-auto mt-16">
+          <div className="bg-card rounded-2xl p-8 border border-border">
             <div className="flex gap-1 mb-4">
               {[...Array(5)].map((_, i) => (
                 <Star key={i} className="w-4 h-4 fill-primary text-primary" />
               ))}
             </div>
-            <p className="text-foreground leading-relaxed italic mb-4">
+            <p className="text-foreground leading-relaxed italic mb-4 text-lg">
               "Stax made the whole process simple. They were straightforward, answered every question, and closed on the date we picked. I couldn't have asked for a better experience."
             </p>
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
-                <span className="text-primary font-semibold text-sm">JM</span>
+                <span className="text-primary font-semibold text-sm">DR</span>
               </div>
               <div>
-                <div className="text-sm font-semibold text-foreground">Jessica M.</div>
-                <div className="text-xs text-muted-foreground flex items-center gap-1"><MapPin className="w-3 h-3" /> Middletown, Ohio</div>
+                <div className="text-sm font-semibold text-foreground">David R.</div>
+                <div className="text-xs text-muted-foreground flex items-center gap-1"><MapPin className="w-3 h-3" /> Homeowner</div>
               </div>
             </div>
           </div>
-
-          <div className="md:col-span-2 bg-primary text-primary-foreground rounded-2xl p-8 flex flex-col justify-center">
-            <h3 className="text-xl font-bold mb-2">Prefer to talk?</h3>
-            <p className="text-sm opacity-90 mb-5 leading-relaxed">
-              Give us a call and speak with a local team member today.
-            </p>
-            <a href="tel:+12344371980" className="inline-flex items-center justify-center gap-2 bg-primary-foreground text-primary font-semibold px-5 py-3 rounded-xl hover:opacity-90 transition-opacity">
-              <Phone className="w-4 h-4" /> (234) 437-1980
-            </a>
-          </div>
         </div>
+
 
         {/* FAQ */}
         <div className="max-w-3xl mx-auto mt-16">
