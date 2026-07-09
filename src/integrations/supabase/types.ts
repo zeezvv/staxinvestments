@@ -107,30 +107,42 @@ export type Database = {
           email: string
           full_name: string
           id: string
+          is_listed: boolean | null
           message: string | null
           phone: string
           property_address: string
+          property_type: string | null
+          reason: string | null
           sms_consent: boolean
+          timeline: string | null
         }
         Insert: {
           created_at?: string
           email: string
           full_name: string
           id?: string
+          is_listed?: boolean | null
           message?: string | null
           phone: string
           property_address: string
+          property_type?: string | null
+          reason?: string | null
           sms_consent?: boolean
+          timeline?: string | null
         }
         Update: {
           created_at?: string
           email?: string
           full_name?: string
           id?: string
+          is_listed?: boolean | null
           message?: string | null
           phone?: string
           property_address?: string
+          property_type?: string | null
+          reason?: string | null
           sms_consent?: boolean
+          timeline?: string | null
         }
         Relationships: []
       }
