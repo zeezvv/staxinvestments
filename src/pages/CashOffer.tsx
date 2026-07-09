@@ -170,18 +170,8 @@ const CashOffer = () => {
       </section>
       <main className="flex-1 pb-16 px-4">
         <div className="max-w-2xl mx-auto">
+          <div className="pt-10" />
 
-          <div className="mb-6 text-center">
-            <span className="inline-flex items-center gap-2 text-sm font-semibold text-primary uppercase tracking-wider bg-primary/10 px-4 py-1.5 rounded-full">
-              <Home className="w-3.5 h-3.5" /> Cash Offer
-            </span>
-            <h1 className="text-3xl md:text-5xl font-bold mt-4 text-foreground leading-tight">
-              Get Your Fair <span className="text-primary">Cash Offer</span>
-            </h1>
-            <p className="text-muted-foreground mt-3 max-w-lg mx-auto">
-              Answer a few quick questions and we'll be in touch within 24 hours with a no obligation offer on your home.
-            </p>
-          </div>
 
           <div className="grid grid-cols-3 gap-3 mb-8">
             {[
