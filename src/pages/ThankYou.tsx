@@ -160,19 +160,18 @@ const ThankYou = () => {
             transition={{ duration: 0.5 }}
             className="max-w-4xl mx-auto mt-14"
           >
-            <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-primary to-[hsl(var(--footer-background))] text-primary-foreground p-8 md:p-12 shadow-xl">
-              <div className="absolute -top-16 -right-16 w-64 h-64 rounded-full bg-accent/20 blur-3xl" />
+            <div className="relative overflow-hidden rounded-3xl bg-card text-card-foreground p-8 md:p-12 shadow-xl border border-border">
               <div className="relative flex flex-col md:flex-row md:items-center gap-8 md:gap-10">
-                <div className="w-16 h-16 rounded-2xl bg-primary-foreground/15 backdrop-blur flex items-center justify-center shrink-0">
-                  <Phone className="w-8 h-8 text-primary-foreground" />
+                <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center shrink-0">
+                  <Phone className="w-8 h-8 text-primary" />
                 </div>
                 <div className="flex-1">
-                  <h3 className="font-display text-2xl md:text-3xl font-bold">
+                  <h3 className="font-display text-2xl md:text-3xl font-bold text-foreground">
                     Want to talk sooner?
                   </h3>
-                  <p className="mt-2 text-base md:text-lg text-primary-foreground/85">
+                  <p className="mt-2 text-base md:text-lg text-muted-foreground">
                     Give us a call anytime at{" "}
-                    <a href="tel:+12344371980" className="font-semibold underline-offset-4 hover:underline">
+                    <a href="tel:+12344371980" className="font-semibold text-foreground underline-offset-4 hover:underline">
                       (234) 437-1980
                     </a>
                     .
@@ -181,7 +180,7 @@ const ThankYou = () => {
                 <Button
                   asChild
                   size="lg"
-                  className="h-12 px-7 bg-accent hover:bg-accent/90 text-accent-foreground shadow-lg text-base font-semibold shrink-0"
+                  className="h-12 px-7 bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg text-base font-semibold shrink-0"
                 >
                   <a href="tel:+12344371980">
                     <Phone className="w-4 h-4 mr-2" />
