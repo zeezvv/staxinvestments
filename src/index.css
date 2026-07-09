@@ -36,6 +36,9 @@
 
     --radius: 0.75rem;
 
+    --footer-background: 152 45% 18%;
+    --footer-background-dark: 152 45% 14%;
+
     --hero-overlay: 220 20% 10%;
 
     --sidebar-background: 0 0% 98%;
@@ -67,6 +70,9 @@
     --destructive-foreground: 210 40% 98%;
     --border: 220 15% 22%;
     --input: 220 15% 22%;
+    --footer-background: 152 45% 14%;
+    --footer-background-dark: 152 45% 10%;
+
     --ring: 152 45% 45%;
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
