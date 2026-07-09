@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
@@ -100,6 +100,13 @@ const CashOffer = () => {
   const [form, setForm] = useState<Partial<FormData>>({});
   const [errors, setErrors] = useState<Partial<Record<keyof FormData, string>>>({});
   const [testimonialIdx, setTestimonialIdx] = useState(0);
+  const [gclid, setGclid] = useState("");
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    setGclid(params.get("gclid") || "");
+  }, []);
+
   const activeTestimonial = carouselTestimonials[testimonialIdx];
   const prevTestimonial = () =>
     setTestimonialIdx((i) => (i - 1 + carouselTestimonials.length) % carouselTestimonials.length);
@@ -181,6 +188,26 @@ const CashOffer = () => {
           event_category: "form",
           event_label: "cash_offer_form",
         });
+      }
+
+      try {
+        await fetch("https://services.leadconnectorhq.com/hooks/XOh4Z6pVhNdzqzXMFAfd/webhook-trigger/48fce442-7dd2-4f22-a5ae-ba6f316f971e", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            propertyAddress: d.propertyAddress,
+            isListed: d.isListed,
+            propertyType: d.propertyType,
+            timeline: d.timeline,
+            reason: d.reason,
+            fullName: d.fullName,
+            email: d.email,
+            phone: d.phone,
+            gclid,
+          }),
+        });
+      } catch (webhookErr) {
+        // Webhook failure should not block the user-facing submission flow.
       }
 
       navigate("/thank-you", { state: { fromSubmit: true } });
