@@ -29,7 +29,7 @@ const WhyUs = () => (
       </motion.div>
 
 
-      <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-5 max-w-6xl mx-auto">
+            <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-5 max-w-6xl mx-auto">
         {reasons.map((item, i) => (
           <motion.div
             key={item.title}
@@ -44,6 +44,16 @@ const WhyUs = () => (
             </div>
             <h3 className="font-display text-base font-bold text-foreground mb-2">{item.title}</h3>
             <p className="text-muted-foreground text-sm leading-relaxed">{item.desc}</p>
+            {i === 0 && (
+              <div className="mt-4 rounded-xl overflow-hidden border border-border shadow-md">
+                <img
+                  src={soldHighFive.url}
+                  alt="Happy couple high-fiving in front of their sold home"
+                  className="w-full h-28 sm:h-32 object-cover"
+                  loading="lazy"
+                />
+              </div>
+            )}
           </motion.div>
         ))}
       </div>
