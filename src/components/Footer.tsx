@@ -12,12 +12,20 @@ const Footer = () => {
         {/* Main footer content */}
         <div className="py-14 lg:py-18 grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16">
           {/* Brand column */}
-          <div className="flex flex-col items-center md:items-center text-center space-y-5">
-            <Link to="/" className="inline-flex flex-col items-center gap-3 hover:opacity-90 transition-opacity">
-              <img src={footerLogo} alt="Stax Investments LLC" className="w-16 h-16 object-contain" />
-              <span className="font-display text-sm font-bold text-primary-foreground">
-                Stax Investments LLC
-              </span>
+          <div className="flex flex-col items-center text-center space-y-5">
+            <Link to="/" className="inline-flex items-center gap-4 hover:opacity-90 transition-opacity">
+              <img src={footerLogo} alt="Stax Investments LLC" className="w-20 h-20 object-contain" />
+              <div className="flex flex-col items-start text-left">
+                <span className="font-display text-sm font-bold text-primary-foreground leading-tight">
+                  Stax
+                </span>
+                <span className="font-display text-sm font-bold text-primary-foreground leading-tight">
+                  Investments
+                </span>
+                <span className="font-display text-sm font-bold text-primary-foreground leading-tight">
+                  LLC
+                </span>
+              </div>
             </Link>
             <p className="text-sm font-medium text-primary-foreground leading-relaxed">
               The simple way to sell your home fast for cash.
