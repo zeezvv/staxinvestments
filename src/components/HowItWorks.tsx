@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Home, DollarSign, KeyRound } from "lucide-react";
+import movingImg from "@/assets/family-moving.png.asset.json";
 
 const steps = [
   {
@@ -38,6 +39,20 @@ const HowItWorks = () => (
         <p className="text-muted-foreground mt-4 text-lg">
           Selling your home shouldn't be stressful. Our 3 step process makes it easy.
         </p>
+      </motion.div>
+
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ delay: 0.2 }}
+        className="max-w-4xl mx-auto mb-16 rounded-3xl overflow-hidden shadow-2xl border border-border"
+      >
+        <img
+          src={movingImg.url}
+          alt="Happy family moving into their next home after selling to Stax Home Buyers"
+          className="w-full h-auto object-cover"
+        />
       </motion.div>
 
       <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto relative">
