@@ -1,13 +1,12 @@
 import { motion } from "framer-motion";
-import { ShieldCheck, Clock, DollarSign, Home, Heart, Handshake } from "lucide-react";
+import { Home, Ban, EyeOff, Zap, CalendarCheck } from "lucide-react";
 
 const reasons = [
-  { icon: DollarSign, title: "No Costly Repairs", desc: "We buy your house as is. No need to spend money fixing anything up before selling." },
-  { icon: Clock, title: "Close on Your Timeline", desc: "Whether you need to close in as little as 7 days or prefer up to 60 days, we work on your schedule." },
-  { icon: ShieldCheck, title: "Zero Fees or Commissions", desc: "No realtor fees, no hidden charges. We pay all closing costs so you keep more money." },
-  { icon: Heart, title: "Stress Free Experience", desc: "We handle all the paperwork and logistics. You just sit back and let us take care of everything." },
-  { icon: Home, title: "Any Condition, Any Situation", desc: "Foreclosure, inherited property, divorce, whatever your situation, we're here to help." },
-  { icon: Handshake, title: "Fair & Honest Offers", desc: "We provide transparent, competitive cash offers based on current market conditions." },
+  { icon: Home, title: "Sell As-Is", desc: "No cleaning, no staging, no repairs. We buy your house in its current condition." },
+  { icon: Ban, title: "No Realtor Fees", desc: "Zero commissions and zero hidden charges. We even cover the closing costs." },
+  { icon: EyeOff, title: "No Showings", desc: "Skip the open houses and constant walk-throughs. One visit is all we need." },
+  { icon: Zap, title: "Fast Cash Offer", desc: "Get a fair, no obligation cash offer on your property within 24 hours." },
+  { icon: CalendarCheck, title: "Close When You're Ready", desc: "Close in as little as 7 days or on a timeline that works best for you." },
 ];
 
 const WhyUs = () => (
@@ -17,29 +16,31 @@ const WhyUs = () => (
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="text-center mb-16"
+        className="text-center mb-16 max-w-2xl mx-auto"
       >
         <span className="text-sm font-semibold text-primary uppercase tracking-wider">Why Choose Us</span>
         <h2 className="text-3xl md:text-5xl font-bold mt-3 text-foreground">
-          Why Sell to Stax Investments?
+          Why Sell To Stax Home Buyers?
         </h2>
-        <p className="text-muted-foreground mt-4 max-w-xl mx-auto text-lg">
+        <p className="text-muted-foreground mt-4 text-lg">
           We've helped hundreds of homeowners sell quickly and move forward with confidence.
         </p>
       </motion.div>
 
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+      <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-5 max-w-6xl mx-auto">
         {reasons.map((item, i) => (
           <motion.div
             key={item.title}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: i * 0.1 }}
-            className="group p-6 rounded-2xl border border-border hover:border-primary/30 hover:bg-primary/5 transition-all"
+            transition={{ delay: i * 0.08 }}
+            className="group p-6 rounded-2xl bg-card border border-border hover:border-primary/40 hover:shadow-lg transition-all text-center"
           >
-            <item.icon className="w-8 h-8 text-primary mb-4 group-hover:scale-110 transition-transform" />
-            <h3 className="font-display text-lg font-bold text-foreground mb-2">{item.title}</h3>
+            <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-4 group-hover:bg-primary group-hover:scale-110 transition-all">
+              <item.icon className="w-7 h-7 text-primary group-hover:text-primary-foreground transition-colors" />
+            </div>
+            <h3 className="font-display text-base font-bold text-foreground mb-2">{item.title}</h3>
             <p className="text-muted-foreground text-sm leading-relaxed">{item.desc}</p>
           </motion.div>
         ))}
