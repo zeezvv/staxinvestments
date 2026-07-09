@@ -50,7 +50,7 @@ const HowItWorks = () => (
             transition={{ delay: i * 0.15 }}
             className="relative bg-card rounded-2xl p-8 border border-border shadow-sm hover:shadow-lg transition-all"
           >
-            <div className="absolute -top-4 -left-2 text-6xl font-black text-primary/10 leading-none select-none">
+            <div className="absolute top-4 right-5 text-5xl font-black text-primary/30 leading-none select-none">
               {item.step}
             </div>
             <div className="relative">
