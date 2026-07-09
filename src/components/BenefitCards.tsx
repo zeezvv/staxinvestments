@@ -20,7 +20,7 @@ const benefits = [
 ];
 
 const BenefitCards = () => (
-  <section className="py-16 bg-background">
+  <section className="py-10 bg-background">
     <div className="container mx-auto px-4">
       <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto -mt-24 md:-mt-32 relative z-10">
         {benefits.map((b, i) => (

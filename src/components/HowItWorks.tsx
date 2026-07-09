@@ -24,13 +24,13 @@ const steps = [
 ];
 
 const HowItWorks = () => (
-  <section id="how-it-works" className="py-24 section-gradient">
+  <section id="how-it-works" className="py-16 section-gradient">
     <div className="container mx-auto px-4">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="text-center mb-16 max-w-2xl mx-auto"
+        className="text-center mb-10 max-w-2xl mx-auto"
       >
         <span className="text-sm font-semibold text-primary uppercase tracking-wider">Simple Process</span>
         <h2 className="text-3xl md:text-5xl font-bold mt-3 text-foreground">
@@ -41,7 +41,7 @@ const HowItWorks = () => (
         </p>
       </motion.div>
 
-      <div className="grid lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
+      <div className="grid lg:grid-cols-2 gap-8 items-center max-w-6xl mx-auto">
         <div className="flex flex-col gap-6">
           {steps.map((item, i) => (
             <motion.div
@@ -50,7 +50,7 @@ const HowItWorks = () => (
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.15 }}
-              className="relative bg-card rounded-2xl p-7 border border-border shadow-sm hover:shadow-lg transition-all"
+              className="relative bg-card rounded-2xl p-6 border border-border shadow-sm hover:shadow-lg transition-all"
             >
               <div className="absolute top-4 right-5 text-4xl md:text-5xl font-black text-primary/30 leading-none select-none">
                 {item.step}

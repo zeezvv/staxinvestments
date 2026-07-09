@@ -11,13 +11,13 @@ const situations = [
 ];
 
 const Situations = () => (
-  <section className="py-24 bg-secondary/50">
+  <section className="py-16 bg-secondary/50">
     <div className="container mx-auto px-4">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="text-center mb-14 max-w-2xl mx-auto"
+        className="text-center mb-10 max-w-2xl mx-auto"
       >
         <span className="text-sm font-semibold text-primary uppercase tracking-wider">Situations We Help With</span>
         <h2 className="text-3xl md:text-5xl font-bold mt-3 text-foreground">
@@ -28,7 +28,7 @@ const Situations = () => (
         </p>
       </motion.div>
 
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 max-w-6xl mx-auto">
         {situations.map((s, i) => (
           <motion.div
             key={s.title}

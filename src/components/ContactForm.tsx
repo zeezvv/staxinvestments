@@ -5,9 +5,9 @@ import { MapPin, Mail, Phone, ArrowRight, Clock, ShieldCheck, DollarSign } from 
 
 const ContactForm = () => {
   return (
-    <section id="contact" className="py-24 bg-background">
-      <div className="container mx-auto px-4">
-        <div className="max-w-5xl mx-auto grid lg:grid-cols-5 gap-12 items-center">
+  <section id="contact" className="py-16 bg-background">
+    <div className="container mx-auto px-4">
+      <div className="max-w-5xl mx-auto grid lg:grid-cols-5 gap-10 items-center">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
