@@ -1,127 +1,13 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { z } from "zod";
-import { MapPin, Mail, Phone, Send } from "lucide-react";
-import { Checkbox } from "@/components/ui/checkbox";
-import { Link } from "react-router-dom";
-import { supabase } from "@/integrations/supabase/client";
-import { useToast } from "@/hooks/use-toast";
-import { track } from "@vercel/analytics";
-
-const validDomains = ["gmail.com", "yahoo.com", "outlook.com", "hotmail.com", "aol.com", "icloud.com", "mail.com", "protonmail.com", "zoho.com", "yandex.com", "live.com", "msn.com", "comcast.net", "att.net", "verizon.net", "me.com", "mac.com"];
-
-const hasValidDomain = (email: string) => {
-  const domain = email.split("@")[1]?.toLowerCase();
-  if (!domain) return false;
-  // Accept known domains or any domain with a dot (e.g. company.com)
-  if (validDomains.includes(domain)) return true;
-  const parts = domain.split(".");
-  return parts.length >= 2 && parts[parts.length - 1].length >= 2;
-};
-
-const formSchema = z.object({
-  fullName: z.string().trim().min(1, "Full name is required").max(100),
-  email: z.string().trim().email("Please enter a valid email").max(255).refine(hasValidDomain, "Please enter a valid email domain"),
-  phone: z.string().trim().min(14, "Please enter a complete phone number").max(20),
-  propertyAddress: z.string().trim().min(1, "Property address is required").max(500),
-  message: z.string().trim().max(1000).optional(),
-});
-
-type FormData = z.infer<typeof formSchema>;
-
-const formatPhoneNumber = (value: string): string => {
-  const digits = value.replace(/\D/g, "").slice(0, 10);
-  if (digits.length === 0) return "";
-  if (digits.length <= 3) return `(${digits}`;
-  if (digits.length <= 6) return `(${digits.slice(0, 3)}) ${digits.slice(3)}`;
-  return `(${digits.slice(0, 3)}) ${digits.slice(3, 6)}-${digits.slice(6)}`;
-};
+import { MapPin, Mail, Phone, ArrowRight, Clock, ShieldCheck, DollarSign } from "lucide-react";
 
 const ContactForm = () => {
-  const navigate = useNavigate();
-  const { toast } = useToast();
-  const [form, setForm] = useState<FormData>({
-    fullName: "",
-    email: "",
-    phone: "",
-    propertyAddress: "",
-    message: "",
-  });
-  const [errors, setErrors] = useState<Partial<Record<keyof FormData, string>>>({});
-  const [submitting, setSubmitting] = useState(false);
-  const [smsConsent, setSmsConsent] = useState(false);
-
-  const handleChange = (field: keyof FormData, value: string) => {
-    if (field === "phone") {
-      value = formatPhoneNumber(value);
-    }
-    setForm((prev) => ({ ...prev, [field]: value }));
-    if (errors[field]) setErrors((prev) => ({ ...prev, [field]: undefined }));
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    const result = formSchema.safeParse(form);
-    if (!result.success) {
-      const fieldErrors: Partial<Record<keyof FormData, string>> = {};
-      result.error.errors.forEach((err) => {
-        const field = err.path[0] as keyof FormData;
-        fieldErrors[field] = err.message;
-      });
-      setErrors(fieldErrors);
-      return;
-    }
-    setSubmitting(true);
-    const leadId = crypto.randomUUID();
-    try {
-      const { error } = await supabase.from("leads").insert({
-        id: leadId,
-        full_name: result.data.fullName,
-        email: result.data.email,
-        phone: result.data.phone,
-        property_address: result.data.propertyAddress,
-        message: result.data.message || null,
-        sms_consent: smsConsent,
-      });
-      if (error) throw error;
-
-      // Send email notification to owner via Resend
-      await supabase.functions.invoke("send-lead-email", {
-        body: {
-          fullName: result.data.fullName,
-          email: result.data.email,
-          phone: result.data.phone,
-          propertyAddress: result.data.propertyAddress,
-          message: result.data.message || undefined,
-        },
-      });
-
-      // Track lead events
-      track("lead_submitted", { email: result.data.email });
-      if (typeof (window as any).gtag === "function") {
-        (window as any).gtag("event", "generate_lead", {
-          event_category: "form",
-          event_label: "contact_form",
-        });
-      }
-
-      setForm({ fullName: "", email: "", phone: "", propertyAddress: "", message: "" });
-      navigate("/thank-you", { state: { fromSubmit: true } });
-    } catch (err) {
-      toast({ title: "Something went wrong", description: "Please try again or contact us directly.", variant: "destructive" });
-    } finally {
-      setSubmitting(false);
-    }
-  };
-
   return (
     <section id="contact" className="py-24 bg-background">
       <div className="container mx-auto px-4">
-        <div className="max-w-5xl mx-auto grid lg:grid-cols-5 gap-12">
+        <div className="max-w-5xl mx-auto grid lg:grid-cols-5 gap-12 items-center">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -134,7 +20,7 @@ const ContactForm = () => {
                 Get Your Fair Cash Offer Today
               </h2>
               <p className="text-muted-foreground mt-4 leading-relaxed">
-                Fill out the form and a member of our team will get back to you within 24 hours with a no obligation cash offer.
+                Answer a few quick questions about your property and a member of our team will get back to you within 24 hours with a no obligation cash offer.
               </p>
             </div>
 
@@ -166,61 +52,37 @@ const ContactForm = () => {
             viewport={{ once: true }}
             className="lg:col-span-3"
           >
-            <form onSubmit={handleSubmit} className="bg-card rounded-2xl p-8 border border-border shadow-sm space-y-5">
-              <div className="grid sm:grid-cols-2 gap-5">
-                <div>
-                  <label className="text-sm font-medium text-foreground mb-1.5 block">Full Name *</label>
-                  <Input placeholder="John Smith" value={form.fullName} onChange={(e) => handleChange("fullName", e.target.value)} />
-                  {errors.fullName && <p className="text-destructive text-xs mt-1">{errors.fullName}</p>}
-                </div>
-                <div>
-                  <label className="text-sm font-medium text-foreground mb-1.5 block">Email Address *</label>
-                  <Input type="email" placeholder="john@email.com" value={form.email} onChange={(e) => handleChange("email", e.target.value)} />
-                  {errors.email && <p className="text-destructive text-xs mt-1">{errors.email}</p>}
-                </div>
-              </div>
-
-              <div className="grid sm:grid-cols-2 gap-5">
-                <div>
-                  <label className="text-sm font-medium text-foreground mb-1.5 block">Phone Number *</label>
-                  <Input type="tel" placeholder="(555) 123-4567" value={form.phone} onChange={(e) => handleChange("phone", e.target.value)} />
-                  {errors.phone && <p className="text-destructive text-xs mt-1">{errors.phone}</p>}
-                </div>
-                <div>
-                  <label className="text-sm font-medium text-foreground mb-1.5 block">Property Address *</label>
-                  <Input placeholder="123 Main St, City, State" value={form.propertyAddress} onChange={(e) => handleChange("propertyAddress", e.target.value)} />
-                  {errors.propertyAddress && <p className="text-destructive text-xs mt-1">{errors.propertyAddress}</p>}
-                </div>
-              </div>
-
-              <div>
-                <label className="text-sm font-medium text-foreground mb-1.5 block">Additional Details (optional)</label>
-                <Textarea placeholder="Tell us about your property or situation..." rows={4} value={form.message} onChange={(e) => handleChange("message", e.target.value)} />
-              </div>
-
-              <div className="flex items-start gap-3">
-                <Checkbox
-                  id="sms-consent"
-                  checked={smsConsent}
-                  onCheckedChange={(checked) => setSmsConsent(checked === true)}
-                  className="mt-1"
-                />
-                <label htmlFor="sms-consent" className="text-xs text-muted-foreground leading-relaxed cursor-pointer">
-                  By checking this box, you agree to receive text messages (e.g., payment reminders) from <strong>Stax Investments LLC</strong> at the cell number used when signing up. Consent is not a condition of any purchase. Reply STOP to unsubscribe, HELP for help. Message &amp; data rates may apply. Message frequency varies. I have read and agree with the{" "}
-                  <Link to="/terms-and-conditions" className="text-primary underline hover:text-primary/80">Terms &amp; Conditions</Link>
-                  {" "}&amp;{" "}
-                  <Link to="/privacy-policy" className="text-primary underline hover:text-primary/80">Privacy Policy</Link>.
-                </label>
-              </div>
-
-              <Button type="submit" size="lg" className="w-full py-6 text-base" disabled={submitting}>
-                {submitting ? "Submitting..." : <>Get Your Cash Offer Now <Send className="ml-2 w-4 h-4" /></>}
-              </Button>
-
-              <p className="text-xs text-muted-foreground text-center leading-relaxed">
-                By submitting this form, you consent to receive calls, emails, and text messages from <strong>Stax Investments LLC</strong> regarding your property inquiry. Consent is not a condition of any purchase or sale.
+            <div className="bg-card rounded-2xl p-8 md:p-10 border border-border shadow-sm text-center space-y-6">
+              <h3 className="text-2xl md:text-3xl font-bold text-foreground">
+                Ready to see your cash offer?
+              </h3>
+              <p className="text-muted-foreground max-w-md mx-auto">
+                It only takes about a minute. Tell us a little about your property and we'll take care of the rest.
               </p>
-            </form>
+
+              <div className="grid sm:grid-cols-3 gap-4 pt-2">
+                {[
+                  { icon: Clock, label: "Takes ~1 minute" },
+                  { icon: DollarSign, label: "No fees or commissions" },
+                  { icon: ShieldCheck, label: "No obligation" },
+                ].map(({ icon: Icon, label }) => (
+                  <div key={label} className="flex flex-col items-center gap-2 p-3 rounded-xl bg-primary/5">
+                    <Icon className="w-5 h-5 text-primary" />
+                    <span className="text-xs font-medium text-foreground">{label}</span>
+                  </div>
+                ))}
+              </div>
+
+              <Link to="/cash-offer" className="block">
+                <Button size="lg" className="w-full py-6 text-base">
+                  Get Cash Offer <ArrowRight className="ml-2 w-4 h-4" />
+                </Button>
+              </Link>
+
+              <p className="text-xs text-muted-foreground leading-relaxed">
+                Your information stays private. We'll only use it to prepare your offer.
+              </p>
+            </div>
           </motion.div>
         </div>
       </div>
