@@ -65,6 +65,19 @@ const WhyUs = () => (
         />
         <div className="absolute inset-0 bg-gradient-to-t from-background/40 via-transparent to-transparent pointer-events-none" />
       </motion.div>
+
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        className="text-center mt-10"
+      >
+        <Link to="/cash-offer">
+          <Button size="lg" className="text-base px-8 py-6 font-semibold">
+            I Want A Cash Offer Now! <ArrowRight className="ml-2 w-5 h-5" />
+          </Button>
+        </Link>
+      </motion.div>
     </div>
   </section>
 );
