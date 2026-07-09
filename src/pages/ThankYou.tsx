@@ -29,7 +29,7 @@ const steps = [
   {
     icon: HandCoins,
     title: "We Discuss Your Offer",
-    text: "We walk you through your cash offer with no pressure.",
+    text: "We walk you through how a deal would look like with us.",
   },
 ];
 
