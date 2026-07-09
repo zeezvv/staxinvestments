@@ -444,38 +444,29 @@ const CashOffer = () => {
           </div>
         </div>
 
-        {/* Testimonial + Contact */}
-        <div className="max-w-4xl mx-auto mt-16 grid md:grid-cols-5 gap-6">
-          <div className="md:col-span-3 bg-card rounded-2xl p-8 border border-border">
+        {/* Testimonial */}
+        <div className="max-w-4xl mx-auto mt-16">
+          <div className="bg-card rounded-2xl p-8 border border-border">
             <div className="flex gap-1 mb-4">
               {[...Array(5)].map((_, i) => (
                 <Star key={i} className="w-4 h-4 fill-primary text-primary" />
               ))}
             </div>
-            <p className="text-foreground leading-relaxed italic mb-4">
+            <p className="text-foreground leading-relaxed italic mb-4 text-lg">
               "Stax made the whole process simple. They were straightforward, answered every question, and closed on the date we picked. I couldn't have asked for a better experience."
             </p>
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
-                <span className="text-primary font-semibold text-sm">JM</span>
+                <span className="text-primary font-semibold text-sm">DR</span>
               </div>
               <div>
-                <div className="text-sm font-semibold text-foreground">Jessica M.</div>
-                <div className="text-xs text-muted-foreground flex items-center gap-1"><MapPin className="w-3 h-3" /> Middletown, Ohio</div>
+                <div className="text-sm font-semibold text-foreground">David R.</div>
+                <div className="text-xs text-muted-foreground flex items-center gap-1"><MapPin className="w-3 h-3" /> Homeowner</div>
               </div>
             </div>
           </div>
-
-          <div className="md:col-span-2 bg-primary text-primary-foreground rounded-2xl p-8 flex flex-col justify-center">
-            <h3 className="text-xl font-bold mb-2">Prefer to talk?</h3>
-            <p className="text-sm opacity-90 mb-5 leading-relaxed">
-              Give us a call and speak with a local team member today.
-            </p>
-            <a href="tel:+12344371980" className="inline-flex items-center justify-center gap-2 bg-primary-foreground text-primary font-semibold px-5 py-3 rounded-xl hover:opacity-90 transition-opacity">
-              <Phone className="w-4 h-4" /> (234) 437-1980
-            </a>
-          </div>
         </div>
+
 
         {/* FAQ */}
         <div className="max-w-3xl mx-auto mt-16">
