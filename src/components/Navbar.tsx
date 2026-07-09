@@ -31,7 +31,7 @@ const Navbar = () => {
             <Phone className="w-4 h-4" />
             (234) 437-1980
           </a>
-          <Button onClick={() => scrollTo("contact")} size="sm">Get Cash Offer</Button>
+          <Link to="/cash-offer"><Button size="sm">Get Cash Offer</Button></Link>
         </div>
 
         <button className="md:hidden text-foreground" onClick={() => setIsOpen(!isOpen)}>
@@ -47,7 +47,7 @@ const Navbar = () => {
           <a href="tel:+12344371980" className="block w-full text-left text-sm font-medium text-primary py-2">
             (234) 437-1980
           </a>
-          <Button onClick={() => scrollTo("contact")} className="w-full" size="sm">Get Cash Offer</Button>
+          <Link to="/cash-offer" className="block"><Button className="w-full" size="sm">Get Cash Offer</Button></Link>
         </div>
       )}
     </nav>
