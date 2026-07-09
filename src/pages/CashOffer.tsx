@@ -191,24 +191,13 @@ const CashOffer = () => {
       }
 
       try {
-        await fetch("https://services.leadconnectorhq.com/hooks/XOh4Z6pVhNdzqzXMFAfd/webhook-trigger/48fce442-7dd2-4f22-a5ae-ba6f316f971e", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            propertyAddress: d.propertyAddress,
-            isListed: d.isListed,
-            propertyType: d.propertyType,
-            timeline: d.timeline,
-            reason: d.reason,
-            fullName: d.fullName,
-            email: d.email,
-            phone: d.phone,
-            gclid,
-          }),
-        });
+        const webhookBase = "https://services.leadconnectorhq.com/hooks/XOh4Z6pVhNdzqzXMFAfd/webhook-trigger/48fce442-7dd2-4f22-a5ae-ba6f316f971e";
+        const webhookUrl = `${webhookBase}?propertyAddress=${encodeURIComponent(d.propertyAddress)}&isListed=${encodeURIComponent(d.isListed)}&propertyType=${encodeURIComponent(d.propertyType)}&timeline=${encodeURIComponent(d.timeline)}&reason=${encodeURIComponent(d.reason)}&fullName=${encodeURIComponent(d.fullName)}&email=${encodeURIComponent(d.email)}&phone=${encodeURIComponent(d.phone)}&gclid=${encodeURIComponent(gclid)}`;
+        await fetch(webhookUrl, { method: "GET" });
       } catch (webhookErr) {
         // Webhook failure should not block the user-facing submission flow.
       }
+
 
       navigate("/thank-you", { state: { fromSubmit: true } });
     } catch (err) {
