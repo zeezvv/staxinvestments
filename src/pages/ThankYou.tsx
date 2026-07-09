@@ -1,16 +1,15 @@
 import { motion } from "framer-motion";
 import { CheckCircle, MessageSquare, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { useNavigate, useLocation, Navigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import Footer from "@/components/Footer";
 
 const ThankYou = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  if (!(location.state as { fromSubmit?: boolean } | null)?.fromSubmit) {
-    return <Navigate to="/" replace />;
-  }
+  // Guard temporarily disabled for editing
+  void location;
 
   return (
     <div className="min-h-screen bg-background">
