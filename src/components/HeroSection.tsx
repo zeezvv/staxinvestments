@@ -8,7 +8,7 @@ const trustPoints = ["Sell As-Is", "Close On Your Timeline", "$0 Fees or Commiss
 
 const HeroSection = () => {
   return (
-    <section id="hero" className="relative min-h-screen flex items-center">
+    <section id="hero" className="relative min-h-[80vh] flex items-center">
       <div className="absolute inset-0">
         <img
           src={heroAsset.url}
@@ -18,7 +18,7 @@ const HeroSection = () => {
         <div className="absolute inset-0 hero-gradient" />
       </div>
 
-      <div className="relative container mx-auto px-4 pt-24 pb-16">
+      <div className="relative container mx-auto px-4 pt-20 pb-14">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
