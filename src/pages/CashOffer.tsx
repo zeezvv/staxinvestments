@@ -439,7 +439,7 @@ const CashOffer = () => {
             ))}
           </div>
         </div>
-      </main>
+      </section>
       <Footer />
     </div>
   );
