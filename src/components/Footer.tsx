@@ -14,7 +14,7 @@ const Footer = () => {
           {/* Brand column */}
           <div className="flex flex-col items-center md:items-center text-center space-y-5">
             <Link to="/" className="inline-flex flex-col items-center gap-3 hover:opacity-90 transition-opacity">
-              <img src={footerLogo.url} alt="Stax Investments LLC" className="w-16 h-16 object-contain" />
+              <img src={footerLogo} alt="Stax Investments LLC" className="w-16 h-16 object-contain" />
               <span className="font-display text-sm font-bold text-primary-foreground">
                 Stax Investments LLC
               </span>
