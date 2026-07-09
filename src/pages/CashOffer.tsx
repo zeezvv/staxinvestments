@@ -414,8 +414,83 @@ const CashOffer = () => {
           </p>
         </div>
 
+        {/* Testimonials carousel */}
+        <div className="max-w-2xl mx-auto mt-6">
+          <div className="relative">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={testimonialIdx}
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -20 }}
+                transition={{ duration: 0.25 }}
+                className="bg-card rounded-2xl p-6 border border-border shadow-sm mx-10"
+              >
+                <div className="flex items-center gap-3 mb-3">
+                  {activeTestimonial.avatar ? (
+                    <img
+                      src={activeTestimonial.avatar}
+                      alt={activeTestimonial.name}
+                      className="w-11 h-11 rounded-full object-cover"
+                    />
+                  ) : (
+                    <div
+                      className={`w-11 h-11 rounded-full flex items-center justify-center text-white font-semibold ${carouselAvatarColors[testimonialIdx % carouselAvatarColors.length]}`}
+                    >
+                      {initialsOf(activeTestimonial.name)}
+                    </div>
+                  )}
+                  <div className="flex-1 min-w-0">
+                    <div className="font-semibold text-foreground leading-tight">{activeTestimonial.name}</div>
+                    <div className="text-xs text-muted-foreground">{activeTestimonial.location}</div>
+                  </div>
+                  <GoogleLogo />
+                </div>
+                <div className="flex items-center gap-2 mb-3">
+                  <div className="flex gap-0.5">
+                    {[...Array(5)].map((_, j) => (
+                      <Star key={j} className="w-4 h-4 fill-[#fbbc04] text-[#fbbc04]" />
+                    ))}
+                  </div>
+                  <span className="text-xs text-muted-foreground">{activeTestimonial.date}</span>
+                </div>
+                <p className="text-foreground leading-relaxed text-sm">{activeTestimonial.text}</p>
+              </motion.div>
+            </AnimatePresence>
+
+            <button
+              type="button"
+              onClick={prevTestimonial}
+              aria-label="Previous testimonial"
+              className="absolute left-0 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-card border border-border shadow-sm flex items-center justify-center text-foreground hover:bg-primary/10 hover:border-primary/40 transition-colors"
+            >
+              <ChevronLeft className="w-5 h-5" />
+            </button>
+            <button
+              type="button"
+              onClick={nextTestimonial}
+              aria-label="Next testimonial"
+              className="absolute right-0 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-card border border-border shadow-sm flex items-center justify-center text-foreground hover:bg-primary/10 hover:border-primary/40 transition-colors"
+            >
+              <ChevronRight className="w-5 h-5" />
+            </button>
+          </div>
+
+          <div className="flex justify-center gap-1.5 mt-4">
+            {carouselTestimonials.map((_, i) => (
+              <button
+                key={i}
+                type="button"
+                onClick={() => setTestimonialIdx(i)}
+                aria-label={`Show testimonial ${i + 1}`}
+                className={`h-1.5 rounded-full transition-all ${i === testimonialIdx ? "w-6 bg-primary" : "w-1.5 bg-muted-foreground/30"}`}
+              />
+            ))}
+          </div>
+        </div>
+
         {/* What happens next */}
-        <div className="max-w-4xl mx-auto mt-6">
+        <div className="max-w-4xl mx-auto mt-8">
           <div className="text-center mb-2">
             <span className="text-sm font-semibold text-primary uppercase tracking-wider">The Process</span>
             <h2 className="text-2xl md:text-3xl font-bold mt-2 text-foreground">What happens after you submit</h2>
@@ -435,28 +510,6 @@ const CashOffer = () => {
           </div>
         </div>
 
-        {/* Testimonial */}
-        <div className="max-w-4xl mx-auto mt-4">
-          <div className="bg-card rounded-2xl p-6 border border-border">
-            <div className="flex gap-1 mb-3">
-              {[...Array(5)].map((_, i) => (
-                <Star key={i} className="w-4 h-4 fill-primary text-primary" />
-              ))}
-            </div>
-            <p className="text-foreground leading-relaxed italic mb-4">
-              "Carson made the whole process simple. he was straightforward, answered every question, and closed on the date we picked. I couldn't have asked for a better experience."
-            </p>
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
-                <span className="text-primary font-semibold text-sm">JM</span>
-              </div>
-              <div>
-                <div className="text-sm font-semibold text-foreground">Jessica M.</div>
-                <div className="text-xs text-muted-foreground flex items-center gap-1"><MapPin className="w-3 h-3" /> Middletown, Ohio</div>
-              </div>
-            </div>
-          </div>
-        </div>
 
         {/* FAQ */}
         <div className="max-w-3xl mx-auto mt-4 mb-12">
