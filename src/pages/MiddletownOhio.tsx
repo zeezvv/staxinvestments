@@ -9,7 +9,6 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
-import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ContactForm from "@/components/ContactForm";
 import heroImage from "@/assets/middletown-house.jpg";
@@ -164,9 +163,7 @@ const MiddletownOhio = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <Navbar />
-
-      <main className="pt-20">
+      <main className="pt-12">
         {/* Hero */}
         <section className="relative py-20 md:py-28 section-gradient">
           <div className="container mx-auto px-4">

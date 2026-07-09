@@ -10,7 +10,6 @@ import { ArrowLeft, ArrowRight, Check, Send, ShieldCheck, Clock, DollarSign, Pho
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import { track } from "@vercel/analytics";
-import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
 const validDomains = ["gmail.com", "yahoo.com", "outlook.com", "hotmail.com", "aol.com", "icloud.com", "mail.com", "protonmail.com", "zoho.com", "yandex.com", "live.com", "msn.com", "comcast.net", "att.net", "verizon.net", "me.com", "mac.com"];
@@ -146,8 +145,7 @@ const CashOffer = () => {
 
   return (
     <div className="min-h-screen bg-background flex flex-col">
-      <Navbar />
-      <main className="flex-1 pt-24 pb-16 px-4">
+      <main className="flex-1 pt-12 pb-16 px-4">
         <div className="max-w-2xl mx-auto">
           <div className="mb-6 text-center">
             <span className="inline-flex items-center gap-2 text-sm font-semibold text-primary uppercase tracking-wider bg-primary/10 px-4 py-1.5 rounded-full">

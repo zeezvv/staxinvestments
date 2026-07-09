@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
-import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
 const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL;
@@ -47,8 +46,7 @@ const Unsubscribe = () => {
 
   return (
     <div className="min-h-screen flex flex-col bg-background">
-      <Navbar />
-      <main className="flex-1 flex items-center justify-center px-4 py-24">
+      <main className="flex-1 flex items-center justify-center px-4 py-12">
         <div className="max-w-md w-full text-center space-y-6">
           {status === "loading" && <p className="text-muted-foreground">Verifying...</p>}
           {status === "valid" && (

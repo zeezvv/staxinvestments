@@ -1,7 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
 const TermsAndConditions = () => {
@@ -9,8 +8,7 @@ const TermsAndConditions = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <Navbar />
-      <div className="pt-24 pb-16">
+      <div className="pt-12 pb-16">
         <div className="container mx-auto px-4 py-16 max-w-3xl">
           <Button variant="ghost" onClick={() => navigate("/")} className="mb-8">
             <ArrowLeft className="mr-2 w-4 h-4" /> Back to Home
