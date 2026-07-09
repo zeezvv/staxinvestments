@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { CheckCircle, MessageSquare, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { useNavigate, useLocation, Navigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import Footer from "@/components/Footer";
 
 const ThankYou = () => {
