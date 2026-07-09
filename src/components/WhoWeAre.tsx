@@ -34,7 +34,7 @@ const WhoWeAre = () => (
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
         >
-          <span className="text-sm font-semibold text-primary uppercase tracking-wider">Who We Are</span>
+          <span className="text-sm font-semibold text-primary uppercase tracking-wider">WHAT WE DO!</span>
           <h2 className="text-3xl md:text-5xl font-bold mt-3 text-foreground leading-tight">
             Fast, Fair Cash Offers For Your House
           </h2>
