@@ -168,8 +168,8 @@ const CashOffer = () => {
           </div>
         </div>
 
-        <div className="relative z-20 -mt-28 md:-mt-36 max-w-2xl mx-auto px-4 pb-16">
-          <div className="mb-6">
+        <div className="relative z-20 mt-4 md:mt-6 max-w-2xl mx-auto px-4 pb-16">
+          <div className="mb-4">
             <div className="flex justify-between items-center mb-2 text-xs text-muted-foreground font-medium">
               <span>Step {step} of {totalSteps}</span>
               <span>{Math.round(progress)}% complete</span>
