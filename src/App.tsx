@@ -24,6 +24,7 @@ const App = () => (
       <Sonner />
       <Analytics />
       <BrowserRouter>
+        <FloatingHamburgerMenu />
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/home" element={<Index />} />
