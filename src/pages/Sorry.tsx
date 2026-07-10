@@ -2,12 +2,25 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Home } from "lucide-react";
 import Footer from "@/components/Footer";
+import sorryBg from "@/assets/sorry-bg.png.asset.json";
 
 const Sorry = () => {
   return (
-    <div className="min-h-screen bg-background flex flex-col">
-      <section className="flex-1 flex items-center justify-center px-4 py-20">
-        <div className="max-w-xl w-full bg-card border border-border rounded-2xl shadow-sm p-8 md:p-12 text-center space-y-6">
+    <div className="min-h-screen flex flex-col">
+      <section className="relative flex-1 flex items-center justify-center px-4 py-20">
+        <div className="absolute inset-0">
+          <img
+            src={sorryBg.url}
+            alt="Suburban neighborhood"
+            className="w-full h-full object-cover"
+          />
+          <div
+            className="absolute inset-0"
+            style={{ backgroundColor: "hsl(var(--hero-overlay) / 0.55)" }}
+          />
+        </div>
+
+        <div className="relative max-w-xl w-full bg-card border border-border rounded-2xl shadow-sm p-8 md:p-12 text-center space-y-6">
           <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center mx-auto">
             <Home className="w-7 h-7 text-primary" />
           </div>
