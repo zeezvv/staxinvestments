@@ -14,7 +14,10 @@ const Sorry = () => {
             alt="Suburban neighborhood"
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-black/55" />
+          <div
+            className="absolute inset-0"
+            style={{ backgroundColor: "hsl(var(--hero-overlay) / 0.55)" }}
+          />
         </div>
 
         <div className="relative max-w-xl w-full bg-card border border-border rounded-2xl shadow-sm p-8 md:p-12 text-center space-y-6">
