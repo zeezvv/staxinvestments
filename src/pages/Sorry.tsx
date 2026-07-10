@@ -12,12 +12,12 @@ const Sorry = () => {
             <Home className="w-7 h-7 text-primary" />
           </div>
           <h1 className="text-3xl md:text-4xl font-bold text-foreground">
-            We're not the right fit right now
+            Sorry we're not the right fit for you&nbsp;
           </h1>
           <p className="text-muted-foreground leading-relaxed">
-            We specialize in off market single family homes, not listed homes. If
-            things change, feel free to contact us again and we'd be happy to
-            take another look.
+            We specialize in off market single family homes. If things happen to
+            change, feel free to contact us again and we'd be happy to take
+            another look.
           </p>
           <Link to="/">
             <Button size="lg" className="mt-2">Back to home</Button>
