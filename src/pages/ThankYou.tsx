@@ -12,6 +12,7 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useNavigate, useLocation, Navigate } from "react-router-dom";
+import { useEffect } from "react";
 import Footer from "@/components/Footer";
 import heroImage from "@/assets/thank-you-hero.png.asset.json";
 
@@ -42,6 +43,15 @@ const trustItems = [
 const ThankYou = () => {
   const navigate = useNavigate();
   const location = useLocation();
+
+  useEffect(() => {
+    // Google Ads conversion event for Submit lead form
+    if (typeof gtag === "function") {
+      gtag("event", "conversion", {
+        send_to: "AW-18309634163/zZd_CLf9-s0cEPOw25pE",
+      });
+    }
+  }, []);
 
   if (!location.state?.fromSubmit) {
     return <Navigate to="/" replace />;
