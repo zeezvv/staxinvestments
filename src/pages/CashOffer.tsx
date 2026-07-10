@@ -139,7 +139,16 @@ const CashOffer = () => {
   };
 
   const next = () => {
-    if (validateStep()) setStep((s) => Math.min(s + 1, totalSteps));
+    if (!validateStep()) return;
+    if (step === 1 && form.isListed === "yes") {
+      navigate("/sorry");
+      return;
+    }
+    if (step === 2 && form.propertyType && form.propertyType !== "Single Family") {
+      navigate("/sorry");
+      return;
+    }
+    setStep((s) => Math.min(s + 1, totalSteps));
   };
 
   const back = () => setStep((s) => Math.max(s - 1, 1));
