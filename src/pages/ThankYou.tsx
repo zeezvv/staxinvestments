@@ -44,6 +44,15 @@ const ThankYou = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
+  useEffect(() => {
+    // Google Ads conversion event for Submit lead form
+    if (typeof gtag === "function") {
+      gtag("event", "conversion", {
+        send_to: "AW-18309634163/zZd_CLf9-s0cEPOw25pE",
+      });
+    }
+  }, []);
+
   if (!location.state?.fromSubmit) {
     return <Navigate to="/" replace />;
   }
