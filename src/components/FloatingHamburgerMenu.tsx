@@ -41,7 +41,7 @@ const FloatingHamburgerMenu = () => {
           aria-hidden="true"
         >
           <nav
-            className="absolute top-16 right-4 w-64 bg-background rounded-2xl border border-border shadow-xl p-2 space-y-1"
+            className="absolute top-14 right-3 w-64 bg-background rounded-2xl border border-border shadow-xl p-2 space-y-1"
             onClick={(e) => e.stopPropagation()}
             role="menu"
           >
