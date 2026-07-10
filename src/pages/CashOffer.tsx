@@ -113,6 +113,10 @@ const CashOffer = () => {
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
     setGclid(params.get("gclid") || "");
+    // Scroll straight to the form so users land on it, not mid-page.
+    requestAnimationFrame(() => {
+      document.getElementById("offer-form")?.scrollIntoView({ behavior: "auto", block: "start" });
+    });
   }, []);
 
   const activeTestimonial = carouselTestimonials[testimonialIdx];
