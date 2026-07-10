@@ -6,7 +6,7 @@ import houseImg from "@/assets/sold-house.png.asset.json";
 
 const points = [
   "Local cash buyers you can actually reach",
-  "Fair, transparent offers with no lowballs",
+  "Fair, transparent offers",
   "We handle paperwork, title, and closing costs",
 ];
 
