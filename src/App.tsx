@@ -13,6 +13,7 @@ import Unsubscribe from "./pages/Unsubscribe.tsx";
 import TermsAndConditions from "./pages/TermsAndConditions.tsx";
 import NotFound from "./pages/NotFound.tsx";
 import Sorry from "./pages/Sorry.tsx";
+import FloatingHamburgerMenu from "./components/FloatingHamburgerMenu.tsx";
 
 const queryClient = new QueryClient();
 
