@@ -45,10 +45,10 @@ const ThankYou = () => {
   const location = useLocation();
 
   useEffect(() => {
-    // Google Ads conversion event for Submit lead form
+    // Event snippet for Submit lead form (2) conversion page
     if (typeof gtag === "function") {
       gtag("event", "conversion", {
-        send_to: "AW-18309634163/zZd_CLf9-s0cEPOw25pE",
+        send_to: "AW-18309634163/9oZJCKaO_M0cEPOw25pE",
       });
     }
   }, []);
