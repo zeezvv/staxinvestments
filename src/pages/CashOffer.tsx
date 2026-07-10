@@ -66,9 +66,17 @@ const schema = z.object({
   email: z.string().trim().email("Please enter a valid email").max(255).refine(hasValidDomain, "Please enter a valid email domain"),
   phone: z.string().trim().min(14, "Please enter a complete phone number").max(20),
   propertyAddress: z.string().trim().min(1, "Property address is required").max(500)
-    .refine((v) => /\d/.test(v), "Address must include a street number")
-    .refine((v) => /^\d+\s+[A-Za-z0-9.'\-]+(\s+[A-Za-z0-9.'\-]+)+/.test(v.trim()), "Enter a full street address (e.g. 123 Main St, City, ST)")
-    .refine((v) => /,\s*[A-Za-z][A-Za-z\s.'-]+/.test(v) || /\b\d{5}(-\d{4})?\b/.test(v), "Include a city, state, or ZIP code")
+    .refine((v) => /^\d+\s+[A-Za-z0-9.'\-]+/.test(v.trim()), "Please enter a street address (e.g. 123 Main St)")
+    .refine(
+      (v) => {
+        // Require a city OR state OR ZIP in addition to the street.
+        // Strip the leading "<number> <street-word>" and see if anything meaningful remains.
+        const rest = v.trim().replace(/^\d+\s+[A-Za-z0-9.'\-]+/, "").trim();
+        if (!rest) return false;
+        return /\b\d{5}(-\d{4})?\b/.test(rest) || /[A-Za-z]{2,}/.test(rest);
+      },
+      "Please add a city, state, or ZIP code"
+    )
     .refine((v) => !/^(test|asdf|none|n\/a|na|xxx|abc)\b/i.test(v.trim()), "Please enter a real property address"),
   isListed: z.enum(["yes", "no"], { errorMap: () => ({ message: "Please select an option" }) }),
   propertyType: z.enum(["Single Family", "Duplex", "Mobile Home", "Apartment", "Other"], { errorMap: () => ({ message: "Please select a property type" }) }),
