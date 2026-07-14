@@ -7,6 +7,7 @@ import { Analytics } from "@vercel/analytics/react";
 import Index from "./pages/Index.tsx";
 import MiddletownOhio from "./pages/MiddletownOhio.tsx";
 import CashOffer from "./pages/CashOffer.tsx";
+import CashOfferIndianapolis from "./pages/CashOfferIndianapolis.tsx";
 import ThankYou from "./pages/ThankYou.tsx";
 import PrivacyPolicy from "./pages/PrivacyPolicy.tsx";
 import Unsubscribe from "./pages/Unsubscribe.tsx";
