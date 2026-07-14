@@ -275,7 +275,7 @@ const CashOfferIndianapolis = () => {
   const progress = (step / totalSteps) * 100;
 
   return (
-    <div className="min-h-screen bg-background flex flex-col">
+    <div className="min-h-screen bg-background flex flex-col pb-24 md:pb-28">
       {/* HERO with Indianapolis skyline */}
       <section className="relative w-full">
         <div className="relative h-[520px] md:h-[620px] lg:h-[680px] w-full overflow-hidden">
@@ -643,24 +643,20 @@ const CashOfferIndianapolis = () => {
         </div>
       </section>
 
-      {/* SECOND CTA BAND */}
-      <section className="py-16 md:py-20 bg-background border-y border-border">
-        <div className="max-w-3xl mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground">
-            Ready To Get Your Cash Offer?
-          </h2>
-          <p className="mt-3 text-foreground/80 text-base md:text-lg">
-            No repairs, no fees, no obligation.
-          </p>
+      {/* STICKY CTA FOOTER */}
+      <div className="fixed bottom-0 left-0 right-0 z-50 bg-background/95 backdrop-blur border-t border-border shadow-[0_-4px_20px_rgba(0,0,0,0.08)]">
+        <div className="max-w-6xl mx-auto px-4 py-3 md:py-4">
           <Button
             size="lg"
-            onClick={scrollToForm}
-            className="mt-7 px-10 py-6 text-base font-semibold bg-primary hover:bg-primary/90 text-primary-foreground"
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            className="w-full md:w-auto md:min-w-[280px] px-6 py-5 text-base font-bold bg-primary hover:bg-primary/90 text-primary-foreground"
           >
-            Get My Cash Offer <ArrowRight className="ml-2 w-4 h-4" />
+            Get Cash Offer <ArrowRight className="ml-2 w-4 h-4" />
           </Button>
         </div>
-      </section>
+      </div>
+
+
 
       {/* FAQ */}
       <section className="py-16 md:py-20">
