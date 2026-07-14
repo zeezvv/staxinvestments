@@ -381,18 +381,18 @@ const CashOfferIndianapolis = () => {
 
 
       {/* SECOND CTA BAND */}
-      <section className="py-16 md:py-20 bg-[hsl(var(--footer-background))]">
+      <section className="py-16 md:py-20 bg-background border-y border-border">
         <div className="max-w-3xl mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-primary-foreground">
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground">
             Ready To Get Your Cash Offer?
           </h2>
-          <p className="mt-3 text-primary-foreground/80 text-base md:text-lg">
+          <p className="mt-3 text-foreground/80 text-base md:text-lg">
             No repairs, no fees, no obligation.
           </p>
           <Button
             size="lg"
             onClick={scrollToForm}
-            className="mt-7 px-10 py-6 text-base font-semibold bg-accent hover:bg-accent/90 text-accent-foreground"
+            className="mt-7 px-10 py-6 text-base font-semibold bg-primary hover:bg-primary/90 text-primary-foreground"
           >
             Get My Cash Offer <ArrowRight className="ml-2 w-4 h-4" />
           </Button>
