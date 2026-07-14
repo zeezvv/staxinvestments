@@ -275,7 +275,7 @@ const CashOfferIndianapolis = () => {
   const progress = (step / totalSteps) * 100;
 
   return (
-    <div className="min-h-screen bg-background flex flex-col">
+    <div className="min-h-screen bg-background flex flex-col pb-24 md:pb-28">
       {/* HERO with Indianapolis skyline */}
       <section className="relative w-full">
         <div className="relative h-[520px] md:h-[620px] lg:h-[680px] w-full overflow-hidden">
