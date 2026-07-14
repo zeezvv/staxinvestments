@@ -644,17 +644,18 @@ const CashOfferIndianapolis = () => {
       </section>
 
       {/* STICKY CTA FOOTER */}
-      <div className="fixed bottom-0 left-0 right-0 z-50 bg-background/95 backdrop-blur border-t border-border shadow-[0_-4px_20px_rgba(0,0,0,0.08)] md:hidden">
-        <div className="max-w-6xl mx-auto px-4 py-3">
+      <div className="fixed bottom-0 left-0 right-0 z-50 bg-background/95 backdrop-blur border-t border-border shadow-[0_-4px_20px_rgba(0,0,0,0.08)]">
+        <div className="max-w-6xl mx-auto px-4 py-3 md:py-4">
           <Button
             size="lg"
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            className="w-full px-6 py-5 text-base font-bold bg-primary hover:bg-primary/90 text-primary-foreground"
+            className="w-full md:w-auto md:min-w-[280px] px-6 py-5 text-base font-bold bg-primary hover:bg-primary/90 text-primary-foreground"
           >
             Get Cash Offer <ArrowRight className="ml-2 w-4 h-4" />
           </Button>
         </div>
       </div>
+
 
 
       {/* FAQ */}
