@@ -3,7 +3,12 @@ import { Phone, Globe, FileText, Shield, Home } from "lucide-react";
 
 const footerLogo = "/nobg-2.png";
 
-const Footer = () => {
+interface FooterProps {
+  phoneNumber?: string;
+  phoneHref?: string;
+}
+
+const Footer = ({ phoneNumber = "(234) 437-1980", phoneHref = "tel:+12344371980" }: FooterProps) => {
   const currentYear = new Date().getFullYear();
 
   return (
