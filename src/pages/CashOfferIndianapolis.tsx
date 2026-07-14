@@ -158,14 +158,9 @@ const CashOfferIndianapolis = () => {
                 Get a fair cash offer in as little as 7 days. No repairs, no commissions, no obligation. We buy houses in Indianapolis and surrounding areas as-is.
               </p>
               <div className="mt-7 flex flex-col sm:flex-row gap-3">
-                <Button size="lg" onClick={scrollToForm} className="text-base px-8 py-6 font-semibold">
-                  Get My Cash Offer <ArrowRight className="ml-2 w-4 h-4" />
-                </Button>
-                <a href={PHONE_HREF} className="sm:inline-flex">
-                  <Button size="lg" variant="outline" className="text-base px-8 py-6 font-semibold w-full">
-                    <Phone className="mr-2 w-4 h-4" /> {PHONE_NUMBER}
-                  </Button>
-                </a>
+                <p className="text-sm text-muted-foreground">
+                  Trusted Indianapolis home buyers · 7-day close · No fees
+                </p>
               </div>
               <p className="text-sm text-muted-foreground mt-4">
                 Trusted Indianapolis home buyers · 7-day close · No fees
@@ -274,6 +269,29 @@ const CashOfferIndianapolis = () => {
               <span className="text-sm font-semibold text-foreground">{label}</span>
             </div>
           ))}
+        </div>
+      </section>
+
+      {/* AREAS WE SERVE */}
+      <section className="py-16 md:py-20 bg-secondary/40">
+        <div className="max-w-4xl mx-auto px-4 text-center">
+          <span className="text-sm font-semibold text-primary uppercase tracking-wider">Areas We Serve</span>
+          <h2 className="text-3xl md:text-4xl font-bold mt-3 text-foreground">
+            We Buy Houses Across The Indianapolis Metro
+          </h2>
+          <div className="mt-8 flex flex-wrap justify-center gap-2 md:gap-3">
+            {areas.map((a) => (
+              <span
+                key={a}
+                className="px-4 py-2 rounded-full text-sm font-semibold bg-card border border-primary/30 text-foreground hover:border-primary hover:bg-primary/5 transition-colors"
+              >
+                {a}
+              </span>
+            ))}
+          </div>
+          <p className="mt-6 text-muted-foreground">
+            Don't see your area? We likely still buy there. Fill out the form.
+          </p>
         </div>
       </section>
 
