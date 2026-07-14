@@ -34,6 +34,7 @@ import {
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import { track } from "@vercel/analytics";
+import { cn } from "@/lib/utils";
 import Footer from "@/components/Footer";
 import skylineImage from "@/assets/indianapolis-skyline.jpg";
 
@@ -143,6 +144,7 @@ const CashOfferIndianapolis = () => {
   const [form, setForm] = useState<Partial<FormData>>({});
   const [errors, setErrors] = useState<Partial<Record<keyof FormData, string>>>({});
   const [tracking, setTracking] = useState<Record<string, string>>({});
+  const [showFooter, setShowFooter] = useState(false);
 
   useEffect(() => {
     document.title = "Sell Your Indianapolis House Fast for Cash | Stax Home Buyers";
@@ -178,6 +180,20 @@ const CashOfferIndianapolis = () => {
     if (!next.referrer) next.referrer = document.referrer || "";
     try { sessionStorage.setItem("stax_tracking", JSON.stringify(next)); } catch {}
     setTracking(next);
+  }, []);
+
+  // Show sticky footer only after the user scrolls past the lead form.
+  useEffect(() => {
+    const handleScroll = () => {
+      const formEl = document.getElementById("lead-form");
+      if (!formEl) return;
+      const formBottom = formEl.getBoundingClientRect().bottom + window.scrollY;
+      setShowFooter(window.scrollY + window.innerHeight > formBottom + 48);
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const update = <K extends keyof FormData>(field: K, value: FormData[K]) => {
@@ -561,7 +577,10 @@ const CashOfferIndianapolis = () => {
       </section>
 
       {/* STICKY CTA FOOTER */}
-      <div className="fixed bottom-0 left-0 right-0 z-50 bg-background/95 backdrop-blur border-t border-border shadow-[0_-4px_20px_rgba(0,0,0,0.08)]">
+      <div className={cn(
+        "fixed bottom-0 left-0 right-0 z-50 bg-background/95 backdrop-blur border-t border-border shadow-[0_-4px_20px_rgba(0,0,0,0.08)] transition-transform duration-500 ease-out",
+        showFooter ? "translate-y-0" : "translate-y-full"
+      )}>
         <div className="max-w-6xl mx-auto px-4 py-3 md:py-4">
           <Button
             size="lg"
