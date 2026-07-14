@@ -73,7 +73,7 @@ const trustBadges = [
   { icon: ShieldCheck, label: "BBB Accredited" },
   { icon: Star, label: "5-Star Reviewed" },
   { icon: MapPin, label: "Local Indiana Buyers" },
-  { icon: Clock, label: "Close in 7 Days" },
+  { icon: Clock, label: "Fast Closing" },
 ];
 
 const faqs = [
