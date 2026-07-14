@@ -692,26 +692,7 @@ const CashOfferIndianapolis = () => {
         </div>
       </section>
 
-      <div className="pb-24 md:pb-0">
-        <Footer />
-      </div>
-
-      {/* STICKY MOBILE CTA BAR */}
-      <div className="md:hidden fixed bottom-0 left-0 right-0 z-40 grid grid-cols-2 gap-2 p-3 border-t border-border bg-background/95 backdrop-blur shadow-[0_-6px_20px_-8px_rgba(0,0,0,0.15)]">
-        <a
-          href={PHONE_HREF /* REPLACE WITH INDIANAPOLIS CALL TRACKING NUMBER */}
-          className="flex items-center justify-center gap-2 py-3 rounded-xl font-bold bg-primary text-primary-foreground text-base"
-        >
-          <Phone className="w-4 h-4" /> Call Now
-        </a>
-        <button
-          type="button"
-          onClick={scrollToForm}
-          className="py-3 rounded-xl font-bold bg-accent text-accent-foreground text-base"
-        >
-          Get Offer
-        </button>
-      </div>
+      <Footer />
     </div>
   );
 };
