@@ -57,6 +57,24 @@ const CashOfferIndianapolis = () => {
   const [submitted, setSubmitted] = useState(false);
   const [form, setForm] = useState({ address: "", phone: "", email: "" });
 
+  useEffect(() => {
+    document.title = "Sell Your Indianapolis House Fast for Cash | Stax Home Buyers";
+    const setMeta = (name: string, content: string, attr: "name" | "property" = "name") => {
+      let el = document.querySelector(`meta[${attr}="${name}"]`) as HTMLMetaElement | null;
+      if (!el) {
+        el = document.createElement("meta");
+        el.setAttribute(attr, name);
+        document.head.appendChild(el);
+      }
+      el.setAttribute("content", content);
+    };
+    setMeta("description", "Get a fair cash offer on your Indianapolis house in as little as 7 days. No repairs, no commissions, no obligation. We buy houses as-is.");
+    setMeta("og:title", "Sell Your Indianapolis House Fast for Cash", "property");
+    setMeta("og:description", "Fair cash offer in as little as 7 days. No repairs, no commissions, no obligation.", "property");
+    setMeta("og:type", "website", "property");
+    setMeta("twitter:card", "summary_large_image");
+  }, []);
+
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     setSubmitting(true);
