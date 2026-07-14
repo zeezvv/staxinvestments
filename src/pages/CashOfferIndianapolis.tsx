@@ -182,6 +182,20 @@ const CashOfferIndianapolis = () => {
     setTracking(next);
   }, []);
 
+  // Show sticky footer only after the user scrolls past the lead form.
+  useEffect(() => {
+    const handleScroll = () => {
+      const formEl = document.getElementById("lead-form");
+      if (!formEl) return;
+      const formBottom = formEl.getBoundingClientRect().bottom + window.scrollY;
+      setShowFooter(window.scrollY + window.innerHeight > formBottom + 48);
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   const update = <K extends keyof FormData>(field: K, value: FormData[K]) => {
     setForm((p) => ({ ...p, [field]: value }));
     if (errors[field]) setErrors((p) => ({ ...p, [field]: undefined }));
