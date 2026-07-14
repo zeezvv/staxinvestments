@@ -567,7 +567,7 @@ const CashOfferIndianapolis = () => {
             {[
               { n: "01", icon: Home, t: "Tell Us About Your Property", d: "Fill out the short form above. Takes 60 seconds." },
               { n: "02", icon: DollarSign, t: "Get A Fair Cash Offer", d: "We review your property and send you a no obligation cash offer." },
-              { n: "03", icon: Check, t: "Close In 7 Days", d: "Pick your closing date. We handle the details. You get paid." },
+              { n: "03", icon: Check, t: "Close On Your Timeline", d: "Pick your closing date. We handle the details. You get paid." },
             ].map((s, i) => (
               <motion.div
                 key={s.n}
