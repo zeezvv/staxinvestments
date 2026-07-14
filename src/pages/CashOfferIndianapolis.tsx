@@ -624,7 +624,7 @@ const CashOfferIndianapolis = () => {
         </div>
       </section>
 
-      <Footer />
+      <Footer phoneNumber="(463) 363-0301" phoneHref="tel:+14633630301" />
     </div>
   );
 };
