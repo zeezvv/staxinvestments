@@ -379,6 +379,16 @@ const CashOfferIndianapolis = () => {
 
                 <form onSubmit={handleSubmit} className="space-y-5">
                   <div>
+                    <label className="text-sm font-medium text-foreground mb-1.5 block">Name *</label>
+                    <Input
+                      placeholder="John Smith"
+                      value={form.name || ""}
+                      onChange={(e) => update("name", e.target.value)}
+                    />
+                    {errors.name && <p className="text-destructive text-xs mt-1">{errors.name}</p>}
+                  </div>
+
+                  <div>
                     <label className="text-sm font-medium text-foreground mb-1.5 block">Property Address *</label>
                     <Input
                       placeholder="123 Main St, Indianapolis, IN"
@@ -400,7 +410,7 @@ const CashOfferIndianapolis = () => {
                   </div>
 
                   <div>
-                    <label className="text-sm font-medium text-foreground mb-1.5 block">Email Address *</label>
+                    <label className="text-sm font-medium text-foreground mb-1.5 block">Email Address</label>
                     <Input
                       type="email"
                       placeholder="john@email.com"
