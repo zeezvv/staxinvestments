@@ -14,6 +14,7 @@ import Unsubscribe from "./pages/Unsubscribe.tsx";
 import TermsAndConditions from "./pages/TermsAndConditions.tsx";
 import NotFound from "./pages/NotFound.tsx";
 import Sorry from "./pages/Sorry.tsx";
+import NotAFit from "./pages/NotAFit.tsx";
 import FloatingHamburgerMenu from "./components/FloatingHamburgerMenu.tsx";
 
 const queryClient = new QueryClient();
@@ -36,6 +37,7 @@ const AppRoutes = () => {
         <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
         <Route path="/unsubscribe" element={<Unsubscribe />} />
         <Route path="/sorry" element={<Sorry />} />
+        <Route path="/not-a-fit" element={<NotAFit />} />
         {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
         <Route path="*" element={<NotFound />} />
       </Routes>
