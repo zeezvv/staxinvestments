@@ -5,8 +5,7 @@
   3. Business email (if used) -> see BUSINESS_EMAIL constant
 */
 
-import { useState, FormEvent } from "react";
-import { Helmet } from "react-helmet-async";
+import { useState, useEffect, FormEvent } from "react";
 import { Phone, Check, ChevronDown, Home, AlertTriangle, Users, Hammer, Building2, HeartCrack } from "lucide-react";
 
 // === PLACEHOLDERS ===
