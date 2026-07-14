@@ -158,7 +158,7 @@ const CashOfferIndianapolis = () => {
                 Get a fair cash offer in as little as 7 days. No repairs, no commissions, no obligation. We buy houses in Indianapolis and surrounding areas as-is.
               </p>
               <p className="text-sm text-muted-foreground mt-7">
-                Trusted Indianapolis home buyers · 7-day close · No fees
+                Trusted Indianapolis home buyers · Close On Your Timeline&nbsp;·&nbsp;No Fees
               </p>
             </motion.div>
           </div>
