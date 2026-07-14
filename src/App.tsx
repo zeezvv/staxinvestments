@@ -20,7 +20,7 @@ const queryClient = new QueryClient();
 
 const AppRoutes = () => {
   const location = useLocation();
-  const hideHamburger = location.pathname === "/cashoffer-indianapolis";
+  const hideHamburger = location.pathname === "/cash-offer-indianapolis";
 
   return (
     <>
@@ -30,7 +30,7 @@ const AppRoutes = () => {
         <Route path="/home" element={<Index />} />
         <Route path="/we-buy-houses-middletown-ohio" element={<MiddletownOhio />} />
         <Route path="/cash-offer" element={<CashOffer />} />
-        <Route path="/cashoffer-indianapolis" element={<CashOfferIndianapolis />} />
+        <Route path="/cash-offer-indianapolis" element={<CashOfferIndianapolis />} />
         <Route path="/thank-you" element={<ThankYou />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
