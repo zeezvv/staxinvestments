@@ -100,7 +100,11 @@ const hasValidDomain = (email: string) => {
 };
 
 const schema = z.object({
-  email: z.string().trim().email("Please enter a valid email").max(255).refine(hasValidDomain, "Please enter a valid email domain"),
+  name: z.string().trim().min(1, "Name is required").max(100),
+  email: z.union([
+    z.literal(""),
+    z.string().trim().email("Please enter a valid email").max(255).refine(hasValidDomain, "Please enter a valid email domain"),
+  ]),
   phone: z.string().trim().min(14, "Please enter a complete phone number").max(20),
   propertyAddress: z.string().trim().min(1, "Property address is required").max(500)
     .refine((v) => /^\d+\s+[A-Za-z0-9.'\-]+/.test(v.trim()), "Please enter a street address (e.g. 123 Main St)")
