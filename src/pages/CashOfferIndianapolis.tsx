@@ -100,7 +100,11 @@ const hasValidDomain = (email: string) => {
 };
 
 const schema = z.object({
-  email: z.string().trim().email("Please enter a valid email").max(255).refine(hasValidDomain, "Please enter a valid email domain"),
+  name: z.string().trim().min(1, "Name is required").max(100),
+  email: z.union([
+    z.literal(""),
+    z.string().trim().email("Please enter a valid email").max(255).refine(hasValidDomain, "Please enter a valid email domain"),
+  ]),
   phone: z.string().trim().min(14, "Please enter a complete phone number").max(20),
   propertyAddress: z.string().trim().min(1, "Property address is required").max(500)
     .refine((v) => /^\d+\s+[A-Za-z0-9.'\-]+/.test(v.trim()), "Please enter a street address (e.g. 123 Main St)")
@@ -206,8 +210,8 @@ const CashOfferIndianapolis = () => {
     try {
       const d = result.data;
       const { error } = await supabase.from("leads").insert({
-        full_name: "",
-        email: d.email,
+        full_name: d.name,
+        email: d.email || null,
         phone: d.phone,
         property_address: d.propertyAddress,
         is_listed: false,
@@ -218,15 +222,15 @@ const CashOfferIndianapolis = () => {
 
       await supabase.functions.invoke("send-lead-email", {
         body: {
-          fullName: "",
-          email: d.email,
+          fullName: d.name,
+          email: d.email || null,
           phone: d.phone,
           propertyAddress: d.propertyAddress,
           message: `Property type: Single Family\nCurrently listed: no\nSource: indianapolis-landing`,
         },
       });
 
-      track("lead_submitted", { email: d.email });
+      track("lead_submitted", { email: d.email || "no-email" });
       if (typeof (window as any).gtag === "function") {
         (window as any).gtag("event", "generate_lead", {
           event_category: "form",
@@ -238,10 +242,11 @@ const CashOfferIndianapolis = () => {
         // REPLACE WITH GOHIGHLEVEL WEBHOOK URL
         const webhookBase = "https://services.leadconnectorhq.com/hooks/XOh4Z6pVhNdzqzXMFAfd/webhook-trigger/48fce442-7dd2-4f22-a5ae-ba6f316f971e";
         const qs = new URLSearchParams({
+          name: d.name,
           propertyAddress: d.propertyAddress,
           isListed: "no",
           propertyType: "Single Family",
-          email: d.email,
+          email: d.email || "",
           phone: d.phone,
           source: "indianapolis-landing",
           gclid: tracking.gclid || "",
@@ -374,6 +379,16 @@ const CashOfferIndianapolis = () => {
 
                 <form onSubmit={handleSubmit} className="space-y-5">
                   <div>
+                    <label className="text-sm font-medium text-foreground mb-1.5 block">Name *</label>
+                    <Input
+                      placeholder="John Smith"
+                      value={form.name || ""}
+                      onChange={(e) => update("name", e.target.value)}
+                    />
+                    {errors.name && <p className="text-destructive text-xs mt-1">{errors.name}</p>}
+                  </div>
+
+                  <div>
                     <label className="text-sm font-medium text-foreground mb-1.5 block">Property Address *</label>
                     <Input
                       placeholder="123 Main St, Indianapolis, IN"
@@ -395,7 +410,7 @@ const CashOfferIndianapolis = () => {
                   </div>
 
                   <div>
-                    <label className="text-sm font-medium text-foreground mb-1.5 block">Email Address *</label>
+                    <label className="text-sm font-medium text-foreground mb-1.5 block">Email Address</label>
                     <Input
                       type="email"
                       placeholder="john@email.com"
