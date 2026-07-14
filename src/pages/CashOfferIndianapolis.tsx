@@ -277,6 +277,20 @@ const CashOfferIndianapolis = () => {
         </div>
       </section>
 
+      {/* TRUST BAR */}
+      <section className="py-8 border-y border-border bg-secondary/40">
+        <div className="max-w-6xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-4">
+          {trustBadges.map(({ icon: Icon, label }) => (
+            <div key={label} className="flex items-center gap-3 justify-center">
+              <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center">
+                <Icon className="w-4 h-4 text-primary" />
+              </div>
+              <span className="text-sm font-semibold text-foreground">{label}</span>
+            </div>
+          ))}
+        </div>
+      </section>
+
       {/* HOW IT WORKS */}
       <section className="py-16 md:py-20">
         <div className="max-w-6xl mx-auto px-4">
