@@ -144,7 +144,7 @@ const CashOfferIndianapolis = () => {
   const [smsConsent, setSmsConsent] = useState(false);
   const [form, setForm] = useState<Partial<FormData>>({});
   const [errors, setErrors] = useState<Partial<Record<keyof FormData, string>>>({});
-  const [gclid, setGclid] = useState("");
+  const [tracking, setTracking] = useState<Record<string, string>>({});
 
   useEffect(() => {
     document.title = "Sell Your Indianapolis House Fast for Cash | Stax Home Buyers";
@@ -166,8 +166,22 @@ const CashOfferIndianapolis = () => {
     setMeta("og:type", "website", "property");
     setMeta("twitter:card", "summary_large_image");
 
+    // Capture Google Ads / UTM tracking params, persist in sessionStorage so
+    // they survive navigation/refresh within the session.
     const params = new URLSearchParams(window.location.search);
-    setGclid(params.get("gclid") || "");
+    const keys = ["gclid", "gbraid", "wbraid", "utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content"];
+    const stored: Record<string, string> = (() => {
+      try { return JSON.parse(sessionStorage.getItem("stax_tracking") || "{}"); } catch { return {}; }
+    })();
+    const next: Record<string, string> = { ...stored };
+    keys.forEach((k) => {
+      const v = params.get(k);
+      if (v) next[k] = v;
+    });
+    if (!next.landing_page) next.landing_page = window.location.href;
+    if (!next.referrer) next.referrer = document.referrer || "";
+    try { sessionStorage.setItem("stax_tracking", JSON.stringify(next)); } catch {}
+    setTracking(next);
   }, []);
 
   const update = <K extends keyof FormData>(field: K, value: FormData[K]) => {
@@ -258,8 +272,28 @@ const CashOfferIndianapolis = () => {
 
       try {
         const webhookBase = "https://services.leadconnectorhq.com/hooks/XOh4Z6pVhNdzqzXMFAfd/webhook-trigger/48fce442-7dd2-4f22-a5ae-ba6f316f971e";
-        const webhookUrl = `${webhookBase}?propertyAddress=${encodeURIComponent(d.propertyAddress)}&isListed=${encodeURIComponent(d.isListed)}&propertyType=${encodeURIComponent(d.propertyType)}&timeline=${encodeURIComponent(d.timeline)}&reason=${encodeURIComponent(d.reason)}&fullName=${encodeURIComponent(d.fullName)}&email=${encodeURIComponent(d.email)}&phone=${encodeURIComponent(d.phone)}&gclid=${encodeURIComponent(gclid)}&source=${encodeURIComponent("indianapolis-landing")}`;
-        await fetch(webhookUrl, { method: "GET" });
+        const qs = new URLSearchParams({
+          propertyAddress: d.propertyAddress,
+          isListed: d.isListed,
+          propertyType: d.propertyType,
+          timeline: d.timeline,
+          reason: d.reason,
+          fullName: d.fullName,
+          email: d.email,
+          phone: d.phone,
+          source: "indianapolis-landing",
+          gclid: tracking.gclid || "",
+          gbraid: tracking.gbraid || "",
+          wbraid: tracking.wbraid || "",
+          utm_source: tracking.utm_source || "",
+          utm_medium: tracking.utm_medium || "",
+          utm_campaign: tracking.utm_campaign || "",
+          utm_term: tracking.utm_term || "",
+          utm_content: tracking.utm_content || "",
+          landing_page: tracking.landing_page || "",
+          referrer: tracking.referrer || "",
+        });
+        await fetch(`${webhookBase}?${qs.toString()}`, { method: "GET" });
       } catch (webhookErr) {
         // Webhook failure should not block the user-facing submission flow.
       }
