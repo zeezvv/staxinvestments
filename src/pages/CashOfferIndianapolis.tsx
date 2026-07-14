@@ -34,6 +34,7 @@ import {
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import { track } from "@vercel/analytics";
+import { cn } from "@/lib/utils";
 import Footer from "@/components/Footer";
 import skylineImage from "@/assets/indianapolis-skyline.jpg";
 
@@ -143,6 +144,7 @@ const CashOfferIndianapolis = () => {
   const [form, setForm] = useState<Partial<FormData>>({});
   const [errors, setErrors] = useState<Partial<Record<keyof FormData, string>>>({});
   const [tracking, setTracking] = useState<Record<string, string>>({});
+  const [showFooter, setShowFooter] = useState(false);
 
   useEffect(() => {
     document.title = "Sell Your Indianapolis House Fast for Cash | Stax Home Buyers";
