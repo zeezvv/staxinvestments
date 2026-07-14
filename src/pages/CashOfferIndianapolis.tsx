@@ -92,16 +92,6 @@ const CashOfferIndianapolis = () => {
 
   return (
     <div style={{ color: CHARCOAL, fontFamily: "Inter, system-ui, -apple-system, sans-serif" }} className="min-h-screen bg-white scroll-smooth">
-      <Helmet>
-        <title>Sell Your Indianapolis House Fast for Cash | Stax Home Buyers</title>
-        <meta name="description" content="Get a fair cash offer on your Indianapolis house in as little as 7 days. No repairs, no commissions, no obligation. We buy houses as-is." />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="canonical" href="https://staxhomebuyers.com/cash-offer/indianapolis" />
-        <meta property="og:title" content="Sell Your Indianapolis House Fast for Cash" />
-        <meta property="og:description" content="Fair cash offer in as little as 7 days. No repairs, no commissions, no obligation." />
-        <meta property="og:type" content="website" />
-        <meta name="twitter:card" content="summary_large_image" />
-      </Helmet>
 
       {/* HERO */}
       <section className="relative pt-10 pb-8 md:pt-16 md:pb-14" style={{ backgroundColor: "#F8FAFC" }}>
