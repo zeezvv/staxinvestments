@@ -20,7 +20,7 @@ const queryClient = new QueryClient();
 
 const AppRoutes = () => {
   const location = useLocation();
-  const hideHamburger = location.pathname === "/cashoffer-indianapolis";
+  const hideHamburger = location.pathname === "/cash-offer-indianapolis";
 
   return (
     <>
