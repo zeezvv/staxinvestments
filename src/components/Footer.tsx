@@ -3,7 +3,12 @@ import { Phone, Globe, FileText, Shield, Home } from "lucide-react";
 
 const footerLogo = "/nobg-2.png";
 
-const Footer = () => {
+interface FooterProps {
+  phoneNumber?: string;
+  phoneHref?: string;
+}
+
+const Footer = ({ phoneNumber = "(234) 437-1980", phoneHref = "tel:+12344371980" }: FooterProps) => {
   const currentYear = new Date().getFullYear();
 
   return (
@@ -74,11 +79,11 @@ const Footer = () => {
             </h3>
             <div className="flex flex-col items-center gap-3 text-sm">
               <a
-                href="tel:+12344371980"
+                href={phoneHref}
                 className="group inline-flex items-center gap-2 text-primary-foreground/80 hover:text-primary-foreground transition-colors"
               >
                 <Phone className="w-4 h-4 text-primary-foreground/50 group-hover:text-primary-foreground/80 transition-colors" />
-                <span>(234) 437-1980</span>
+                <span>{phoneNumber}</span>
               </a>
               <div className="inline-flex items-center gap-2 text-primary-foreground/80">
                 <Globe className="w-4 h-4 text-primary-foreground/50" />
