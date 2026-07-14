@@ -7,6 +7,7 @@ import { Analytics } from "@vercel/analytics/react";
 import Index from "./pages/Index.tsx";
 import MiddletownOhio from "./pages/MiddletownOhio.tsx";
 import CashOffer from "./pages/CashOffer.tsx";
+import CashOfferIndianapolis from "./pages/CashOfferIndianapolis.tsx";
 import ThankYou from "./pages/ThankYou.tsx";
 import PrivacyPolicy from "./pages/PrivacyPolicy.tsx";
 import Unsubscribe from "./pages/Unsubscribe.tsx";
@@ -30,6 +31,7 @@ const App = () => (
           <Route path="/home" element={<Index />} />
           <Route path="/we-buy-houses-middletown-ohio" element={<MiddletownOhio />} />
           <Route path="/cash-offer" element={<CashOffer />} />
+          <Route path="/cash-offer/indianapolis" element={<CashOfferIndianapolis />} />
           <Route path="/thank-you" element={<ThankYou />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
