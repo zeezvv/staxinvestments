@@ -1,5 +1,5 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -18,6 +18,31 @@ import FloatingHamburgerMenu from "./components/FloatingHamburgerMenu.tsx";
 
 const queryClient = new QueryClient();
 
+const AppRoutes = () => {
+  const location = useLocation();
+  const hideHamburger = location.pathname === "/cashoffer-indianapolis";
+
+  return (
+    <>
+      {!hideHamburger && <FloatingHamburgerMenu />}
+      <Routes>
+        <Route path="/" element={<Index />} />
+        <Route path="/home" element={<Index />} />
+        <Route path="/we-buy-houses-middletown-ohio" element={<MiddletownOhio />} />
+        <Route path="/cash-offer" element={<CashOffer />} />
+        <Route path="/cashoffer-indianapolis" element={<CashOfferIndianapolis />} />
+        <Route path="/thank-you" element={<ThankYou />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+        <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
+        <Route path="/unsubscribe" element={<Unsubscribe />} />
+        <Route path="/sorry" element={<Sorry />} />
+        {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </>
+  );
+};
+
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
@@ -25,21 +50,7 @@ const App = () => (
       <Sonner />
       <Analytics />
       <BrowserRouter>
-        <FloatingHamburgerMenu />
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/home" element={<Index />} />
-          <Route path="/we-buy-houses-middletown-ohio" element={<MiddletownOhio />} />
-          <Route path="/cash-offer" element={<CashOffer />} />
-          <Route path="/cash-offer/indianapolis" element={<CashOfferIndianapolis />} />
-          <Route path="/thank-you" element={<ThankYou />} />
-          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-          <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
-          <Route path="/unsubscribe" element={<Unsubscribe />} />
-          <Route path="/sorry" element={<Sorry />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+        <AppRoutes />
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>
