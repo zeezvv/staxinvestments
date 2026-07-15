@@ -257,28 +257,9 @@ const CashOfferIndianapolis = () => {
       }
 
       try {
-        // REPLACE WITH GOHIGHLEVEL WEBHOOK URL
         const webhookBase = "https://services.leadconnectorhq.com/hooks/XOh4Z6pVhNdzqzXMFAfd/webhook-trigger/48fce442-7dd2-4f22-a5ae-ba6f316f971e";
-        const qs = new URLSearchParams({
-          name: d.name,
-          propertyAddress: d.propertyAddress,
-          isListed: "no",
-          propertyType: "Single Family",
-          email: d.email || "",
-          phone: d.phone,
-          source: "indianapolis-landing",
-          gclid: tracking.gclid || "",
-          gbraid: tracking.gbraid || "",
-          wbraid: tracking.wbraid || "",
-          utm_source: tracking.utm_source || "",
-          utm_medium: tracking.utm_medium || "",
-          utm_campaign: tracking.utm_campaign || "",
-          utm_term: tracking.utm_term || "",
-          utm_content: tracking.utm_content || "",
-          landing_page: tracking.landing_page || "",
-          referrer: tracking.referrer || "",
-        });
-        await fetch(`${webhookBase}?${qs.toString()}`, { method: "GET" });
+        const webhookUrl = `${webhookBase}?propertyAddress=${encodeURIComponent(d.propertyAddress)}&isListed=no&propertyType=Single Family&email=${encodeURIComponent(d.email || "")}&phone=${encodeURIComponent(d.phone)}&gclid=${encodeURIComponent(gclid)}&name=${encodeURIComponent(d.name)}&source=indianapolis-landing`;
+        await fetch(webhookUrl, { method: "GET" });
       } catch (webhookErr) {
         // Webhook failure should not block the user-facing submission flow.
       }
