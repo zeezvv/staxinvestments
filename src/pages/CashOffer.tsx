@@ -184,7 +184,7 @@ const CashOffer = () => {
       const d = result.data;
       const { error } = await supabase.from("leads").insert({
         full_name: d.fullName,
-        email: d.email,
+        email: d.email || null,
         phone: d.phone,
         property_address: d.propertyAddress,
         is_listed: d.isListed === "yes",
@@ -199,7 +199,7 @@ const CashOffer = () => {
       await supabase.functions.invoke("send-lead-email", {
         body: {
           fullName: d.fullName,
-          email: d.email,
+          email: d.email || null,
           phone: d.phone,
           propertyAddress: d.propertyAddress,
           message: `Property type: ${d.propertyType}\nCurrently listed: ${d.isListed}\nTimeline: ${d.timeline}\nReason for selling: ${d.reason}`,
