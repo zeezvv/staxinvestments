@@ -61,12 +61,17 @@ const hasValidDomain = (email: string) => {
   return parts.length >= 2 && parts[parts.length - 1].length >= 2;
 };
 
+const optionalEmailSchema = z.preprocess(
+  (value) => (typeof value === "string" ? value.trim() : ""),
+  z.union([
+    z.literal(""),
+    z.string().email("Please enter a valid email").max(255).refine(hasValidDomain, "Please enter a valid email domain"),
+  ]),
+);
+
 const schema = z.object({
   fullName: z.string().trim().min(1, "Full name is required").max(100),
-  email: z.union([
-    z.literal(""),
-    z.string().trim().email("Please enter a valid email").max(255).refine(hasValidDomain, "Please enter a valid email domain"),
-  ]),
+  email: optionalEmailSchema,
   phone: z.string().trim().min(14, "Please enter a complete phone number").max(20),
   propertyAddress: z.string().trim().min(1, "Property address is required").max(500)
     .refine((v) => /^\d+\s+[A-Za-z0-9.'\-]+/.test(v.trim()), "Please enter a street address (e.g. 123 Main St)")
@@ -184,7 +189,7 @@ const CashOffer = () => {
       const d = result.data;
       const { error } = await supabase.from("leads").insert({
         full_name: d.fullName,
-        email: d.email || null,
+        email: d.email || "",
         phone: d.phone,
         property_address: d.propertyAddress,
         is_listed: d.isListed === "yes",
@@ -199,7 +204,7 @@ const CashOffer = () => {
       await supabase.functions.invoke("send-lead-email", {
         body: {
           fullName: d.fullName,
-          email: d.email || null,
+          email: d.email || "Not provided",
           phone: d.phone,
           propertyAddress: d.propertyAddress,
           message: `Property type: ${d.propertyType}\nCurrently listed: ${d.isListed}\nTimeline: ${d.timeline}\nReason for selling: ${d.reason}`,
