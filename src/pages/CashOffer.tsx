@@ -63,7 +63,10 @@ const hasValidDomain = (email: string) => {
 
 const schema = z.object({
   fullName: z.string().trim().min(1, "Full name is required").max(100),
-  email: z.string().trim().email("Please enter a valid email").max(255).refine(hasValidDomain, "Please enter a valid email domain"),
+  email: z.union([
+    z.literal(""),
+    z.string().trim().email("Please enter a valid email").max(255).refine(hasValidDomain, "Please enter a valid email domain"),
+  ]),
   phone: z.string().trim().min(14, "Please enter a complete phone number").max(20),
   propertyAddress: z.string().trim().min(1, "Property address is required").max(500)
     .refine((v) => /^\d+\s+[A-Za-z0-9.'\-]+/.test(v.trim()), "Please enter a street address (e.g. 123 Main St)")
@@ -181,7 +184,7 @@ const CashOffer = () => {
       const d = result.data;
       const { error } = await supabase.from("leads").insert({
         full_name: d.fullName,
-        email: d.email,
+        email: d.email || null,
         phone: d.phone,
         property_address: d.propertyAddress,
         is_listed: d.isListed === "yes",
@@ -196,14 +199,14 @@ const CashOffer = () => {
       await supabase.functions.invoke("send-lead-email", {
         body: {
           fullName: d.fullName,
-          email: d.email,
+          email: d.email || null,
           phone: d.phone,
           propertyAddress: d.propertyAddress,
           message: `Property type: ${d.propertyType}\nCurrently listed: ${d.isListed}\nTimeline: ${d.timeline}\nReason for selling: ${d.reason}`,
         },
       });
 
-      track("lead_submitted", { email: d.email });
+      track("lead_submitted", { email: d.email || "no-email" });
       if (typeof (window as any).gtag === "function") {
         (window as any).gtag("event", "generate_lead", {
           event_category: "form",
@@ -213,7 +216,7 @@ const CashOffer = () => {
 
       try {
         const webhookBase = "https://services.leadconnectorhq.com/hooks/XOh4Z6pVhNdzqzXMFAfd/webhook-trigger/48fce442-7dd2-4f22-a5ae-ba6f316f971e";
-        const webhookUrl = `${webhookBase}?propertyAddress=${encodeURIComponent(d.propertyAddress)}&isListed=${encodeURIComponent(d.isListed)}&propertyType=${encodeURIComponent(d.propertyType)}&timeline=${encodeURIComponent(d.timeline)}&reason=${encodeURIComponent(d.reason)}&fullName=${encodeURIComponent(d.fullName)}&email=${encodeURIComponent(d.email)}&phone=${encodeURIComponent(d.phone)}&gclid=${encodeURIComponent(gclid)}`;
+        const webhookUrl = `${webhookBase}?propertyAddress=${encodeURIComponent(d.propertyAddress)}&isListed=${encodeURIComponent(d.isListed)}&propertyType=${encodeURIComponent(d.propertyType)}&timeline=${encodeURIComponent(d.timeline)}&reason=${encodeURIComponent(d.reason)}&fullName=${encodeURIComponent(d.fullName)}&email=${encodeURIComponent(d.email || "")}&phone=${encodeURIComponent(d.phone)}&gclid=${encodeURIComponent(gclid)}`;
         await fetch(webhookUrl, { method: "GET" });
       } catch (webhookErr) {
         // Webhook failure should not block the user-facing submission flow.
@@ -382,7 +385,7 @@ const CashOffer = () => {
                     </div>
                     <div className="grid sm:grid-cols-2 gap-5">
                       <div>
-                        <label className="text-sm font-medium text-foreground mb-1.5 block">Email Address *</label>
+                        <label className="text-sm font-medium text-foreground mb-1.5 block">Email Address</label>
                         <Input
                           type="email"
                           placeholder="john@email.com"
