@@ -51,6 +51,13 @@ const ThankYou = () => {
         send_to: "AW-18309634163/9oZJCKaO_M0cEPOw25pE",
       });
     }
+
+    // Event snippet for Submit lead form (3) conversion page
+    if (typeof gtag === "function") {
+      gtag("event", "conversion", {
+        send_to: "AW-18309634163/o44XCMaI69AcEPOw25pE",
+      });
+    }
   }, []);
 
   if (!location.state?.fromSubmit) {
