@@ -258,7 +258,7 @@ const CashOfferIndianapolis = () => {
 
       try {
         const webhookBase = "https://services.leadconnectorhq.com/hooks/XOh4Z6pVhNdzqzXMFAfd/webhook-trigger/48fce442-7dd2-4f22-a5ae-ba6f316f971e";
-        const webhookUrl = `${webhookBase}?propertyAddress=${encodeURIComponent(d.propertyAddress)}&isListed=no&propertyType=Single Family&email=${encodeURIComponent(d.email || "")}&phone=${encodeURIComponent(d.phone)}&gclid=${encodeURIComponent(gclid)}&name=${encodeURIComponent(d.name)}&source=indianapolis-landing`;
+        const webhookUrl = `${webhookBase}?propertyAddress=${encodeURIComponent(d.propertyAddress)}&isListed=${encodeURIComponent(isListed || "")}&propertyType=${encodeURIComponent(propertyType || "")}&email=${encodeURIComponent(d.email || "")}&phone=${encodeURIComponent(d.phone)}&gclid=${encodeURIComponent(gclid)}&fullName=${encodeURIComponent(d.name)}&source=indianapolis-landing`;
         await fetch(webhookUrl, { method: "GET" });
       } catch (webhookErr) {
         // Webhook failure should not block the user-facing submission flow.
