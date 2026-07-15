@@ -206,7 +206,7 @@ const CashOffer = () => {
         },
       });
 
-      track("lead_submitted", { email: d.email });
+      track("lead_submitted", { email: d.email || "no-email" });
       if (typeof (window as any).gtag === "function") {
         (window as any).gtag("event", "generate_lead", {
           event_category: "form",
@@ -216,7 +216,7 @@ const CashOffer = () => {
 
       try {
         const webhookBase = "https://services.leadconnectorhq.com/hooks/XOh4Z6pVhNdzqzXMFAfd/webhook-trigger/48fce442-7dd2-4f22-a5ae-ba6f316f971e";
-        const webhookUrl = `${webhookBase}?propertyAddress=${encodeURIComponent(d.propertyAddress)}&isListed=${encodeURIComponent(d.isListed)}&propertyType=${encodeURIComponent(d.propertyType)}&timeline=${encodeURIComponent(d.timeline)}&reason=${encodeURIComponent(d.reason)}&fullName=${encodeURIComponent(d.fullName)}&email=${encodeURIComponent(d.email)}&phone=${encodeURIComponent(d.phone)}&gclid=${encodeURIComponent(gclid)}`;
+        const webhookUrl = `${webhookBase}?propertyAddress=${encodeURIComponent(d.propertyAddress)}&isListed=${encodeURIComponent(d.isListed)}&propertyType=${encodeURIComponent(d.propertyType)}&timeline=${encodeURIComponent(d.timeline)}&reason=${encodeURIComponent(d.reason)}&fullName=${encodeURIComponent(d.fullName)}&email=${encodeURIComponent(d.email || "")}&phone=${encodeURIComponent(d.phone)}&gclid=${encodeURIComponent(gclid)}`;
         await fetch(webhookUrl, { method: "GET" });
       } catch (webhookErr) {
         // Webhook failure should not block the user-facing submission flow.
