@@ -168,6 +168,7 @@ const CashOfferIndianapolis = () => {
     setMeta("twitter:card", "summary_large_image");
 
     const params = new URLSearchParams(window.location.search);
+    setGclid(params.get("gclid") || "");
     const keys = ["gclid", "gbraid", "wbraid", "utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content"];
     const stored: Record<string, string> = (() => {
       try { return JSON.parse(sessionStorage.getItem("stax_tracking") || "{}"); } catch { return {}; }
