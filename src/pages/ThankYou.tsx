@@ -115,7 +115,7 @@ const ThankYou = () => {
                 size="lg"
                 className="w-full sm:w-auto h-12 px-7 bg-primary hover:bg-primary/90 text-primary-foreground shadow-xl shadow-primary/30 text-base font-semibold"
               >
-                <a href="tel:+12344371980">
+                <a href="tel:+14633630301">
                   <Phone className="w-4 h-4 mr-2" />
                   Call Us Now
                 </a>
@@ -193,8 +193,8 @@ const ThankYou = () => {
                   </h3>
                   <p className="mt-2 text-base md:text-lg text-muted-foreground">
                     Give us a call anytime at{" "}
-                    <a href="tel:+12344371980" className="font-semibold text-foreground underline-offset-4 hover:underline">
-                      (234) 437-1980
+                    <a href="tel:+14633630301" className="font-semibold text-foreground underline-offset-4 hover:underline">
+                      (463) 363-0301
                     </a>
                     .
                   </p>
