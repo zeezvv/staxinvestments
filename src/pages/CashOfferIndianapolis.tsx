@@ -144,6 +144,7 @@ const CashOfferIndianapolis = () => {
   const [form, setForm] = useState<Partial<FormData>>({});
   const [errors, setErrors] = useState<Partial<Record<keyof FormData, string>>>({});
   const [tracking, setTracking] = useState<Record<string, string>>({});
+  const [gclid, setGclid] = useState("");
   const [showFooter, setShowFooter] = useState(false);
 
   useEffect(() => {
