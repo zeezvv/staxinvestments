@@ -16,7 +16,7 @@ Deno.serve(async (req) => {
     })
   }
 
-  let body: Record<string, string>
+  let body: Record<string, string | undefined>
   try {
     body = await req.json()
   } catch {
@@ -27,8 +27,9 @@ Deno.serve(async (req) => {
   }
 
   const { fullName, email, phone, propertyAddress, message } = body
+  const emailDisplay = email?.trim() || 'Not provided'
 
-  if (!fullName || !email || !phone || !propertyAddress) {
+  if (!fullName || !phone || !propertyAddress) {
     return new Response(JSON.stringify({ error: 'Missing required fields' }), {
       status: 400,
       headers: { ...corsHeaders, 'Content-Type': 'application/json' },
@@ -45,7 +46,7 @@ Deno.serve(async (req) => {
         <p style="font-size: 11px; font-weight: 600; color: #888; text-transform: uppercase; letter-spacing: 0.5px; margin: 0 0 2px;">Full Name</p>
         <p style="font-size: 15px; color: #1a2b1a; margin: 0 0 12px; line-height: 1.4;">${fullName}</p>
         <p style="font-size: 11px; font-weight: 600; color: #888; text-transform: uppercase; letter-spacing: 0.5px; margin: 0 0 2px;">Email</p>
-        <p style="font-size: 15px; color: #1a2b1a; margin: 0 0 12px; line-height: 1.4;">${email}</p>
+        <p style="font-size: 15px; color: #1a2b1a; margin: 0 0 12px; line-height: 1.4;">${emailDisplay}</p>
         <p style="font-size: 11px; font-weight: 600; color: #888; text-transform: uppercase; letter-spacing: 0.5px; margin: 0 0 2px;">Phone</p>
         <p style="font-size: 15px; color: #1a2b1a; margin: 0 0 12px; line-height: 1.4;">${phone}</p>
         <p style="font-size: 11px; font-weight: 600; color: #888; text-transform: uppercase; letter-spacing: 0.5px; margin: 0 0 2px;">Property Address</p>
