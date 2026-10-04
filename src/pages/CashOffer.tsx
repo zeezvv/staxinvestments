@@ -109,6 +109,11 @@ const timelines = ["ASAP", "1 month", "2-3 months", "6 months"] as const;
 const totalSteps = 4;
 
 const CashOffer = () => {
+  usePageMeta({
+    title: "Get a Cash Offer | Stax Home Buyers",
+    description: "Request a fair, no-obligation cash offer for your house. No repairs, no agent commissions, and a closing timeline that fits you.",
+    path: "/cash-offer",
+  });
   const navigate = useNavigate();
   const { toast } = useToast();
   const [step, setStep] = useState(1);

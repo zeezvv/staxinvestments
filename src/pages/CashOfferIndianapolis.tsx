@@ -140,6 +140,11 @@ const propertyTypes = ["Single Family", "Duplex", "Mobile Home", "Apartment", "O
 type PropertyType = typeof propertyTypes[number];
 
 const CashOfferIndianapolis = () => {
+  usePageMeta({
+    title: "We Buy Houses in Indianapolis | Stax Home Buyers",
+    description: "Sell your Indianapolis house fast for cash. No repairs, no commissions, no obligation. We buy houses as-is across the Indianapolis metro.",
+    path: "/cash-offer-indianapolis",
+  });
   const navigate = useNavigate();
   const { toast } = useToast();
   const [openFaq, setOpenFaq] = useState<number | null>(0);

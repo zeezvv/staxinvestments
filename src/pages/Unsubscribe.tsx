@@ -10,6 +10,11 @@ const SUPABASE_ANON_KEY = import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY;
 type Status = "loading" | "valid" | "already" | "invalid" | "success" | "error";
 
 const Unsubscribe = () => {
+  usePageMeta({
+    title: "Unsubscribe | Stax Home Buyers",
+    description: "Manage your email preferences and unsubscribe from Stax Home Buyers communications.",
+    path: "/unsubscribe",
+  });
   const [searchParams] = useSearchParams();
   const token = searchParams.get("token");
   const [status, setStatus] = useState<Status>("loading");

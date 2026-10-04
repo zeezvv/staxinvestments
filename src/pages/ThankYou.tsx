@@ -42,6 +42,11 @@ const trustItems = [
 ];
 
 const ThankYou = () => {
+  usePageMeta({
+    title: "Thank You | Stax Home Buyers",
+    description: "We received your property details and will reach out shortly with the next steps for your cash offer.",
+    path: "/thank-you",
+  });
   const navigate = useNavigate();
   const location = useLocation();
 
