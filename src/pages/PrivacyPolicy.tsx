@@ -2,9 +2,15 @@ import { useNavigate } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Footer from "@/components/Footer";
+import { usePageMeta } from "@/hooks/use-page-meta";
 
 const PrivacyPolicy = () => {
   const navigate = useNavigate();
+  usePageMeta({
+    title: "Privacy Policy | Stax Home Buyers",
+    description: "How Stax Investments LLC collects, uses, and protects your personal information when you use our website and forms.",
+    path: "/privacy-policy",
+  });
 
   return (
     <div className="min-h-screen bg-background">

@@ -9,6 +9,7 @@ import { z } from "zod";
 import { ArrowLeft, ArrowRight, Check, Send, ShieldCheck, Clock, DollarSign, Home, Star, MapPin, ChevronLeft, ChevronRight } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
+import { usePageMeta } from "@/hooks/use-page-meta";
 import { track } from "@vercel/analytics";
 import Footer from "@/components/Footer";
 import heroImage from "@/assets/cash-offer-hero.png.asset.json";

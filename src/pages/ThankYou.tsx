@@ -13,6 +13,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { useNavigate, useLocation, Navigate } from "react-router-dom";
 import { useEffect } from "react";
+import { usePageMeta } from "@/hooks/use-page-meta";
 import Footer from "@/components/Footer";
 import heroImage from "@/assets/thank-you-hero.png.asset.json";
 
