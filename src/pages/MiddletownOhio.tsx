@@ -157,10 +157,17 @@ const MiddletownOhio = () => {
     orgScript.text = JSON.stringify(orgSchema);
     document.head.appendChild(orgScript);
 
+    const agentScript = document.createElement("script");
+    agentScript.type = "application/ld+json";
+    agentScript.dataset.seo = "middletown-real-estate-agent";
+    agentScript.text = JSON.stringify(orgNode);
+    document.head.appendChild(agentScript);
+
     return () => {
       document.title = previousTitle;
       faqScript.remove();
       orgScript.remove();
+      agentScript.remove();
     };
   }, []);
 
