@@ -1,14 +1,15 @@
 import { Link } from "react-router-dom";
-import { Phone, Globe, FileText, Shield, Home } from "lucide-react";
+import { Phone, Globe, FileText, Shield, Home, MapPin } from "lucide-react";
 
 const footerLogo = "/nobg-2.png";
 
 interface FooterProps {
   phoneNumber?: string;
   phoneHref?: string;
+  showAreaLinks?: boolean;
 }
 
-const Footer = ({ phoneNumber = "(234) 437-1980", phoneHref = "tel:+12344371980" }: FooterProps) => {
+const Footer = ({ phoneNumber = "(234) 437-1980", phoneHref = "tel:+12344371980", showAreaLinks = false }: FooterProps) => {
   const currentYear = new Date().getFullYear();
 
   return (
@@ -95,6 +96,22 @@ const Footer = ({ phoneNumber = "(234) 437-1980", phoneHref = "tel:+12344371980"
             </p>
           </div>
         </div>
+
+        {showAreaLinks && (
+          <div className="pb-10 flex flex-col items-center text-center space-y-4">
+            <h3 className="font-display text-sm font-semibold text-primary-foreground">Areas We Serve</h3>
+            <nav className="flex flex-col sm:flex-row items-center gap-3 sm:gap-8 text-sm">
+              <Link to="/we-buy-houses-middletown-ohio" className="inline-flex items-center gap-2 text-primary-foreground/80 hover:text-primary-foreground transition-colors">
+                <MapPin className="w-4 h-4 text-primary-foreground/50" />
+                <span>We Buy Houses in Middletown, Ohio</span>
+              </Link>
+              <Link to="/cash-offer-indianapolis" className="inline-flex items-center gap-2 text-primary-foreground/80 hover:text-primary-foreground transition-colors">
+                <MapPin className="w-4 h-4 text-primary-foreground/50" />
+                <span>Sell Your House Fast in Indianapolis</span>
+              </Link>
+            </nav>
+          </div>
+        )}
 
         {/* Divider */}
         <div className="border-t border-primary-foreground/15" />

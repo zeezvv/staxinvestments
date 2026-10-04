@@ -2,9 +2,16 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Home } from "lucide-react";
 import Footer from "@/components/Footer";
+import { usePageMeta } from "@/hooks/use-page-meta";
 import sorryBg from "@/assets/sorry-bg.png.asset.json";
 
 const Sorry = () => {
+  usePageMeta({
+    title: "Not the Right Fit | Stax Home Buyers",
+    description: "Stax Home Buyers specializes in off market single family homes. Contact us again if your situation changes.",
+    path: "/sorry",
+    noindex: true,
+  });
   return (
     <div className="min-h-screen flex flex-col">
       <section className="relative flex-1 flex items-center justify-center px-4 py-20">

@@ -33,7 +33,7 @@ import {
 } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
-import { usePageMeta } from "@/hooks/use-page-meta";
+import { usePageMeta, ORGANIZATION_ID } from "@/hooks/use-page-meta";
 import { track } from "@vercel/analytics";
 import { cn } from "@/lib/utils";
 import Footer from "@/components/Footer";
@@ -92,6 +92,23 @@ const faqs = [
   { q: "Is there any obligation?", a: "None. Your cash offer is free and there's no pressure to accept." },
 ];
 
+const indyJsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((f) => ({
+      "@type": "Question",
+      name: f.q,
+      acceptedAnswer: { "@type": "Answer", text: f.a },
+    })),
+  },
+  {
+    "@context": "https://schema.org",
+    "@id": ORGANIZATION_ID,
+    areaServed: areas.map((a) => `${a}, Indiana`),
+  },
+];
+
 const validDomains = ["gmail.com", "yahoo.com", "outlook.com", "hotmail.com", "aol.com", "icloud.com", "mail.com", "protonmail.com", "zoho.com", "yandex.com", "live.com", "msn.com", "comcast.net", "att.net", "verizon.net", "me.com", "mac.com"];
 const hasValidDomain = (email: string) => {
   const domain = email.split("@")[1]?.toLowerCase();
@@ -141,9 +158,10 @@ type PropertyType = typeof propertyTypes[number];
 
 const CashOfferIndianapolis = () => {
   usePageMeta({
-    title: "We Buy Houses in Indianapolis | Stax Home Buyers",
-    description: "Sell your Indianapolis house fast for cash. No repairs, no commissions, no obligation. We buy houses as-is across the Indianapolis metro.",
+    title: "Sell Your Indianapolis House Fast for Cash | Stax Home Buyers",
+    description: "Sell your Indianapolis house fast for cash. Fair cash offer in as little as 10 minutes. No repairs, no commissions, no obligation. Local Indiana home buyers.",
     path: "/cash-offer-indianapolis",
+    jsonLd: indyJsonLd,
   });
   const navigate = useNavigate();
   const { toast } = useToast();
@@ -159,25 +177,6 @@ const CashOfferIndianapolis = () => {
   const [showFooter, setShowFooter] = useState(false);
 
   useEffect(() => {
-    document.title = "Sell Your Indianapolis House Fast for Cash | Stax Home Buyers";
-    const setMeta = (name: string, content: string, attr: "name" | "property" = "name") => {
-      let el = document.querySelector(`meta[${attr}="${name}"]`) as HTMLMetaElement | null;
-      if (!el) {
-        el = document.createElement("meta");
-        el.setAttribute(attr, name);
-        document.head.appendChild(el);
-      }
-      el.setAttribute("content", content);
-    };
-    setMeta(
-      "description",
-      "Sell your Indianapolis house fast for cash. Fair cash offer in as little as 10 minutes. No repairs, no commissions, no obligation. Local Indiana home buyers.",
-    );
-    setMeta("og:title", "Sell Your Indianapolis House Fast for Cash", "property");
-    setMeta("og:description", "Fair cash offer in as little as 10 minutes. No repairs, no commissions, no obligation.", "property");
-    setMeta("og:type", "website", "property");
-    setMeta("twitter:card", "summary_large_image");
-
     const params = new URLSearchParams(window.location.search);
     setGclid(params.get("gclid") || "");
     const keys = ["gclid", "gbraid", "wbraid", "utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content"];

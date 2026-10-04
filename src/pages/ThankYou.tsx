@@ -46,6 +46,7 @@ const ThankYou = () => {
     title: "Thank You | Stax Home Buyers",
     description: "We received your property details and will reach out shortly with the next steps for your cash offer.",
     path: "/thank-you",
+    noindex: true,
   });
   const navigate = useNavigate();
   const location = useLocation();
