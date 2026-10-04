@@ -9,23 +9,10 @@ import Testimonials from "@/components/Testimonials";
 
 import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
-import { usePageMeta, ORGANIZATION_ID } from "@/hooks/use-page-meta";
+import { usePageMeta, ORGANIZATION_ID, organizationJsonLd } from "@/hooks/use-page-meta";
 
 const homeJsonLd = [
-  {
-    "@context": "https://schema.org",
-    "@type": "RealEstateAgent",
-    "@id": ORGANIZATION_ID,
-    name: "Stax Home Buyers",
-    url: "https://staxhomebuyers.com",
-    description:
-      "Stax Home Buyers helps homeowners sell houses as-is for cash with no repairs, no agent fees, and flexible closing options.",
-    telephone: "+1-234-437-1980",
-    email: "leads@staxhomebuyers.com",
-    areaServed: ["Middletown, Ohio", "Indianapolis, Indiana", "Southwest Ohio"],
-    logo: "https://staxhomebuyers.com/nobg-2.png",
-    image: "https://staxhomebuyers.com/nobg-2.png",
-  },
+  organizationJsonLd,
   {
     "@context": "https://schema.org",
     "@type": "WebSite",

@@ -33,7 +33,7 @@ import {
 } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
-import { usePageMeta, ORGANIZATION_ID } from "@/hooks/use-page-meta";
+import { usePageMeta, organizationJsonLd } from "@/hooks/use-page-meta";
 import { track } from "@vercel/analytics";
 import { cn } from "@/lib/utils";
 import Footer from "@/components/Footer";
@@ -103,8 +103,7 @@ const indyJsonLd = [
     })),
   },
   {
-    "@context": "https://schema.org",
-    "@id": ORGANIZATION_ID,
+    ...organizationJsonLd,
     areaServed: areas.map((a) => `${a}, Indiana`),
   },
 ];
