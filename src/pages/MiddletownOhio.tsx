@@ -124,22 +124,11 @@ const MiddletownOhio = () => {
 
     const orgSchema = {
       "@context": "https://schema.org",
-      "@type": "RealEstateAgent",
-      name: "Stax Home Buyers",
-      url: "https://staxhomebuyers.com",
-      description:
-        "Stax Home Buyers helps homeowners sell houses as-is for cash with no repairs, no agent fees, and flexible closing options.",
-      telephone: "+1-234-437-1980",
-      email: "leads@staxhomebuyers.com",
-      areaServed: [
-        "Middletown, Ohio",
-        "Franklin, Ohio",
-        "Monroe, Ohio",
-        "Trenton, Ohio",
-        "Hamilton, Ohio",
-        "Dayton, Ohio",
-        "Cincinnati, Ohio",
-      ],
+      "@type": "WebPage",
+      url: PAGE_URL,
+      name: PAGE_TITLE,
+      about: { "@id": "https://staxhomebuyers.com/#organization" },
+      publisher: { "@id": "https://staxhomebuyers.com/#organization" },
     };
 
     const faqScript = document.createElement("script");
@@ -346,7 +335,7 @@ const MiddletownOhio = () => {
         <ContactForm />
       </main>
 
-      <Footer />
+      <Footer showAreaLinks />
     </div>
   );
 };

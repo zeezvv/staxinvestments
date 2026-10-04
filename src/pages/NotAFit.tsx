@@ -2,8 +2,15 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Home } from "lucide-react";
 import Footer from "@/components/Footer";
+import { usePageMeta } from "@/hooks/use-page-meta";
 
 const NotAFit = () => {
+  usePageMeta({
+    title: "Property Not a Match | Stax Home Buyers",
+    description: "This property is outside what Stax Home Buyers currently purchases. Reach out anytime if things change.",
+    path: "/not-a-fit",
+    noindex: true,
+  });
   return (
     <div className="min-h-screen flex flex-col bg-background">
       <section className="flex-1 flex items-center justify-center px-4 py-20">

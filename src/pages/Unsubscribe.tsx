@@ -14,6 +14,7 @@ const Unsubscribe = () => {
     title: "Unsubscribe | Stax Home Buyers",
     description: "Manage your email preferences and unsubscribe from Stax Home Buyers communications.",
     path: "/unsubscribe",
+    noindex: true,
   });
   const [searchParams] = useSearchParams();
   const token = searchParams.get("token");

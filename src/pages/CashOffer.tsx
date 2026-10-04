@@ -251,6 +251,9 @@ const CashOffer = () => {
           <img
             src={heroImage.url}
             alt="Beautiful home ready for a fair cash offer"
+            width={1916}
+            height={821}
+            fetchPriority="high"
             className="absolute inset-0 w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-background/80 via-background/40 to-transparent" />
@@ -481,7 +484,7 @@ const CashOffer = () => {
                   {activeTestimonial.avatar ? (
                     <img
                       src={activeTestimonial.avatar}
-                      alt={activeTestimonial.name}
+                      alt={`${activeTestimonial.name}, Stax Home Buyers customer`}
                       className="w-11 h-11 rounded-full object-cover"
                     />
                   ) : (

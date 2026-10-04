@@ -13,6 +13,9 @@ const HeroSection = () => {
         <img
           src={heroAsset.url}
           alt="Modern suburban home ready for a fast cash sale"
+          width={1672}
+          height={941}
+          fetchPriority="high"
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 hero-gradient" />
