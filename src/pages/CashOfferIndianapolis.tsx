@@ -33,6 +33,7 @@ import {
 } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
+import { usePageMeta } from "@/hooks/use-page-meta";
 import { track } from "@vercel/analytics";
 import { cn } from "@/lib/utils";
 import Footer from "@/components/Footer";
@@ -139,6 +140,11 @@ const propertyTypes = ["Single Family", "Duplex", "Mobile Home", "Apartment", "O
 type PropertyType = typeof propertyTypes[number];
 
 const CashOfferIndianapolis = () => {
+  usePageMeta({
+    title: "We Buy Houses in Indianapolis | Stax Home Buyers",
+    description: "Sell your Indianapolis house fast for cash. No repairs, no commissions, no obligation. We buy houses as-is across the Indianapolis metro.",
+    path: "/cash-offer-indianapolis",
+  });
   const navigate = useNavigate();
   const { toast } = useToast();
   const [openFaq, setOpenFaq] = useState<number | null>(0);

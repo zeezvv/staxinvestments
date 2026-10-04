@@ -9,6 +9,7 @@ import { z } from "zod";
 import { ArrowLeft, ArrowRight, Check, Send, ShieldCheck, Clock, DollarSign, Home, Star, MapPin, ChevronLeft, ChevronRight } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
+import { usePageMeta } from "@/hooks/use-page-meta";
 import { track } from "@vercel/analytics";
 import Footer from "@/components/Footer";
 import heroImage from "@/assets/cash-offer-hero.png.asset.json";
@@ -108,6 +109,11 @@ const timelines = ["ASAP", "1 month", "2-3 months", "6 months"] as const;
 const totalSteps = 4;
 
 const CashOffer = () => {
+  usePageMeta({
+    title: "Get a Cash Offer | Stax Home Buyers",
+    description: "Request a fair, no-obligation cash offer for your house. No repairs, no agent commissions, and a closing timeline that fits you.",
+    path: "/cash-offer",
+  });
   const navigate = useNavigate();
   const { toast } = useToast();
   const [step, setStep] = useState(1);

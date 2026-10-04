@@ -2,9 +2,15 @@ import { useNavigate } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Footer from "@/components/Footer";
+import { usePageMeta } from "@/hooks/use-page-meta";
 
 const TermsAndConditions = () => {
   const navigate = useNavigate();
+  usePageMeta({
+    title: "Terms & Conditions | Stax Home Buyers",
+    description: "Terms and conditions for using staxhomebuyers.com, operated by Stax Investments LLC.",
+    path: "/terms-and-conditions",
+  });
 
   return (
     <div className="min-h-screen bg-background">
