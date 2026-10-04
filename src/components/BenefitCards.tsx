@@ -35,7 +35,7 @@ const BenefitCards = () => (
             <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-5">
               <b.icon className="w-7 h-7 text-primary" />
             </div>
-            <h3 className="font-display text-xl font-bold text-foreground mb-2">{b.title}</h3>
+            <h2 className="font-display text-xl font-bold text-foreground mb-2">{b.title}</h2>
             <p className="text-muted-foreground leading-relaxed">{b.desc}</p>
           </motion.div>
         ))}
