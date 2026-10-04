@@ -4,6 +4,21 @@ const SITE_URL = "https://staxhomebuyers.com";
 export const ORGANIZATION_ID = `${SITE_URL}/#organization`;
 const DEFAULT_ROBOTS = "index, follow, max-image-preview:large";
 
+export const organizationJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "RealEstateAgent",
+  "@id": ORGANIZATION_ID,
+  name: "Stax Home Buyers",
+  url: SITE_URL,
+  description:
+    "Stax Home Buyers helps homeowners sell houses as-is for cash with no repairs, no agent fees, and flexible closing options.",
+  telephone: "+1-234-437-1980",
+  email: "leads@staxhomebuyers.com",
+  areaServed: ["Middletown, Ohio", "Indianapolis, Indiana", "Southwest Ohio"],
+  logo: `${SITE_URL}/nobg-2.png`,
+  image: `${SITE_URL}/nobg-2.png`,
+};
+
 const setOrCreateMeta = (selector: string, attrs: Record<string, string>) => {
   let el = document.head.querySelector<HTMLMetaElement>(selector);
   if (!el) {

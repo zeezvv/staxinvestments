@@ -11,6 +11,7 @@ import {
 import { Button } from "@/components/ui/button";
 import Footer from "@/components/Footer";
 import ContactForm from "@/components/ContactForm";
+import { organizationJsonLd } from "@/hooks/use-page-meta";
 import heroImage from "@/assets/middletown-house.jpg";
 
 const PAGE_URL = "https://staxhomebuyers.com/we-buy-houses-middletown-ohio";
@@ -131,6 +132,19 @@ const MiddletownOhio = () => {
       publisher: { "@id": "https://staxhomebuyers.com/#organization" },
     };
 
+    const orgNode = {
+      ...organizationJsonLd,
+      areaServed: [
+        "Middletown, Ohio",
+        "Franklin, Ohio",
+        "Monroe, Ohio",
+        "Trenton, Ohio",
+        "Hamilton, Ohio",
+        "Dayton, Ohio",
+        "Cincinnati, Ohio",
+      ],
+    };
+
     const faqScript = document.createElement("script");
     faqScript.type = "application/ld+json";
     faqScript.dataset.seo = "middletown-faq";
@@ -143,10 +157,17 @@ const MiddletownOhio = () => {
     orgScript.text = JSON.stringify(orgSchema);
     document.head.appendChild(orgScript);
 
+    const agentScript = document.createElement("script");
+    agentScript.type = "application/ld+json";
+    agentScript.dataset.seo = "middletown-real-estate-agent";
+    agentScript.text = JSON.stringify(orgNode);
+    document.head.appendChild(agentScript);
+
     return () => {
       document.title = previousTitle;
       faqScript.remove();
       orgScript.remove();
+      agentScript.remove();
     };
   }, []);
 
